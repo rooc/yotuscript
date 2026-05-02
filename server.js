@@ -196,6 +196,28 @@ const server = http.createServer((req, res) => {
         return;
     }
     
+    // Vocabulary endpoint
+    if (url.pathname === '/api/vocab') {
+        const videoId = url.searchParams.get('v');
+        
+        if (!videoId) {
+            res.writeHead(400);
+            res.end(JSON.stringify({ error: 'Video ID required' }));
+            return;
+        }
+        
+        const vocabPath = path.join(TRANSCRIPTS_DIR, `${videoId}_vocab.json`);
+        if (fs.existsSync(vocabPath)) {
+            const vocab = JSON.parse(fs.readFileSync(vocabPath, 'utf-8'));
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify(vocab));
+        } else {
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({}));
+        }
+        return;
+    }
+    
     // List available transcripts
     if (url.pathname === '/api/transcripts') {
         const files = fs.existsSync(TRANSCRIPTS_DIR) ? fs.readdirSync(TRANSCRIPTS_DIR) : [];
