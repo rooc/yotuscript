@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video with Transcript</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header-sidebar">
+            <span class="material-icons" style="font-size: 32px; color: #ff0000;">play_circle</span>
+            <span style="font-size: 1.5rem; font-weight: 600; margin-left: 8px;">YT-trans</span>
+        </div>
+        <div class="header-main">
+            <h1 id="videoTitle">YouTube Video with Transcript</h1>
+        </div>
+
+        <div class="sidebar">
+            <div class="panel" id="availableTranscripts">
+                <h3>Available transcripts:</h3>
+                <div id="transcriptTags"></div>
+            </div>
+
+            <div class="controls">
+                <button onclick="rewind10()" title="Rewind 10 seconds"><span class="material-icons">replay_10</span></button>
+                <button id="pauseBtn" onclick="togglePause()" title="Pause/Play"><span class="material-icons">pause</span></button>
+                <button onclick="syncVideo()" title="Sync video to transcript"><span class="material-icons">sync</span></button>
+                <button onclick="restartVideo()" title="Restart video"><span class="material-icons">skip_previous</span></button>
+            </div>
+
+            <div id="status">Ready</div>
+        </div>
+
+        <div class="main">
+            <div class="video-wrapper">
+                <iframe id="videoFrame" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <div class="transcript-container" id="transcript">
+                <div class="loading">Load a video to see transcript</div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let transcriptData = [];
+        let translationData = [];
+        let hasTranslation = false;
+        let activeIndex = -1;
+        let availableTranscripts = [];
+        let currentTime = 0;
+        let totalDuration = 0;
+        let timerInterval = null;
+        let lastTick = 0;
+        let isPaused = false;
+        let isHovering = false;
+
+        const statusEl = document.getElementById('status');
+        const pauseBtn = document.getElementById('pauseBtn');
+        const transcriptContainer = document.getElementById('transcript');
+
+        function setStatus(msg) {
+            statusEl.textContent = msg;
+        }
+
+        function parseTranscriptXML(xml) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(xml, 'text/xml');
+            const texts = doc.querySelectorAll('text');
+            const result = [];
+            texts.forEach(text => {
+                const start = parseFloat(text.getAttribute('start'));
+                const dur = parseFloat(text.getAttribute('dur')) || 3;
+                const content = text.textContent.trim();
+                if (content) {
+                    result.push({ time: start, dur: dur, text: content });
+                }
+            });
+            return result;
+        }
+
+        function updateDisplay() {
+            if (transcriptData.length === 0) return;
+
+            let newIndex = -1;
+            for (let i = 0; i < transcriptData.length; i++) {
+                if (transcriptData[i].time <= currentTime) {
+                    newIndex = i;
+                } else {
+                    break;
+                }
+            }
+
+            if (newIndex !== activeIndex && newIndex >= 0) {
+                activeIndex = newIndex;
+                renderTranscriptLine();
+            }
+
+            if (totalDuration > 0) {
+                document.getElementById('progressFill').style.width = `${(currentTime / totalDuration) * 100}%`;
+            }
+
+            setStatus(`${formatTime(currentTime)} / ${formatTime(totalDuration)} | Line ${activeIndex + 1}/${transcriptData.length} ${isPaused ? '(PAUSED)' : ''}`);
+        }
+
+        function renderTranscriptLine(showTranslation = false) {
+            if (activeIndex < 0 || activeIndex >= transcriptData.length) return;
+            
+            const text = (showTranslation && translationData[activeIndex]) 
+                ? translationData[activeIndex].text 
+                : transcriptData[activeIndex].text;
+            
+            transcriptContainer.innerHTML = `<div class="transcript-line">${text}</div>`;
+        }
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function sendVideoCommand(func) {
+            const iframe = document.getElementById('videoFrame');
+            if (iframe && iframe.contentWindow) {
+                iframe.contentWindow.postMessage(`{"event":"command","func":"${func}","args":""}`, '*');
+            }
+        }
+
+        function setPaused(paused) {
+            if (isPaused === paused) return;
+            
+            isPaused = paused;
+            
+            const icon = pauseBtn.querySelector('.material-icons');
+            if (isPaused) {
+                icon.textContent = 'play_arrow';
+                pauseBtn.classList.add('active');
+            } else {
+                icon.textContent = 'pause';
+                pauseBtn.classList.remove('active');
+            }
+            
+            updateDisplay();
+        }
+
+        function tick() {
+            if (isPaused) return;
+            
+            const now = Date.now();
+            const delta = (now - lastTick) / 1000;
+            currentTime += delta;
+            lastTick = now;
+            
+            updateDisplay();
+        }
+
+        function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            currentTime = 0;
+            activeIndex = -1;
+            isPaused = false;
+            lastTick = Date.now();
+            timerInterval = setInterval(tick, 100);
+            const icon = pauseBtn.querySelector('.material-icons');
+            if (icon) icon.textContent = 'pause';
+            pauseBtn.classList.remove('active');
+            setStatus('Playing');
+        }
+
+        function togglePause() {
+            setPaused(!isPaused);
+            sendVideoCommand(isPaused ? 'pauseVideo' : 'playVideo');
+        }
+
+        function syncVideo() {
+            const iframe = document.getElementById('videoFrame');
+            const url = new URL(iframe.src);
+            url.searchParams.set('start', Math.floor(currentTime));
+            iframe.src = url.toString();
+            setStatus(`Synced video to ${formatTime(currentTime)}`);
+        }
+
+        function restartVideo() {
+            currentTime = 0;
+            activeIndex = -1;
+            isPaused = false;
+            lastTick = Date.now();
+            const icon = pauseBtn.querySelector('.material-icons');
+            if (icon) icon.textContent = 'pause';
+            pauseBtn.classList.remove('active');
+            
+            const iframe = document.getElementById('videoFrame');
+            const url = new URL(iframe.src);
+            url.searchParams.set('start', '0');
+            iframe.src = url.toString();
+            
+            setStatus('Restarted');
+            updateDisplay();
+        }
+
+        function rewind10() {
+            currentTime = Math.max(0, currentTime - 10);
+            activeIndex = -1;
+            lastTick = Date.now();
+            syncVideo();
+            updateDisplay();
+        }
+
+        async function loadAvailableTranscripts() {
+            try {
+                const response = await fetch('/api/transcripts');
+                availableTranscripts = await response.json();
+                const tagsContainer = document.getElementById('transcriptTags');
+                if (availableTranscripts.length === 0) {
+                    tagsContainer.innerHTML = '<span style="color: #666">No local transcripts found</span>';
+                } else {
+                    tagsContainer.innerHTML = availableTranscripts.map(t => {
+                        const title = t.title || t.videoId;
+                        const icon = t.hasTranslation 
+                            ? '<span class="material-icons icon-sm">translate</span>' 
+                            : '<span class="material-icons icon-sm warning" title="No translation">warning</span>';
+                        return `<span class="transcript-tag" onclick="loadByVideoId('${t.videoId}')" title="${title}">${title} (${t.lines} lines) ${icon}</span>`;
+                    }).join('');
+                }
+            } catch (e) {
+                console.error('Failed to load transcript list:', e);
+            }
+        }
+
+        async function fetchTranscript(videoId) {
+            transcriptContainer.innerHTML = '<div class="loading">Loading transcript...</div>';
+            
+            try {
+                const response = await fetch(`/api/transcript?v=${videoId}`);
+                if (!response.ok) throw new Error('No transcript available');
+                
+                const contentType = response.headers.get('content-type');
+                if (contentType && contentType.includes('json')) {
+                    const json = await response.json();
+                    throw new Error(json.error || 'No transcript');
+                }
+                
+                const xml = await response.text();
+                transcriptData = parseTranscriptXML(xml);
+                
+                if (transcriptData.length === 0) throw new Error('Empty transcript');
+                
+                totalDuration = transcriptData[transcriptData.length - 1].time + transcriptData[transcriptData.length - 1].dur;
+                
+                setStatus(`Loaded ${transcriptData.length} lines, duration: ${formatTime(totalDuration)}`);
+            } catch (error) {
+                console.error('Transcript error:', error);
+                transcriptContainer.innerHTML = `<div class="error">No transcript available</div>`;
+            }
+        }
+
+        async function fetchTranslation(videoId) {
+            try {
+                const response = await fetch(`/api/translation?v=${videoId}`);
+                if (!response.ok) {
+                    hasTranslation = false;
+                    return;
+                }
+                
+                const contentType = response.headers.get('content-type');
+                if (contentType && contentType.includes('json')) {
+                    hasTranslation = false;
+                    return;
+                }
+                
+                const xml = await response.text();
+                translationData = parseTranscriptXML(xml);
+                hasTranslation = translationData.length > 0;
+            } catch (e) {
+                hasTranslation = false;
+            }
+        }
+
+        function loadByVideoId(videoId) {
+            loadVideo(videoId);
+        }
+
+        function loadVideo(videoId) {
+            if (!videoId) return;
+
+            if (timerInterval) clearInterval(timerInterval);
+            
+            // Update header title with full title
+            const titleEl = document.getElementById('videoTitle');
+            const transcript = availableTranscripts.find(t => t.videoId === videoId);
+            if (transcript && transcript.fullTitle) {
+                titleEl.textContent = transcript.fullTitle;
+            } else {
+                titleEl.textContent = `Video: ${videoId}`;
+            }
+            
+            const iframe = document.getElementById('videoFrame');
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1`;
+
+            Promise.all([
+                fetchTranscript(videoId),
+                fetchTranslation(videoId)
+            ]).then(() => {
+                if (hasTranslation) {
+                    transcriptContainer.classList.add('has-translation');
+                } else {
+                    transcriptContainer.classList.remove('has-translation');
+                }
+                startTimer();
+            });
+        }
+
+        window.onload = loadAvailableTranscripts;
+
+        // Spacebar = toggle pause
+        document.addEventListener('keydown', function(e) {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                togglePause();
+            }
+            
+            // Left arrow = rewind 10s
+            if (e.code === 'ArrowLeft') {
+                e.preventDefault();
+                rewind10();
+            }
+        });
+
+        // Hover transcript = show translation + pause
+        transcriptContainer.addEventListener('mouseenter', function() {
+            isHovering = true;
+            if (hasTranslation && activeIndex >= 0) {
+                renderTranscriptLine(true);
+            }
+            if (!isPaused) {
+                setPaused(true);
+                sendVideoCommand('pauseVideo');
+            }
+        });
+        
+        transcriptContainer.addEventListener('mouseleave', function() {
+            isHovering = false;
+            if (activeIndex >= 0) {
+                renderTranscriptLine(false);
+            }
+            if (isPaused) {
+                setPaused(false);
+                sendVideoCommand('playVideo');
+            }
+        });
+    </script>
+</body>
+</html>
