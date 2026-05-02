@@ -27,6 +27,7 @@
                 <button onclick="rewind10()" title="Rewind 10 seconds"><span class="material-icons">replay_10</span></button>
                 <button id="pauseBtn" onclick="togglePause()" title="Pause/Play"><span class="material-icons">pause</span></button>
                 <button onclick="syncVideo()" title="Sync video to transcript"><span class="material-icons">sync</span></button>
+                <button id="dualBtn" onclick="toggleDual()" title="Toggle dual translation"><span class="material-icons">view_comfy</span></button>
                 <button onclick="restartVideo()" title="Restart video"><span class="material-icons">skip_previous</span></button>
             </div>
 
@@ -35,11 +36,11 @@
 
         <div class="main">
             <div class="video-wrapper">
-                <iframe id="videoFrame" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div id="player"></div>
             </div>
 
             <div class="transcript-container" id="transcript">
-                <div class="loading">Load a video to see transcript</div>
+                <div class="loading">Select a transcript to start</div>
             </div>
 
             <div class="progress-bar">
@@ -48,6 +49,7 @@
         </div>
     </div>
 
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         let transcriptData = [];
         let translationData = [];
@@ -56,13 +58,14 @@
         let availableTranscripts = [];
         let currentTime = 0;
         let totalDuration = 0;
-        let timerInterval = null;
-        let lastTick = 0;
         let isPaused = false;
-        let isHovering = false;
+        let isDualMode = false;
+        let player = null;
+        let syncInterval = null;
 
         const statusEl = document.getElementById('status');
         const pauseBtn = document.getElementById('pauseBtn');
+        const dualBtn = document.getElementById('dualBtn');
         const transcriptContainer = document.getElementById('transcript');
 
         function setStatus(msg) {
@@ -109,14 +112,21 @@
             setStatus(`${formatTime(currentTime)} / ${formatTime(totalDuration)} | Line ${activeIndex + 1}/${transcriptData.length} ${isPaused ? '(PAUSED)' : ''}`);
         }
 
-        function renderTranscriptLine(showTranslation = false) {
+        function renderTranscriptLine() {
             if (activeIndex < 0 || activeIndex >= transcriptData.length) return;
             
-            const text = (showTranslation && translationData[activeIndex]) 
-                ? translationData[activeIndex].text 
-                : transcriptData[activeIndex].text;
+            const original = transcriptData[activeIndex].text;
+            const translated = hasTranslation && translationData[activeIndex] ? translationData[activeIndex].text : null;
             
-            transcriptContainer.innerHTML = `<div class="transcript-line">${text}</div>`;
+            if (isDualMode && translated) {
+                transcriptContainer.innerHTML = `
+                    <div class="transcript-dual">
+                        <div class="transcript-line original">${original}</div>
+                        <div class="transcript-line translated">${translated}</div>
+                    </div>`;
+            } else {
+                transcriptContainer.innerHTML = `<div class="transcript-line">${original}</div>`;
+            }
         }
 
         function formatTime(seconds) {
@@ -125,11 +135,28 @@
             return `${mins}:${secs.toString().padStart(2, '0')}`;
         }
 
-        function sendVideoCommand(func) {
-            const iframe = document.getElementById('videoFrame');
-            if (iframe && iframe.contentWindow) {
-                iframe.contentWindow.postMessage(`{"event":"command","func":"${func}","args":""}`, '*');
+        function syncFromVideo() {
+            if (!player || !player.getCurrentTime) return;
+            
+            const state = player.getPlayerState();
+            const isPlaying = state === YT.PlayerState.PLAYING;
+            const isPausedState = state === YT.PlayerState.PAUSED;
+            
+            currentTime = player.getCurrentTime();
+            
+            if (isPlaying && isPaused) {
+                isPaused = false;
+                const icon = pauseBtn.querySelector('.material-icons');
+                if (icon) icon.textContent = 'pause';
+                pauseBtn.classList.remove('active');
+            } else if (isPausedState && !isPaused) {
+                isPaused = true;
+                const icon = pauseBtn.querySelector('.material-icons');
+                if (icon) icon.textContent = 'play_arrow';
+                pauseBtn.classList.add('active');
             }
+            
+            updateDisplay();
         }
 
         function setPaused(paused) {
@@ -141,64 +168,53 @@
             if (isPaused) {
                 icon.textContent = 'play_arrow';
                 pauseBtn.classList.add('active');
+                if (player) player.pauseVideo();
             } else {
                 icon.textContent = 'pause';
                 pauseBtn.classList.remove('active');
+                if (player) player.playVideo();
             }
             
             updateDisplay();
         }
 
-        function tick() {
-            if (isPaused) return;
-            
-            const now = Date.now();
-            const delta = (now - lastTick) / 1000;
-            currentTime += delta;
-            lastTick = now;
-            
-            updateDisplay();
+        function toggleDual() {
+            isDualMode = !isDualMode;
+            dualBtn.classList.toggle('active', isDualMode);
+            if (activeIndex >= 0) {
+                renderTranscriptLine();
+            }
         }
 
-        function startTimer() {
-            if (timerInterval) clearInterval(timerInterval);
-            currentTime = 0;
-            activeIndex = -1;
-            isPaused = false;
-            lastTick = Date.now();
-            timerInterval = setInterval(tick, 100);
-            const icon = pauseBtn.querySelector('.material-icons');
-            if (icon) icon.textContent = 'pause';
-            pauseBtn.classList.remove('active');
-            setStatus('Playing');
+        function startSync() {
+            if (syncInterval) clearInterval(syncInterval);
+            syncInterval = setInterval(syncFromVideo, 200);
         }
 
         function togglePause() {
             setPaused(!isPaused);
-            sendVideoCommand(isPaused ? 'pauseVideo' : 'playVideo');
         }
 
         function syncVideo() {
-            const iframe = document.getElementById('videoFrame');
-            const url = new URL(iframe.src);
-            url.searchParams.set('start', Math.floor(currentTime));
-            iframe.src = url.toString();
-            setStatus(`Synced video to ${formatTime(currentTime)}`);
+            if (player) {
+                player.seekTo(currentTime, true);
+                setStatus(`Synced video to ${formatTime(currentTime)}`);
+            }
         }
 
         function restartVideo() {
             currentTime = 0;
             activeIndex = -1;
             isPaused = false;
-            lastTick = Date.now();
+            
+            if (player) {
+                player.seekTo(0, true);
+                player.playVideo();
+            }
+            
             const icon = pauseBtn.querySelector('.material-icons');
             if (icon) icon.textContent = 'pause';
             pauseBtn.classList.remove('active');
-            
-            const iframe = document.getElementById('videoFrame');
-            const url = new URL(iframe.src);
-            url.searchParams.set('start', '0');
-            iframe.src = url.toString();
             
             setStatus('Restarted');
             updateDisplay();
@@ -207,8 +223,11 @@
         function rewind10() {
             currentTime = Math.max(0, currentTime - 10);
             activeIndex = -1;
-            lastTick = Date.now();
-            syncVideo();
+            
+            if (player) {
+                player.seekTo(currentTime, true);
+            }
+            
             updateDisplay();
         }
 
@@ -289,7 +308,7 @@
         function loadVideo(videoId) {
             if (!videoId) return;
 
-            if (timerInterval) clearInterval(timerInterval);
+            if (syncInterval) clearInterval(syncInterval);
             
             // Update header title with full title
             const titleEl = document.getElementById('videoTitle');
@@ -300,19 +319,27 @@
                 titleEl.textContent = `Video: ${videoId}`;
             }
             
-            const iframe = document.getElementById('videoFrame');
-            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1`;
-
             Promise.all([
                 fetchTranscript(videoId),
                 fetchTranslation(videoId)
             ]).then(() => {
-                if (hasTranslation) {
-                    transcriptContainer.classList.add('has-translation');
+                if (player) {
+                    player.loadVideoById(videoId);
                 } else {
-                    transcriptContainer.classList.remove('has-translation');
+                    player = new YT.Player('player', {
+                        videoId: videoId,
+                        playerVars: {
+                            'playsinline': 1,
+                            'rel': 0
+                        },
+                        events: {
+                            'onReady': () => {
+                                startSync();
+                            }
+                        }
+                    });
                 }
-                startTimer();
+                startSync();
             });
         }
 
@@ -330,28 +357,17 @@
                 e.preventDefault();
                 rewind10();
             }
-        });
-
-        // Hover transcript = show translation + pause
-        transcriptContainer.addEventListener('mouseenter', function() {
-            isHovering = true;
-            if (hasTranslation && activeIndex >= 0) {
-                renderTranscriptLine(true);
+            
+            // S key = sync video to transcript
+            if (e.code === 'KeyS' && !e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                syncVideo();
             }
-            if (!isPaused) {
-                setPaused(true);
-                sendVideoCommand('pauseVideo');
-            }
-        });
-        
-        transcriptContainer.addEventListener('mouseleave', function() {
-            isHovering = false;
-            if (activeIndex >= 0) {
-                renderTranscriptLine(false);
-            }
-            if (isPaused) {
-                setPaused(false);
-                sendVideoCommand('playVideo');
+            
+            // D key = toggle dual translation
+            if (e.code === 'KeyD' && !e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                toggleDual();
             }
         });
     </script>
