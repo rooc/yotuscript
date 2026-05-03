@@ -39,6 +39,17 @@ function loadExcludedWords() {
         }
     }
 
+    const properNounsPath = path.join(DATA_DIR, 'proper-nouns.json');
+    if (fs.existsSync(properNounsPath)) {
+        try {
+            const properNounsData = JSON.parse(fs.readFileSync(properNounsPath, 'utf-8'));
+            (properNounsData.countries || []).forEach(word => excludedWords.add(word.toLowerCase()));
+            (properNounsData.humanNames || []).forEach(word => excludedWords.add(word.toLowerCase()));
+        } catch (e) {
+            console.log(`Warning: Could not load proper-nouns.json: ${e.message}`);
+        }
+    }
+
     return excludedWords;
 }
 
