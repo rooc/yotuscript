@@ -62,11 +62,11 @@ source: "https://www.youtube.com/watch?v=6OvgRqD3ICY"
 
 ---
 
-## "lint" Command
-When the user gives the command `lint`:
+## "translate" Command
+When the user gives the command `translate`:
 
 ### Step 1: Clean original transcripts
-For each file in `/transcripts/` that does NOT contain `_translation` in its name:
+For each file in `/transcripts/` that does NOT contain `_translation` in its name (only process original transcripts, not translation files):
 - Read the file
 - Remove all markdown headings (`#`, `##`, `###`, etc.)
 - Remove section dividers, blank lines between sections

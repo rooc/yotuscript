@@ -46,4 +46,4 @@ For translation, create `VIDEO_ID_translation.md` with English text.
 
 ## Lint
 
-Run `lint` command to auto-generate missing translations.
+Run `translate` command to auto-generate missing translations and vocabulary.

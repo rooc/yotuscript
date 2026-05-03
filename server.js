@@ -11,14 +11,14 @@ if (!fs.existsSync(TRANSCRIPTS_DIR)) {
     fs.mkdirSync(TRANSCRIPTS_DIR, { recursive: true });
 }
 
-// === LINT COMMAND ===
-if (process.argv.includes('lint')) {
-    runLint();
+// === TRANSLATE COMMAND ===
+if (process.argv.includes('translate')) {
+    runTranslate();
     process.exit(0);
 }
 
-function runLint() {
-    console.log('\n=== LINT: Processing transcripts ===\n');
+function runTranslate() {
+    console.log('\n=== TRANSLATE: Processing transcripts ===\n');
     
     const cleanedFiles = [];
     const translationsCreated = [];
@@ -98,22 +98,37 @@ function runLint() {
         // Step 2: Check for missing translation
         const translationPath = path.join(TRANSCRIPTS_DIR, `${videoId}_translation.md`);
         if (!fs.existsSync(translationPath)) {
-            console.log(`  📝 ${filename}: Translation missing - manual creation needed`);
-            // Create placeholder translation file with instructions
+            console.log(`  📝 ${filename}: Creating translation file...`);
+            // Create translation file with extracted transcript lines
             const titleMatch = content.match(/^title:\s*"([^"]+)"/m);
             const originalTitle = titleMatch ? titleMatch[1] : filename;
             
-            const placeholderContent = `---
+            // Extract transcript lines with timestamps
+            const lines = [];
+            const regex = /\*\*(\d{1,2}):(\d{2})(?::(\d{2}))?\*\*\s*[·•]\s*(.+)/g;
+            let match;
+            while ((match = regex.exec(content)) !== null) {
+                const time = match[3] ? `${match[1]}:${match[2]}:${match[3]}` : `${match[1]}:${match[2]}`;
+                lines.push({ time, text: match[4].trim() });
+            }
+            
+            // Create translation content with placeholder text
+            let translationContent = `---
 title: "${originalTitle} (English Translation)"
 source: "${sourceMatch[1]}"
 ---
 
-<!-- TRANSLATION NEEDED: Please translate the following content -->
-<!-- Original transcript located at: ${filename} -->
-
-${content.split('---').slice(2).join('---').trim()}
 `;
-            fs.writeFileSync(translationPath, placeholderContent);
+            
+            if (lines.length > 0) {
+                lines.forEach(line => {
+                    translationContent += `**${line.time}** · [TRANSLATION NEEDED] ${line.text}\n\n`;
+                });
+            } else {
+                translationContent += `<!-- No transcript lines found in ${filename} -->\n`;
+            }
+            
+            fs.writeFileSync(translationPath, translationContent.trim());
             translationsCreated.push(`${videoId}_translation.md`);
         }
         
@@ -122,19 +137,49 @@ ${content.split('---').slice(2).join('---').trim()}
         if (!fs.existsSync(vocabPath)) {
             console.log(`  📚 ${filename}: Creating vocabulary file...`);
             
+            // Load excluded words from both files
+            let excludedWords = new Set();
+            
+            // Load A1-A2 level words
+            const a1a2Path = path.join(__dirname, 'a1-a2.json');
+            if (fs.existsSync(a1a2Path)) {
+                try {
+                    const a1a2Data = JSON.parse(fs.readFileSync(a1a2Path, 'utf-8'));
+                    const a1a2Words = a1a2Data.excludedWords || [];
+                    a1a2Words.forEach(word => excludedWords.add(word));
+                    console.log(`     Loaded ${a1a2Words.length} A1-A2 words`);
+                } catch (e) {
+                    console.log(`     Warning: Could not load a1-a2.json: ${e.message}`);
+                }
+            }
+            
+            // Load manually excluded words
+            const manualPath = path.join(__dirname, 'manual-exclude.json');
+            if (fs.existsSync(manualPath)) {
+                try {
+                    const manualData = JSON.parse(fs.readFileSync(manualPath, 'utf-8'));
+                    const manualWords = manualData.excludedWords || [];
+                    manualWords.forEach(word => excludedWords.add(word));
+                    console.log(`     Loaded ${manualWords.length} manually excluded words`);
+                } catch (e) {
+                    console.log(`     Warning: Could not load manual-exclude.json: ${e.message}`);
+                }
+            }
+            
+            console.log(`     Total excluded: ${excludedWords.size} words`);
+            
             // Extract Spanish text from transcript lines
             const vocab = {};
             const transcriptLines = content.match(/\*\*\d{1,2}:\d{2}[^·]*·\s*(.+)/g) || [];
             
             transcriptLines.forEach(line => {
                 const text = line.replace(/^\*\*[^·]+·\s*/, '');
-                // Extract words (skip common words)
-                const commonWords = new Set(['el', 'la', 'de', 'en', 'es', 'son', 'muy', 'para', 'por', 'con', 'que', 'como', 'pero', 'una', 'uno', 'los', 'las', 'del', 'al', 'se', 'su', 'lo', 'le', 'me', 'te', 'nos', 'os', 'y', 'o', 'a', 'un', 'sus', 'este', 'esta', 'estos', 'estas', 'ese', 'esa', 'eso', 'esos', 'esas', 'aquel', 'aquella', 'aquello', 'aquellos', 'aquellas', 'ser', 'estar', 'tener', 'hacer', 'poder', 'decir', 'ir', 'ver', 'dar', 'saber', 'querer', 'llegar', 'pasar', 'deber', 'poner', 'parecer', 'quedar', 'creer', 'hablar', 'llevar', 'dejar', 'seguir', 'encontrar', 'llamar', 'venir', 'pensar', 'salir', 'volver', 'tomar', 'conocer', 'vivir', 'sentir', 'tratar', 'mirar', 'contar', 'empezar', 'esperar', 'buscar', 'existir', 'entrar', 'trabajar', 'escribir', 'perder', 'producir', 'ocurrir', 'entender', 'tomar', 'pedir', 'morir', 'lograr', 'estudiar']);
                 
-                // Extract meaningful words (nouns, verbs, adjectives)
+                // Extract meaningful words (nouns, verbs, adjectives) - B1+ level only
                 const words = text.toLowerCase().match(/[a-záéíóúüñ]+/g) || [];
                 words.forEach(word => {
-                    if (word.length > 3 && !commonWords.has(word)) {
+                    // Skip short words and A1-A2 level words
+                    if (word.length > 3 && !excludedWords.has(word)) {
                         // Add placeholder translation
                         vocab[word] = '[translation needed]';
                     }
