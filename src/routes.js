@@ -14,6 +14,7 @@ const { getTranscriptForVideo, readVocab } = require('./store');
 
 const PUBLIC_DIR = path.join(ROOT_DIR, 'public');
 const LEARNED_PATH = path.join(ROOT_DIR, 'data', 'learned.json');
+const PROGRESS_PATH = path.join(ROOT_DIR, 'data', 'progress.json');
 
 /**
  * GET /api/translation?v=VIDEO_ID
@@ -176,6 +177,53 @@ function handleLearnedPost(req, res) {
 }
 
 /**
+ * GET /api/progress
+ *
+ * Load the persisted video progress (time position per video).
+ *
+ * @param {import('http').ServerResponse} res
+ */
+function handleProgressGet(res) {
+    try {
+        if (fs.existsSync(PROGRESS_PATH)) {
+            const data = fs.readFileSync(PROGRESS_PATH, 'utf-8');
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(data);
+        } else {
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({}));
+        }
+    } catch (e) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: e.message }));
+    }
+}
+
+/**
+ * POST /api/progress
+ *
+ * Save the current video progress (time position per video).
+ *
+ * @param {import('http').IncomingMessage} req
+ * @param {import('http').ServerResponse} res
+ */
+function handleProgressPost(req, res) {
+    let body = '';
+    req.on('data', chunk => body += chunk);
+    req.on('end', () => {
+        try {
+            const data = JSON.parse(body);
+            fs.writeFileSync(PROGRESS_PATH, JSON.stringify(data, null, 2));
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: true }));
+        } catch (e) {
+            res.writeHead(500, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ error: e.message }));
+        }
+    });
+}
+
+/**
  * GET /api/transcripts
  *
  * Scan the transcripts directory and return a grouped list of videos
@@ -304,6 +352,16 @@ function setupRoutes(req, res) {
 
     if (url.pathname === '/api/learned' && req.method === 'POST') {
         handleLearnedPost(req, res);
+        return;
+    }
+
+    if (url.pathname === '/api/progress' && req.method === 'GET') {
+        handleProgressGet(res);
+        return;
+    }
+
+    if (url.pathname === '/api/progress' && req.method === 'POST') {
+        handleProgressPost(req, res);
         return;
     }
 

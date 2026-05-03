@@ -24,6 +24,7 @@ let currentVideoId = null;
 let lastRewindTime = 0;
 let learnedVideos = [];
 let isLearnedPanelCollapsed = true;
+let videoProgress = {};
 
 // --- DOM References ---
 const statusEl = document.getElementById("status");
@@ -71,6 +72,72 @@ async function saveLearnedVideos() {
 	} catch (e) {
 		console.log("Could not save to server, using localStorage only");
 	}
+}
+
+// --- Video Progress (server + localStorage) ---
+
+async function loadVideoProgress() {
+	try {
+		const response = await fetch("/api/progress");
+		if (response.ok) {
+			videoProgress = await response.json();
+			console.log("Loaded progress from server:", Object.keys(videoProgress).length, "videos");
+		} else {
+			videoProgress = JSON.parse(localStorage.getItem("videoProgress") || "{}");
+			console.log("Loaded progress from localStorage:", Object.keys(videoProgress).length, "videos");
+		}
+	} catch (e) {
+		videoProgress = JSON.parse(localStorage.getItem("videoProgress") || "{}");
+		console.log("Loaded progress from localStorage (error):", Object.keys(videoProgress).length, "videos");
+	}
+}
+
+async function saveVideoProgress() {
+	if (!currentVideoId || !player || !player.getCurrentTime) return;
+
+	const currentTime = player.getCurrentTime();
+	const duration = player.getDuration();
+	if (duration > 0 && currentTime > 0) {
+		videoProgress[currentVideoId] = {
+			time: currentTime,
+			duration: duration,
+			line: activeIndex,
+			timestamp: Date.now()
+		};
+
+		localStorage.setItem("videoProgress", JSON.stringify(videoProgress));
+		try {
+			const response = await fetch("/api/progress", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(videoProgress)
+			});
+			if (response.ok) console.log("Saved progress to server:", currentVideoId, Math.floor(currentTime));
+		} catch (e) {
+			console.log("Could not save progress to server, using localStorage only");
+		}
+	}
+}
+
+function getSavedProgress(videoId) {
+	const progress = videoProgress[videoId];
+	if (progress && progress.time > 5) {
+		return progress;
+	}
+	return null;
+}
+
+function getLastWatchedVideo() {
+	let lastVideo = null;
+	let latestTime = 0;
+
+	for (const [videoId, progress] of Object.entries(videoProgress)) {
+		if (progress.timestamp > latestTime) {
+			latestTime = progress.timestamp;
+			lastVideo = videoId;
+		}
+	}
+	return lastVideo;
 }
 
 // --- Display & Formatting ---
@@ -223,6 +290,7 @@ function setPaused(paused) {
 
 function togglePause() {
 	setPaused(!isPaused);
+	saveVideoProgress();
 }
 
 function syncVideo() {
@@ -446,6 +514,9 @@ async function fetchVocab(videoId) {
 // --- Video Loading ---
 
 function loadByVideoId(videoId) {
+	if (currentVideoId && currentVideoId !== videoId) {
+		saveVideoProgress();
+	}
 	currentVideoId = videoId;
 	document.querySelectorAll(".transcript-tag").forEach((tag) => {
 		tag.classList.remove("active");
@@ -458,6 +529,8 @@ function loadByVideoId(videoId) {
 
 function loadVideo(videoId) {
 	if (!videoId) return;
+
+	saveVideoProgress();
 
 	if (syncInterval) clearInterval(syncInterval);
 	isPaused = false;
@@ -480,6 +553,8 @@ function loadVideo(videoId) {
 		fetchTranslation(videoId),
 		fetchVocab(videoId),
 	]).then(() => {
+		const savedProgress = getSavedProgress(videoId);
+
 		if (player) {
 			player.addEventListener("onStateChange", onPlayerStateChange);
 			player.loadVideoById(videoId);
@@ -488,12 +563,26 @@ function loadVideo(videoId) {
 				videoId: videoId,
 				playerVars: { playsinline: 1, rel: 0 },
 				events: {
-					onReady: () => startSync(),
+					onReady: () => {
+						startSync();
+						if (savedProgress) {
+							player.seekTo(savedProgress.time, true);
+							setStatus(`Resumed at ${formatTime(savedProgress.time)}`);
+						}
+					},
 					onStateChange: onPlayerStateChange,
 				},
 			});
 		}
+
 		startSync();
+
+		if (savedProgress && player && player.seekTo) {
+			setTimeout(() => {
+				player.seekTo(savedProgress.time, true);
+				setStatus(`Resumed at ${formatTime(savedProgress.time)}`);
+			}, 1000);
+		}
 	});
 }
 
@@ -515,8 +604,19 @@ function onPlayerStateChange(e) {
 
 window.onload = async function() {
 	await loadLearnedVideos();
+	await loadVideoProgress();
 	await loadAvailableTranscripts();
+
+	const lastVideoId = getLastWatchedVideo();
+	if (lastVideoId) {
+		loadByVideoId(lastVideoId);
+	}
 };
+
+// --- Save progress on page unload ---
+window.addEventListener("beforeunload", () => {
+	saveVideoProgress();
+});
 
 // --- Keyboard Shortcuts ---
 
