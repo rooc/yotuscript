@@ -222,7 +222,7 @@
   },
   "conoce": {
     "en": "[translation needed]",
-    "grammar": "pres. subj."
+    "grammar": "pres."
   },
   "conquistaron": {
     "en": "[translation needed]",
@@ -474,7 +474,8 @@
     "en": "[translation needed]"
   },
   "está": {
-    "en": "[translation needed]"
+    "en": "[translation needed]",
+    "grammar": "pres."
   },
   "europeos": {
     "en": "[translation needed]"
@@ -606,11 +607,11 @@
   },
   "hace": {
     "en": "[translation needed]",
-    "grammar": "pres. subj."
+    "grammar": "pres."
   },
   "hacen": {
     "en": "[translation needed]",
-    "grammar": "pres. subj."
+    "grammar": "pres."
   },
   "hecho": {
     "en": "[translation needed]",
@@ -1140,7 +1141,7 @@
   },
   "sigue": {
     "en": "[translation needed]",
-    "grammar": "pres. subj."
+    "grammar": "pres."
   },
   "similar": {
     "en": "[translation needed]",
@@ -1249,7 +1250,7 @@
   },
   "viene": {
     "en": "[translation needed]",
-    "grammar": "pres. subj."
+    "grammar": "pres."
   },
   "visión": {
     "en": "[translation needed]"
