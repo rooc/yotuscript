@@ -1,113 +1,946 @@
 {
-  "accidentes": "accidents",
-  "activos": "active",
-  "actividad": "activity",
-  "agotamiento": "exhaustion",
-  "almacenar": "store",
-  "alumnos": "students",
-  "aprovechar": "take advantage",
-  "autora": "author",
-  "beneficiarse": "benefit",
-  "breves": "brief",
-  "cambiar": "switch/change",
-  "cerebrales": "cerebral/brain",
-  "cerebro": "brain",
-  "chance": "chance/opportunity",
-  "científicos": "scientific",
-  "coautor": "co-author",
-  "cognitiva": "cognitive",
-  "complementan": "complement",
-  "completamente": "completely",
-  "consolidación": "consolidation",
-  "consolidar": "consolidate",
-  "contexto": "context",
-  "controlados": "controlled",
-  "coreografía": "choreography",
-  "corteza": "cortex",
-  "cuenta": "counts",
-  "debido": "due",
-  "descansar": "rest",
-  "descanso": "break/rest",
-  "descansos": "breaks/rests",
-  "descubren": "discover",
-  "descubrió": "discovered",
-  "descubrimientos": "discoveries",
-  "detalles": "details",
-  "diestros": "right-handed",
-  "diferente": "different",
-  "difuso": "diffuse",
-  "duradera": "lasting/durable",
-  "efectiva": "effective",
-  "eficiente": "efficient",
-  "enfocado": "focused",
-  "enseñar": "teach",
-  "entornos": "environments",
-  "estimulos": "stimuli",
-  "estratégicas": "strategic",
-  "estratégicos": "strategic",
-  "estudiar": "study",
-  "examinen": "examine",
-  "exhaustión": "exhaustion",
-  "experiencia": "experience",
-  "externos": "external",
-  "funciona": "functions/works",
-  "funciones": "functions",
-  "grabar": "record",
-  "habilidades": "abilities/skills",
-  "habilidad": "ability/skill",
-  "hipocampo": "hippocampus",
-  "ideal": "ideal",
-  "información": "information",
-  "institutos": "institutes",
-  "interrumpa": "interrupt",
-  "investigaciones": "research",
-  "investigación": "research",
-  "investigadora": "researcher",
-  "investigadores": "researchers",
-  "investigamos": "we investigate",
-  "laboratorio": "laboratory",
-  "libro": "book",
-  "magnetoencefalografía": "magnetoencephalography",
-  "manera": "way/manner",
-  "máxima": "maximum",
-  "mencionamos": "we mentioned",
-  "mental": "mental",
-  "metemos": "we put",
-  "momentos": "moments",
-  "movimientos": "movements",
-  "nacionales": "national",
-  "necesita": "needs",
-  "novedoso": "novel/new",
-  "nuevo": "new",
-  "observaron": "observed",
-  "pacientes": "patients",
-  "pausas": "pauses/breaks",
-  "períodos": "periods",
-  "piano": "piano",
-  "practica": "practice",
-  "practicar": "practice",
-  "prestar": "pay/give",
-  "procesar": "process",
-  "psicología": "psychology",
-  "publicado": "published",
-  "reciente": "recent",
-  "recital": "recital",
-  "recomendable": "recommended",
-  "recuperar": "recover",
-  "recursos": "resources",
-  "registran": "register/record",
-  "relajado": "relaxed",
-  "repetición": "repetition",
-  "repeticiones": "repetitions",
-  "replays": "replays",
-  "secuelas": "sequelae/after-effects",
-  "secuencias": "sequences",
-  "secuencia": "sequence",
-  "simplemente": "simply",
-  "similares": "similar",
-  "súper": "super",
-  "teclear": "type",
-  "transitorios": "transient",
-  "voluntarios": "volunteers",
-  "zonas": "areas/zones"
+  "acaba": {
+    "en": "[translation needed]",
+    "grammar": "impf."
+  },
+  "acababan": {
+    "en": "[translation needed]",
+    "grammar": "impf."
+  },
+  "accidentes": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "actividad": {
+    "en": "[translation needed]",
+    "grammar": "imper."
+  },
+  "activos": {
+    "en": "[translation needed]"
+  },
+  "agotamiento": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "algún": {
+    "en": "[translation needed]"
+  },
+  "almacenar": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "alumnos": {
+    "en": "[translation needed]"
+  },
+  "analizaron": {
+    "en": "[translation needed]",
+    "grammar": "pret."
+  },
+  "aplica": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "aprende": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "aprendido": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "aprendiendo": {
+    "en": "[translation needed]",
+    "grammar": "gerund"
+  },
+  "aprendizaje": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "aprendían": {
+    "en": "[translation needed]",
+    "grammar": "impf."
+  },
+  "aprovecha": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "aprovechar": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "aquí": {
+    "en": "[translation needed]"
+  },
+  "atención": {
+    "en": "[translation needed]"
+  },
+  "autora": {
+    "en": "[translation needed]",
+    "grammar": "impf. subj."
+  },
+  "ayuda": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "ayudan": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "ayudar": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "ayudarles": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "baile": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "barbara": {
+    "en": "[translation needed]",
+    "grammar": "impf. subj."
+  },
+  "beneficiarse": {
+    "en": "[translation needed]",
+    "grammar": "impf. subj."
+  },
+  "breves": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "cambiar": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "campos": {
+    "en": "[translation needed]"
+  },
+  "canción": {
+    "en": "[translation needed]"
+  },
+  "cerebral": {
+    "en": "[translation needed]"
+  },
+  "cerebro": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "cerebros": {
+    "en": "[translation needed]"
+  },
+  "cerebrovasculares": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "chance": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "ciclo": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "ciencia": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "científicos": {
+    "en": "[translation needed]"
+  },
+  "clase": {
+    "en": "[translation needed]",
+    "grammar": "impf. subj."
+  },
+  "clases": {
+    "en": "[translation needed]",
+    "grammar": "impf. subj."
+  },
+  "claudino": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "coautor": {
+    "en": "[translation needed]"
+  },
+  "codifique": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "cognitiva": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "colegas": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "complementan": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "completa": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "completamente": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "concentrarse": {
+    "en": "[translation needed]",
+    "grammar": "impf. subj."
+  },
+  "concepto": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "conocimiento": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "conocíamos": {
+    "en": "[translation needed]",
+    "grammar": "impf."
+  },
+  "consolidación": {
+    "en": "[translation needed]"
+  },
+  "consolidar": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "consta": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "contexto": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "controlados": {
+    "en": "[translation needed]"
+  },
+  "coreografía": {
+    "en": "[translation needed]",
+    "grammar": "impf."
+  },
+  "creen": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "cualquier": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "cuenta": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "dale": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "darle": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "dejar": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "descansando": {
+    "en": "[translation needed]",
+    "grammar": "gerund"
+  },
+  "descanso": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "descansos": {
+    "en": "[translation needed]"
+  },
+  "descubrieron": {
+    "en": "[translation needed]",
+    "grammar": "pret."
+  },
+  "descubrimientos": {
+    "en": "[translation needed]"
+  },
+  "descubrió": {
+    "en": "[translation needed]",
+    "grammar": "pret."
+  },
+  "detalles": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "dice": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "dieron": {
+    "en": "[translation needed]",
+    "grammar": "pret."
+  },
+  "diestros": {
+    "en": "[translation needed]"
+  },
+  "diferente": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "difuso": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "dije": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "distintas": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "dormidos": {
+    "en": "[translation needed]"
+  },
+  "dormimos": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "duración": {
+    "en": "[translation needed]"
+  },
+  "duradera": {
+    "en": "[translation needed]",
+    "grammar": "impf. subj."
+  },
+  "duraderos": {
+    "en": "[translation needed]"
+  },
+  "efectiva": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "eficiente": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "ejemplo": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "embargo": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "empiezas": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "encefalografía": {
+    "en": "[translation needed]",
+    "grammar": "impf."
+  },
+  "enfocado": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "enseñarles": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "entornos": {
+    "en": "[translation needed]"
+  },
+  "entra": {
+    "en": "[translation needed]",
+    "grammar": "impf. subj."
+  },
+  "eres": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "específicos": {
+    "en": "[translation needed]"
+  },
+  "estados": {
+    "en": "[translation needed]"
+  },
+  "estamos": {
+    "en": "[translation needed]",
+    "grammar": "pret."
+  },
+  "estratégicas": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "estudiando": {
+    "en": "[translation needed]",
+    "grammar": "gerund"
+  },
+  "estudiantes": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "estudio": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "estudios": {
+    "en": "[translation needed]"
+  },
+  "está": {
+    "en": "[translation needed]"
+  },
+  "están": {
+    "en": "[translation needed]"
+  },
+  "estás": {
+    "en": "[translation needed]"
+  },
+  "estés": {
+    "en": "[translation needed]"
+  },
+  "estímulos": {
+    "en": "[translation needed]"
+  },
+  "exactamente": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "examen": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "experiencia": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "explica": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "externos": {
+    "en": "[translation needed]"
+  },
+  "falta": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "forma": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "formas": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "fuera": {
+    "en": "[translation needed]",
+    "grammar": "impf. subj."
+  },
+  "funciona": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "grabar": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "habilidades": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "hace": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "hecho": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "hipocampo": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "ideal": {
+    "en": "[translation needed]"
+  },
+  "idioma": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "imagínate": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "importante": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "información": {
+    "en": "[translation needed]"
+  },
+  "instinto": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "institutos": {
+    "en": "[translation needed]"
+  },
+  "interrumpa": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "investigación": {
+    "en": "[translation needed]"
+  },
+  "investigador": {
+    "en": "[translation needed]"
+  },
+  "investigadora": {
+    "en": "[translation needed]",
+    "grammar": "impf. subj."
+  },
+  "investigadores": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "investigar": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "izquierda": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "laboratorio": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "leonardo": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "maestro": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "magneto": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "manera": {
+    "en": "[translation needed]",
+    "grammar": "impf. subj."
+  },
+  "marcha": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "mejor": {
+    "en": "[translation needed]"
+  },
+  "memoria": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "mencionamos": {
+    "en": "[translation needed]",
+    "grammar": "pret."
+  },
+  "mental": {
+    "en": "[translation needed]"
+  },
+  "meterle": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "minutos": {
+    "en": "[translation needed]"
+  },
+  "movimientos": {
+    "en": "[translation needed]"
+  },
+  "muestran": {
+    "en": "[translation needed]",
+    "grammar": "impf. subj."
+  },
+  "musical": {
+    "en": "[translation needed]"
+  },
+  "mágica": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "máximo": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "nacionales": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "necesita": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "neocorteza": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "neocórtex": {
+    "en": "[translation needed]"
+  },
+  "nueva": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "nuevos": {
+    "en": "[translation needed]"
+  },
+  "números": {
+    "en": "[translation needed]"
+  },
+  "oakley": {
+    "en": "[translation needed]"
+  },
+  "objetivo": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "observa": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "observaron": {
+    "en": "[translation needed]",
+    "grammar": "pret."
+  },
+  "oportunidad": {
+    "en": "[translation needed]",
+    "grammar": "imper."
+  },
+  "original": {
+    "en": "[translation needed]"
+  },
+  "pacientes": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "paran": {
+    "en": "[translation needed]",
+    "grammar": "impf. subj."
+  },
+  "parar": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "parezca": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "pase": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "pausa": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "pausas": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "pedían": {
+    "en": "[translation needed]",
+    "grammar": "impf."
+  },
+  "pequeñas": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "pequeños": {
+    "en": "[translation needed]"
+  },
+  "personas": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "períodos": {
+    "en": "[translation needed]"
+  },
+  "planea": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "plazo": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "poniendo": {
+    "en": "[translation needed]",
+    "grammar": "gerund"
+  },
+  "practicando": {
+    "en": "[translation needed]",
+    "grammar": "gerund"
+  },
+  "practicar": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "preguntando": {
+    "en": "[translation needed]",
+    "grammar": "gerund"
+  },
+  "presentación": {
+    "en": "[translation needed]"
+  },
+  "primer": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "procesar": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "proceso": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "procesos": {
+    "en": "[translation needed]"
+  },
+  "prueba": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "práctica": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "psicología": {
+    "en": "[translation needed]",
+    "grammar": "impf."
+  },
+  "publicado": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "queda": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "quedan": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "queremos": {
+    "en": "[translation needed]",
+    "grammar": "fut."
+  },
+  "quieres": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "quieto": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "razón": {
+    "en": "[translation needed]"
+  },
+  "real": {
+    "en": "[translation needed]"
+  },
+  "realizan": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "receta": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "recibe": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "recital": {
+    "en": "[translation needed]"
+  },
+  "recomendable": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "recreo": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "recuerdo": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "recuerdos": {
+    "en": "[translation needed]"
+  },
+  "recuperar": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "registren": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "rehabilitación": {
+    "en": "[translation needed]"
+  },
+  "relajado": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "repeticiones": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "repetición": {
+    "en": "[translation needed]"
+  },
+  "repetían": {
+    "en": "[translation needed]",
+    "grammar": "impf."
+  },
+  "repitieron": {
+    "en": "[translation needed]",
+    "grammar": "pret."
+  },
+  "replay": {
+    "en": "[translation needed]"
+  },
+  "rápida": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "rápidamente": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "saben": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "sabes": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "salud": {
+    "en": "[translation needed]"
+  },
+  "sanas": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "secuelas": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "secuencia": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "secuencias": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "segundos": {
+    "en": "[translation needed]"
+  },
+  "serie": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "sería": {
+    "en": "[translation needed]",
+    "grammar": "cond."
+  },
+  "sesiones": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "siguen": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "similar": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "simple": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "simplemente": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "sueño": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "súper": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "teclear": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "tenían": {
+    "en": "[translation needed]",
+    "grammar": "impf."
+  },
+  "tipo": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "tocar": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "tomas": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "transitorios": {
+    "en": "[translation needed]"
+  },
+  "unidos": {
+    "en": "[translation needed]"
+  },
+  "usando": {
+    "en": "[translation needed]",
+    "grammar": "gerund"
+  },
+  "usar": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "uses": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "vida": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "voluntarios": {
+    "en": "[translation needed]"
+  },
+  "zonas": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  }
 }

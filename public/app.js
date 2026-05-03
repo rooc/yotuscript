@@ -126,10 +126,13 @@ function wrapVocabWords(text) {
 
 	let result = text;
 	for (const match of matches) {
-		const translation = vocabData[match.word].replace(/"/g, '&quot;');
+		const entry = vocabData[match.word];
+		const translation = (typeof entry === 'object' ? entry.en : entry).replace(/"/g, '&quot;');
+		const grammar = typeof entry === 'object' && entry.grammar ? entry.grammar.replace(/"/g, '&quot;') : '';
 		const before = result.slice(0, match.start);
 		const after = result.slice(match.end);
-		const wrapped = `<span class="vocab-word" data-en="${translation}">${match.text}</span>`;
+		const grammarAttr = grammar ? ` data-grammar="${grammar}"` : '';
+		const wrapped = `<span class="vocab-word" data-en="${translation}"${grammarAttr}>${match.text}</span>`;
 		result = before + wrapped + after;
 	}
 
@@ -549,4 +552,62 @@ document.addEventListener("keydown", function (e) {
 		e.preventDefault();
 		toggleLearned();
 	}
+});
+
+// --- Vocabulary Tooltip ---
+
+const vocabTooltip = document.getElementById("vocab-tooltip");
+const vocabTooltipTranslation = vocabTooltip.querySelector(".vocab-tooltip-translation");
+const vocabTooltipGrammar = vocabTooltip.querySelector(".vocab-tooltip-grammar");
+
+function showVocabTooltip(target) {
+	const en = target.dataset.en;
+	const grammar = target.dataset.grammar;
+	if (!en) return;
+
+	vocabTooltipTranslation.textContent = en;
+	if (grammar) {
+		vocabTooltipGrammar.textContent = grammar;
+		vocabTooltipGrammar.style.display = "";
+	} else {
+		vocabTooltipGrammar.style.display = "none";
+	}
+
+	vocabTooltip.classList.remove("hidden");
+	positionVocabTooltip(target);
+}
+
+function positionVocabTooltip(target) {
+	const rect = target.getBoundingClientRect();
+	const tooltipRect = vocabTooltip.getBoundingClientRect();
+
+	let left = rect.left + rect.width / 2 - tooltipRect.width / 2;
+	let top = rect.top - tooltipRect.height - 8;
+
+	// Keep within viewport
+	if (left < 8) left = 8;
+	if (left + tooltipRect.width > window.innerWidth - 8) {
+		left = window.innerWidth - tooltipRect.width - 8;
+	}
+	if (top < 8) {
+		top = rect.bottom + 8;
+	}
+
+	vocabTooltip.style.left = `${left + window.scrollX}px`;
+	vocabTooltip.style.top = `${top + window.scrollY}px`;
+}
+
+function hideVocabTooltip() {
+	vocabTooltip.classList.add("hidden");
+}
+
+// Use event delegation for dynamically created vocab words
+document.addEventListener("mouseover", (e) => {
+	const word = e.target.closest(".vocab-word");
+	if (word) showVocabTooltip(word);
+});
+
+document.addEventListener("mouseout", (e) => {
+	const word = e.target.closest(".vocab-word");
+	if (word) hideVocabTooltip();
 });

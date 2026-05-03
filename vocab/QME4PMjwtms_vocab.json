@@ -1,158 +1,753 @@
 {
-  "comenzó": "began",
-  "glamurosa": "glamorous",
-  "gala": "gala",
-  "periodistas": "journalists",
-  "acabó": "ended",
-  "invitados": "invited",
-  "escondiéndose": "hiding",
-  "mesas": "tables",
-  "seguridad": "security",
-  "armada": "armed",
-  "evacuaciones": "evacuations",
-  "apresuradas": "rushed",
-  "corresponsal": "correspondent",
-  "departamento": "department",
-  "estado": "state",
-  "celebraba": "was being held",
-  "anual": "annual",
-  "corresponsales": "correspondents",
-  "cubren": "cover",
-  "salón": "ballroom/hall",
-  "baile": "dance",
-  "hilton": "hilton",
-  "figuras": "figures",
-  "políticas": "political",
-  "celebridades": "celebrities",
-  "tradición": "tradition",
-  "remonta": "dates back",
-  "asistir": "attend",
-  "rechazado": "rejected",
-  "invitaciones": "invitations",
-  "previas": "previous",
-  "mandato": "term",
-  "boicot": "boycott",
-  "considera": "considered",
-  "ataques": "attacks",
-  "medios": "media",
-  "comunicación": "communication",
-  "secretaria": "secretary",
-  "prensa": "press",
-  "vicepresidente": "vice president",
-  "escenario": "stage",
-  "principal": "main",
-  "grabados": "recorded",
-  "noche": "night",
-  "entrada": "entrance",
-  "oficial": "official",
-  "himno": "anthem",
-  "nacional": "national",
-  "discurso": "speech",
-  "asociación": "association",
-  "situación": "situation",
-  "segura": "secure",
-  "empezó": "started",
-  "salir": "leave/exit",
-  "ponerse": "get/put",
-  "imaginar": "imagine",
-  "sala": "room",
-  "llena": "full",
-  "buscaron": "looked for",
-  "redacciones": "newsrooms",
-  "subir": "upload",
-  "material": "material",
-  "directo": "live",
-  "publicó": "posted",
-  "redes": "networks",
-  "sociales": "social",
-  "quería": "wanted",
-  "espectáculo": "show",
-  "continuara": "continue",
-  "asistentes": "attendees",
-  "imágenes": "images",
-  "conmoción": "shock",
-  "director": "director",
-  "consolando": "consoling",
-  "viuda": "widow",
-  "activista": "activist",
-  "conservador": "conservative",
-  "asesinado": "assassinated",
-  "trasladado": "transferred",
-  "ofreció": "offered",
-  "rueda": "wheel",
-  "repleta": "packed",
-  "trajes": "suits",
-  "etiqueta": "formal wear",
-  "esperando": "waiting",
-  "escuchar": "hear",
-  "presenciar": "witness",
-  "sospechoso": "suspect",
-  "identificado": "identified",
-  "originario": "from/originating",
-  "california": "california",
-  "informó": "reported",
-  "atacante": "attacker",
-  "disparó": "shot",
-  "agente": "agent",
-  "servicio": "service",
-  "secreto": "secret",
-  "irrupció": "broke in",
-  "pasando": "passing",
-  "alto": "high/upper",
-  "detectores": "detectors",
-  "metales": "metals",
-  "ubicado": "located",
-  "piso": "floor",
-  "superior": "upper",
-  "autoridades": "authorities",
-  "llevaba": "was carrying",
-  "escopeta": "shotgun",
-  "pistola": "pistol",
-  "cuchillos": "knives",
-  "herido": "injured",
-  "salvó": "saved",
-  "chaleco": "vest",
-  "antibalas": "bulletproof",
-  "asegura": "claims/ensures",
-  "excelente": "excellent",
-  "protegiéndolo": "protecting him",
-  "funcionarios": "officials",
-  "surgen": "arise",
-  "preguntas": "questions",
-  "acercarse": "get close",
-  "intento": "attempt",
-  "asesinato": "assassination",
-  "pensilvania": "pennsylvania",
-  "bala": "bullet",
-  "rozó": "grazed",
-  "oreja": "ear",
-  "meses": "months",
-  "detuvo": "arrested/stopped",
-  "supuesto": "alleged",
-  "escondido": "hidden",
-  "arbustos": "bushes",
-  "club": "club",
-  "golf": "golf",
-  "florida": "florida",
-  "ocasión": "occasion",
-  "calles": "streets",
-  "lugar": "place",
-  "cerradas": "closed",
-  "recinto": "venue",
-  "dudas": "doubts",
-  "necesitaba": "needed",
-  "escáneres": "scanners",
-  "mostrar": "show",
-  "identificación": "identification",
-  "bolsas": "bags",
-  "revisaron": "checked",
-  "manualmente": "manually",
-  "además": "additionally",
-  "presunto": "alleged",
-  "registrado": "registered",
-  "huésped": "guest",
-  "hotel": "hotel",
-  "plantea": "raises",
-  "interrogantes": "questions",
-  "eventos": "events"
+  "acababan": {
+    "en": "[translation needed]",
+    "grammar": "impf."
+  },
+  "acabó": {
+    "en": "[translation needed]"
+  },
+  "acercarse": {
+    "en": "[translation needed]",
+    "grammar": "impf. subj."
+  },
+  "activista": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "acudía": {
+    "en": "[translation needed]",
+    "grammar": "impf."
+  },
+  "además": {
+    "en": "[translation needed]"
+  },
+  "agente": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "allen": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "anterior": {
+    "en": "[translation needed]"
+  },
+  "antibalas": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "anual": {
+    "en": "[translation needed]"
+  },
+  "apresuradas": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "arbustos": {
+    "en": "[translation needed]"
+  },
+  "armada": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "asegura": {
+    "en": "[translation needed]",
+    "grammar": "impf. subj."
+  },
+  "asesinado": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "asesinato": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "asiste": {
+    "en": "[translation needed]",
+    "grammar": "pret."
+  },
+  "asistentes": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "asistir": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "asociación": {
+    "en": "[translation needed]"
+  },
+  "atacante": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "ataques": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "autoridades": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "años": {
+    "en": "[translation needed]"
+  },
+  "baile": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "bala": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "bateman": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "blanca": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "boicot": {
+    "en": "[translation needed]"
+  },
+  "bolsas": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "buscaron": {
+    "en": "[translation needed]",
+    "grammar": "pret."
+  },
+  "california": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "calles": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "celebraba": {
+    "en": "[translation needed]",
+    "grammar": "impf."
+  },
+  "celebridades": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "cena": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "cerradas": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "chaleco": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "charlie": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "club": {
+    "en": "[translation needed]"
+  },
+  "cole": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "comenzó": {
+    "en": "[translation needed]"
+  },
+  "comunicación": {
+    "en": "[translation needed]"
+  },
+  "conmoción": {
+    "en": "[translation needed]"
+  },
+  "conservador": {
+    "en": "[translation needed]"
+  },
+  "considera": {
+    "en": "[translation needed]",
+    "grammar": "impf. subj."
+  },
+  "consolando": {
+    "en": "[translation needed]",
+    "grammar": "gerund"
+  },
+  "continuación": {
+    "en": "[translation needed]"
+  },
+  "continuara": {
+    "en": "[translation needed]",
+    "grammar": "impf. subj."
+  },
+  "corresponsal": {
+    "en": "[translation needed]"
+  },
+  "corresponsales": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "cubren": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "cuchillos": {
+    "en": "[translation needed]"
+  },
+  "dama": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "deja": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "departamento": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "detectores": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "detuvo": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "directo": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "director": {
+    "en": "[translation needed]"
+  },
+  "discurso": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "disparó": {
+    "en": "[translation needed]"
+  },
+  "donald": {
+    "en": "[translation needed]"
+  },
+  "dudas": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "embargo": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "empezó": {
+    "en": "[translation needed]"
+  },
+  "entrada": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "erika": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "escenario": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "escondido": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "escondiéndose": {
+    "en": "[translation needed]",
+    "grammar": "impf. subj."
+  },
+  "escopeta": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "escuchado": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "escuchar": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "escáneres": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "espectáculo": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "esperando": {
+    "en": "[translation needed]",
+    "grammar": "gerund"
+  },
+  "estaba": {
+    "en": "[translation needed]",
+    "grammar": "impf."
+  },
+  "estaban": {
+    "en": "[translation needed]",
+    "grammar": "impf."
+  },
+  "estado": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "estuvo": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "etiqueta": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "evacuaciones": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "eventos": {
+    "en": "[translation needed]"
+  },
+  "excelente": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "federal": {
+    "en": "[translation needed]"
+  },
+  "figuras": {
+    "en": "[translation needed]",
+    "grammar": "impf. subj."
+  },
+  "florida": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "forma": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "funcionarios": {
+    "en": "[translation needed]"
+  },
+  "gala": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "gente": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "glamurosa": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "golf": {
+    "en": "[translation needed]"
+  },
+  "grabados": {
+    "en": "[translation needed]"
+  },
+  "hecho": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "herido": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "hilton": {
+    "en": "[translation needed]"
+  },
+  "himno": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "hizo": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "huésped": {
+    "en": "[translation needed]",
+    "grammar": "imper."
+  },
+  "identificación": {
+    "en": "[translation needed]"
+  },
+  "identificado": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "imaginar": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "imágenes": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "informó": {
+    "en": "[translation needed]"
+  },
+  "intento": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "interrogantes": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "invitaciones": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "invitados": {
+    "en": "[translation needed]"
+  },
+  "irrumpió": {
+    "en": "[translation needed]",
+    "grammar": "pret."
+  },
+  "junto": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "karoline": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "kash": {
+    "en": "[translation needed]"
+  },
+  "kirk": {
+    "en": "[translation needed]"
+  },
+  "leavitt": {
+    "en": "[translation needed]"
+  },
+  "llena": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "llevaba": {
+    "en": "[translation needed]",
+    "grammar": "impf."
+  },
+  "lugar": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "mandato": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "manualmente": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "material": {
+    "en": "[translation needed]"
+  },
+  "media": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "medios": {
+    "en": "[translation needed]"
+  },
+  "melania": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "mesas": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "meses": {
+    "en": "[translation needed]",
+    "grammar": "impf. subj."
+  },
+  "metales": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "mostrar": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "nacional": {
+    "en": "[translation needed]"
+  },
+  "necesitaba": {
+    "en": "[translation needed]",
+    "grammar": "impf."
+  },
+  "noche": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "ocasión": {
+    "en": "[translation needed]"
+  },
+  "oficial": {
+    "en": "[translation needed]"
+  },
+  "ofreció": {
+    "en": "[translation needed]",
+    "grammar": "pret."
+  },
+  "originario": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "pasado": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "pasando": {
+    "en": "[translation needed]",
+    "grammar": "gerund"
+  },
+  "patel": {
+    "en": "[translation needed]"
+  },
+  "pensilvania": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "periodistas": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "piso": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "pistola": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "plantea": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "políticas": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "ponerse": {
+    "en": "[translation needed]",
+    "grammar": "impf. subj."
+  },
+  "preguntas": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "prensa": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "presenciar": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "presidente": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "presunto": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "previas": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "primer": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "principal": {
+    "en": "[translation needed]"
+  },
+  "produjo": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "protegiéndolo": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "publicó": {
+    "en": "[translation needed]"
+  },
+  "quería": {
+    "en": "[translation needed]",
+    "grammar": "cond."
+  },
+  "rechazado": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "recinto": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "redacciones": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "redes": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "registrado": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "remonta": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "repleta": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "revisaron": {
+    "en": "[translation needed]",
+    "grammar": "pret."
+  },
+  "rozó": {
+    "en": "[translation needed]"
+  },
+  "rueda": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "saliendo": {
+    "en": "[translation needed]",
+    "grammar": "gerund"
+  },
+  "salvó": {
+    "en": "[translation needed]"
+  },
+  "salón": {
+    "en": "[translation needed]"
+  },
+  "secretaria": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "secreto": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "segundo": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "segura": {
+    "en": "[translation needed]",
+    "grammar": "impf. subj."
+  },
+  "seguridad": {
+    "en": "[translation needed]",
+    "grammar": "imper."
+  },
+  "servicio": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "situación": {
+    "en": "[translation needed]"
+  },
+  "sociales": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "sospechoso": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "subir": {
+    "en": "[translation needed]",
+    "grammar": "inf."
+  },
+  "suele": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "superior": {
+    "en": "[translation needed]"
+  },
+  "supuesto": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "surgen": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "tomas": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "tradición": {
+    "en": "[translation needed]"
+  },
+  "trajes": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "trasladado": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "trump": {
+    "en": "[translation needed]"
+  },
+  "tuvieron": {
+    "en": "[translation needed]",
+    "grammar": "pret."
+  },
+  "ubicado": {
+    "en": "[translation needed]",
+    "grammar": "past part."
+  },
+  "vance": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "verano": {
+    "en": "[translation needed]",
+    "grammar": "pres."
+  },
+  "vicepresidente": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "videos": {
+    "en": "[translation needed]"
+  },
+  "viuda": {
+    "en": "[translation needed]",
+    "grammar": "pres. subj."
+  },
+  "volvió": {
+    "en": "[translation needed]",
+    "grammar": "pret."
+  },
+  "washington": {
+    "en": "[translation needed]"
+  }
 }

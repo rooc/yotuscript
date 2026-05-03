@@ -188,13 +188,27 @@ function getTranscriptForVideo(videoId, type = 'transcript') {
 /**
  * Read the vocabulary JSON for a video.
  *
+ * Normalizes legacy string values into the object format { en, grammar? }
+ * so the UI always receives consistent data.
+ *
  * @param {string} videoId
- * @returns {Object.<string, string> | null}
+ * @returns {Object.<string, {en: string, grammar?: string}> | null}
  */
 function readVocab(videoId) {
     const vocabPath = path.join(VOCAB_DIR, `${videoId}_vocab.json`);
     if (!fs.existsSync(vocabPath)) return null;
-    return JSON.parse(fs.readFileSync(vocabPath, 'utf-8'));
+    const raw = JSON.parse(fs.readFileSync(vocabPath, 'utf-8'));
+
+    // Normalize legacy format where values are plain strings
+    const normalized = {};
+    for (const [word, value] of Object.entries(raw)) {
+        if (typeof value === 'string') {
+            normalized[word] = { en: value };
+        } else {
+            normalized[word] = value;
+        }
+    }
+    return normalized;
 }
 
 /**

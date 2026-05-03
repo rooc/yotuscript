@@ -14,6 +14,7 @@ const fs = require('fs');
 const { TRANSCRIPTS_DIR, VOCAB_DIR } = require('../config');
 const { findTranscriptFiles, readTranscript, writeTranscript, writeVocab } = require('../store');
 const { loadExcludedWords } = require('../exclusions');
+const { detectVerbForm } = require('../grammar');
 
 /**
  * Execute the translate pipeline and print a report to stdout.
@@ -134,7 +135,7 @@ source: "${sourceMatch[1]}"
             const excludedWords = loadExcludedWords();
             console.log(`     Total excluded: ${excludedWords.size} words`);
 
-            /** @type {Object.<string, string>} */
+            /** @type {Object.<string, {en: string, grammar?: string}>} */
             const vocab = {};
             const transcriptLines = content.match(/\*\*\d{1,2}:\d{2}[^·]*·\s*(.+)/g) || [];
 
@@ -144,7 +145,12 @@ source: "${sourceMatch[1]}"
                 words.forEach(word => {
                     // Skip short words and anything in the exclusion list
                     if (word.length > 3 && !excludedWords.has(word)) {
-                        vocab[word] = '[translation needed]';
+                        const entry = { en: '[translation needed]' };
+                        const grammar = detectVerbForm(word);
+                        if (grammar) {
+                            entry.grammar = grammar;
+                        }
+                        vocab[word] = entry;
                     }
                 });
             });

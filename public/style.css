@@ -369,26 +369,43 @@ button:disabled {
 
 .vocab-word {
 	border-bottom: 1px dotted var(--vocab-underline);
-	position: relative;
+	cursor: help;
 }
 
-.vocab-word:hover::after {
-	content: attr(data-en);
+/* Rich vocabulary tooltip */
+.vocab-tooltip {
 	position: absolute;
-	bottom: calc(100% + 0.35rem);
-	left: 50%;
-	transform: translateX(-50%);
 	background: var(--tooltip-bg);
 	color: var(--tooltip-text);
 	padding: 0.5rem 0.75rem;
 	border-radius: var(--radius-md);
-	font-size: 1.5rem;
 	font-family: "Nunito", sans-serif;
-	white-space: nowrap;
 	pointer-events: none;
 	z-index: 100;
 	border: 1px solid var(--border);
-	box-shadow: 0 2px 8px var(--tooltip-shadow);
+	box-shadow: 0 4px 12px var(--tooltip-shadow);
+	min-width: 140px;
+	text-align: center;
+	transition: opacity 0.15s ease;
+}
+
+.vocab-tooltip.hidden {
+	opacity: 0;
+	visibility: hidden;
+}
+
+.vocab-tooltip-translation {
+	font-size: 1.3rem;
+	color: var(--text-accent);
+	font-weight: 600;
+}
+
+.vocab-tooltip-grammar {
+	font-size: 0.8rem;
+	color: var(--text-muted);
+	margin-top: 0.35rem;
+	padding-top: 0.35rem;
+	border-top: 1px solid var(--border-light);
 }
 
 /* Learned transcripts panel */
