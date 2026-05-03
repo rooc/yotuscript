@@ -32,9 +32,9 @@ Support the channel: \[paypal.me/marinaspain\](http://paypal.me/marinaspain)
 **1:32** · Para muchos esos son los roedores, las ratas, los ratones. A mucha gente le da asco. A mí no me dan asco las ratas me causan ternura. Cuando algo te causa ternura, algo te gusta.
 **1:49** · Dices, "Oh, en vez de instead of en vez de decir iu, dices, oh." Eso es cuando algo te causa ternura, como un cachorro.
 **2:00** · Ver un cachorro te causa ternura. Un cachorro, el bebé de un perro. O cuando ves, iba a decir un bebé, pero no really.
-**2:13** · Cuando ves un animal gordo dices, "Oh, te causa ternura.
+**2:13** · Cuando ves un animal gordo dices, Oh, te causa ternura.
 **2:20** · A mí las ratas no me dan asco. Las cucarachas sí que me dan asco.
-**2:27** · Como a Oh, corretean, son muy feas." Y ya lo sé. Sé que no hay que juzgar basándonos en apariencias.
+**2:27** · Como a Oh, corretean, son muy feas. Y ya lo sé. Sé que no hay que juzgar basándonos en apariencias.
 **2:38** · Todos lo hacemos. Yo también. Las cucarachas me dan asco, pero no las ratas. Y en este episodio voy a rendir homenaje. Voy a hacer un homenaje a las ratas porque alguien tiene que hacerlo. Y voy a responder una pregunta que nadie nadie me ha preguntado.
 **3:05** · La pregunta que nadie me ha preguntado, pero que voy a responder es, ¿por qué son las ratas animales superiores?
 **3:17** · Punto número uno, las ratas son triatletas.

@@ -246,15 +246,44 @@
 
 			function wrapVocabWords(text) {
 				if (!vocabData || Object.keys(vocabData).length === 0) return text;
+				
+				// Find all vocab words in the text and their positions
+				const matches = [];
 				const sorted = Object.keys(vocabData).sort((a, b) => b.length - a.length);
-				let result = text;
+				
 				for (const word of sorted) {
 					const regex = new RegExp(`(^|[^\\wáéíóúüñÁÉÍÓÚÜÑ])(${word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})(?=[^\\wáéíóúüñÁÉÍÓÚÜÑ]|$)`, "gi");
-					result = result.replace(
-						regex,
-						`$1<span class="vocab-word" data-en="${vocabData[word]}">$2</span>`
-					);
+					let match;
+					while ((match = regex.exec(text)) !== null) {
+						// Check if this position overlaps with any existing match
+						const start = match.index + match[1].length; // Skip the separator group
+						const end = start + word.length;
+						const overlaps = matches.some(m => (start < m.end && end > m.start));
+						
+						if (!overlaps) {
+							matches.push({
+								start: start,
+								end: end,
+								word: word,
+								text: match[2]
+							});
+						}
+					}
 				}
+				
+				// Sort matches by position (descending) so we can replace from end to start
+				matches.sort((a, b) => b.start - a.start);
+				
+				// Replace each match with HTML
+				let result = text;
+				for (const match of matches) {
+					const translation = vocabData[match.word].replace(/"/g, '&quot;');
+					const before = result.slice(0, match.start);
+					const after = result.slice(match.end);
+					const wrapped = `<span class="vocab-word" data-en="${translation}">${match.text}</span>`;
+					result = before + wrapped + after;
+				}
+				
 				return result;
 			}
 

@@ -1,4 +1,4 @@
 {
-  "description": "Additional words to manually exclude from vocabulary extraction. Add any words here that you don't want to appear in vocab files.",
-  "excludedWords": []
+	"description": "Additional words to manually exclude from vocabulary extraction. Add any words here that you don't want to appear in vocab files.",
+	"excludedWords": ["podcast", "aprender", "cuál"]
 }
