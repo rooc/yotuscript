@@ -235,38 +235,39 @@ function detectVerbForm(word) {
 		return 'pret.';
 	}
 
-	// Present subjunctive (loose but distinctive)
+	// Filter out obvious non-verbs before applying conjugation heuristics
 	if (
-		/(?:gue|que|ce|gue|je)(?:s|mos|is|n)?$/.test(w) || // spelling changes
-		/(?:e|a)(?:s|mos|is|n)?$/.test(w)
+		/(able|ible|ente|ante|iente|mente|anza|encia|ancia|ología|ales|eros|eras|ores|ura|ura|dad|tad|tud|ción|sión|ez|eza)$/i.test(w) ||
+		/^(el|la|lo|los|las|un|una|unos|unas|es|en|de|del|al|con|por|para|sin|sobre|tras|entre|desde|hasta|durante|según|mediante)$/i.test(w)
 	) {
-		// Avoid false positives on very short words or obvious non-verbs
-		if (w.length > 3 && !/^(el|la|un|una|es|en|de)$/.test(w)) {
-			// Heuristic: subjunctive often follows "que", "si", "cuando" in context
-			// We can't know context here, so we mark it tentatively
-			return 'pres. subj.';
-		}
+		return null;
 	}
 
-	// Imperative (commands)
-	if (
-		/(?:a|e)(?:d|n)?$/.test(w) ||
-		/(?:ad|ed|id)$/.test(w)
-	) {
-		if (w.length > 2) {
-			return 'imper.';
-		}
+	// Present subjunctive — only match distinctive spelling-change stems
+	// (e.g. llegue → llegar, busque → buscar, conozca → conocer, elija → elegir)
+	if (/(gu|qu|zc|g|j)(e|a)(s|mos|is|n)?$/.test(w) && w.length > 4) {
+		return 'pres. subj.';
 	}
 
-	// Present indicative (catch-all for remaining verb-like endings)
+	// Imperative — only truly distinctive endings are -ad, -ed, -id (vosotros)
+	// Other forms (-a, -e, -en, -an) overlap with present/subjunctive
 	if (
-		/o$/.test(w) || // 1st person singular
-		/es$/.test(w) || // 2nd/3rd person
-		/e$/.test(w) || // 3rd person -er/-ir
-		/en$/.test(w) || // 3rd person plural
-		/imos$/.test(w) || // 1st person plural -ir
-		/ís$/.test(w) || // 2nd person plural
-		/áis$/.test(w) // 2nd person plural -ar
+		/(ad|ed|id)$/.test(w) &&
+		w.length > 2 &&
+		!/(idad|edad|dad|tad|tud|ción|sión|sad|lad)$/i.test(w)
+	) {
+		return 'imper.';
+	}
+
+	// Present indicative — tighter matching, avoid nouns/adjectives
+	if (
+		(/o$/.test(w) && !/(rio|cio|sio|mio|tio|nio|lio)$/i.test(w)) ||
+		/es$/.test(w) ||
+		/en$/.test(w) ||
+		/emos$/.test(w) ||
+		/imos$/.test(w) ||
+		/áis$/.test(w) ||
+		/ís$/.test(w)
 	) {
 		if (w.length > 2) {
 			return 'pres.';
