@@ -34,6 +34,8 @@ const fsPauseBtn = document.getElementById("fsPauseBtn");
 const fsDualBtn = document.getElementById("fsDualBtn");
 const learnBtn = document.getElementById("learnBtn");
 const fsLearnBtn = document.getElementById("fsLearnBtn");
+const deleteBtn = document.getElementById("deleteBtn");
+const fsDeleteBtn = document.getElementById("fsDeleteBtn");
 const transcriptContainer = document.getElementById("transcript");
 
 // --- Learned Videos (server + localStorage) ---
@@ -407,6 +409,14 @@ function updateLearnedButtonState() {
 	fsLearnBtn.title = isLearned ? "Mark as not learned (L)" : "Mark as learned (L)";
 }
 
+function updateDeleteButtonState() {
+	const hasVideo = !!currentVideoId;
+	deleteBtn.disabled = !hasVideo;
+	if (fsDeleteBtn) fsDeleteBtn.disabled = !hasVideo;
+	deleteBtn.title = hasVideo ? "Delete transcript (⌫)" : "Select a transcript first";
+	if (fsDeleteBtn) fsDeleteBtn.title = hasVideo ? "Delete transcript (⌫)" : "Select a transcript first";
+}
+
 function toggleLearnedPanel() {
 	isLearnedPanelCollapsed = !isLearnedPanelCollapsed;
 	saveLearnedVideos();
@@ -416,6 +426,56 @@ function toggleLearnedPanel() {
 
 	content.classList.toggle("collapsed", isLearnedPanelCollapsed);
 	icon.textContent = isLearnedPanelCollapsed ? "chevron_right" : "expand_more";
+}
+
+// --- Delete Transcript ---
+
+async function deleteTranscript() {
+	if (!currentVideoId) {
+		alert('No transcript selected to delete');
+		return;
+	}
+
+	const transcript = availableTranscripts.find(t => t.videoId === currentVideoId);
+	const title = transcript ? transcript.title : currentVideoId;
+
+	const confirmed = confirm(`Delete "${title}"?\n\nThis will remove:\n- Transcript file\n- Translation file\n- Vocabulary\n- Progress\n- Learned status\n\nThis cannot be undone!`);
+
+	if (!confirmed) return;
+
+	try {
+		const response = await fetch(`/api/transcript?v=${currentVideoId}`, {
+			method: 'DELETE'
+		});
+
+		if (!response.ok) {
+			const error = await response.json();
+			throw new Error(error.error || 'Failed to delete');
+		}
+
+		const result = await response.json();
+		console.log('Deleted:', result.deleted);
+
+		// Reset state
+		currentVideoId = null;
+		transcriptData = [];
+		translationData = [];
+		hasTranslation = false;
+		activeIndex = -1;
+		vocabData = {};
+
+		// Update UI
+		document.getElementById('videoTitle').textContent = 'YouTube Video with Transcript';
+		document.getElementById('transcript').innerHTML = '<div class="loading">Select a transcript to start</div>';
+		setStatus('Transcript deleted');
+
+		// Reload transcript list
+		await loadAvailableTranscripts();
+
+	} catch (error) {
+		console.error('Delete error:', error);
+		alert(`Failed to delete: ${error.message}`);
+	}
 }
 
 // --- Data Fetching ---
@@ -535,6 +595,7 @@ function loadByVideoId(videoId) {
 	const activeTag = document.getElementById(`tag-${videoId}`);
 	if (activeTag) activeTag.classList.add("active");
 	updateLearnedButtonState();
+	updateDeleteButtonState();
 	loadVideo(videoId);
 }
 
@@ -622,6 +683,8 @@ window.onload = async function() {
 	if (lastVideoId) {
 		loadByVideoId(lastVideoId);
 	}
+
+	updateDeleteButtonState();
 };
 
 // --- Save progress on page unload ---
@@ -659,5 +722,9 @@ document.addEventListener("keydown", function (e) {
 	if (e.code === "KeyL" && !e.ctrlKey && !e.metaKey) {
 		e.preventDefault();
 		toggleLearned();
+	}
+	if (e.code === "Backspace" && !e.ctrlKey && !e.metaKey && currentVideoId) {
+		e.preventDefault();
+		deleteTranscript();
 	}
 });

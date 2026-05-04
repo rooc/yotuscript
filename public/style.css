@@ -176,6 +176,12 @@ button:disabled {
 	background: var(--text-muted);
 	cursor: not-allowed;
 }
+button.danger {
+	background: var(--text-error);
+}
+button.danger:hover {
+	background: oklch(55.39% 0.1626 25.14);
+}
 
 .panel {
 	background: var(--bg-surface);
