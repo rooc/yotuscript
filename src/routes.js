@@ -38,6 +38,9 @@ function handleDeleteTranscript(url, res) {
         // Find and delete transcript files
         const files = fs.existsSync(TRANSCRIPTS_DIR) ? fs.readdirSync(TRANSCRIPTS_DIR) : [];
         files.forEach(file => {
+            // Skip non-markdown files and vocab files
+            if (!file.endsWith('.md') || file.includes('_vocab.json')) return;
+            
             const filePath = path.join(TRANSCRIPTS_DIR, file);
             const content = fs.readFileSync(filePath, 'utf-8');
             const fileVideoId = getVideoIdFromFile(content) || file;
@@ -57,7 +60,8 @@ function handleDeleteTranscript(url, res) {
 
         // Delete progress for this video
         if (fs.existsSync(PROGRESS_PATH)) {
-            const progress = JSON.parse(fs.readFileSync(PROGRESS_PATH, 'utf-8'));
+            const progressData = fs.readFileSync(PROGRESS_PATH, 'utf-8');
+            const progress = JSON.parse(progressData);
             if (progress[videoId]) {
                 delete progress[videoId];
                 fs.writeFileSync(PROGRESS_PATH, JSON.stringify(progress, null, 2));
@@ -67,7 +71,8 @@ function handleDeleteTranscript(url, res) {
 
         // Delete from learned videos
         if (fs.existsSync(LEARNED_PATH)) {
-            const learned = JSON.parse(fs.readFileSync(LEARNED_PATH, 'utf-8'));
+            const learnedData = fs.readFileSync(LEARNED_PATH, 'utf-8');
+            const learned = JSON.parse(learnedData);
             const index = learned.learnedVideos.indexOf(videoId);
             if (index > -1) {
                 learned.learnedVideos.splice(index, 1);
@@ -79,6 +84,7 @@ function handleDeleteTranscript(url, res) {
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ success: true, deleted }));
     } catch (e) {
+        console.error('Delete error:', e);
         res.writeHead(500, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ error: e.message }));
     }
