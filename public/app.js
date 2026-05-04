@@ -309,6 +309,23 @@ function restartVideo() {
 		player.playVideo();
 	}
 
+	// Reset progress for current video only
+	if (currentVideoId) {
+		videoProgress[currentVideoId] = {
+			time: 0,
+			duration: player ? player.getDuration() : 0,
+			line: 0,
+			timestamp: Date.now()
+		};
+		localStorage.setItem("videoProgress", JSON.stringify(videoProgress));
+		// Save to server asynchronously (don't wait)
+		fetch("/api/progress", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(videoProgress)
+		}).catch(() => {});
+	}
+
 	const icon = pauseBtn.querySelector(".material-icons");
 	if (icon) icon.textContent = "pause";
 	pauseBtn.classList.remove("active");
@@ -644,20 +661,52 @@ function loadVideo(videoId) {
 		fetchVocab(videoId),
 	]).then(() => {
 		const savedProgress = getSavedProgress(videoId);
+		const loadingOverlay = document.getElementById("videoLoadingOverlay");
+
+		// Show loading overlay if we have saved progress
+		if (savedProgress && loadingOverlay) {
+			loadingOverlay.classList.remove("hidden");
+		}
 
 		if (player) {
 			player.addEventListener("onStateChange", onPlayerStateChange);
-			player.loadVideoById(videoId);
+			// Use cueVideoById instead of loadVideoById to prevent autoplay
+			player.cueVideoById(videoId);
+			// Then seek and play after a short delay
+			setTimeout(() => {
+				if (savedProgress) {
+					player.seekTo(savedProgress.time, true);
+					setStatus(`Resumed at ${formatTime(savedProgress.time)}`);
+				}
+				player.playVideo();
+				// Hide overlay after playing
+				setTimeout(() => {
+					if (loadingOverlay) loadingOverlay.classList.add("hidden");
+				}, 300);
+			}, 500);
 		} else {
 			player = new YT.Player("player", {
 				videoId: videoId,
-				playerVars: { playsinline: 1, rel: 0 },
+				playerVars: { playsinline: 1, rel: 0, autoplay: 0 },
 				events: {
 					onReady: () => {
 						startSync();
 						if (savedProgress) {
+							// Pause first to prevent sound from beginning
+							player.pauseVideo();
 							player.seekTo(savedProgress.time, true);
 							setStatus(`Resumed at ${formatTime(savedProgress.time)}`);
+							// Small delay then play
+							setTimeout(() => {
+								player.playVideo();
+								// Hide overlay after playing
+								setTimeout(() => {
+									if (loadingOverlay) loadingOverlay.classList.add("hidden");
+								}, 300);
+							}, 200);
+						} else {
+							player.playVideo();
+							if (loadingOverlay) loadingOverlay.classList.add("hidden");
 						}
 					},
 					onStateChange: onPlayerStateChange,
@@ -666,13 +715,6 @@ function loadVideo(videoId) {
 		}
 
 		startSync();
-
-		if (savedProgress && player && player.seekTo) {
-			setTimeout(() => {
-				player.seekTo(savedProgress.time, true);
-				setStatus(`Resumed at ${formatTime(savedProgress.time)}`);
-			}, 1000);
-		}
 	});
 }
 
