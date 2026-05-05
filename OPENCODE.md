@@ -222,14 +222,74 @@ Skip words that are the same or similar in English:
 
 ---
 
+## Step 4b: Create Grammar Sentences File
+
+**Output:** `grammar/[VIDEO_ID]_grammar.json`
+
+**Extract exactly 3 sentences per video** that demonstrate B1+ grammar structures:
+
+### Target Grammar Structures (select 3 different ones):
+
+**Subjunctive Mood:**
+- Present subjunctive: "Espero que vengas" (I hope you come)
+- Past subjunctive: "Si fuera rico, viajaría" (If I were rich, I would travel)
+- Perfect subjunctive: "Dudo que haya comido" (I doubt he has eaten)
+
+**Compound Tenses:**
+- Past perfect: "Ya había terminado" (I had already finished)
+- Future perfect: "Habré terminado mañana" (I will have finished tomorrow)
+- Conditional perfect: "Habría venido si..." (I would have come if...)
+
+**Complex Structures:**
+- Passive voice: "Fue construido en 1990" (It was built in 1990)
+- Reported speech: "Dijo que vendría" (He said he would come)
+- Relative clauses: "El libro que compré..." (The book that I bought...)
+
+### Sentence Selection Criteria:
+- ✅ Natural sentences from the transcript (not made up)
+- ✅ Different grammar structures (don't pick 3 subjunctive sentences)
+- ✅ Actually used in the video
+- ✅ Include English translation
+- ✅ Brief grammar explanation (1 sentence)
+
+### JSON Structure:
+```json
+[
+  {
+    "spanish": "Si hubiera sabido eso, no habría venido.",
+    "english": "If I had known that, I wouldn't have come.",
+    "explanation": "Past perfect subjunctive + conditional perfect for hypothetical past"
+  },
+  {
+    "spanish": "Es importante que estudies todos los días.",
+    "english": "It's important that you study every day.",
+    "explanation": "Present subjunctive after impersonal expression 'es importante que'"
+  },
+  {
+    "spanish": "Para cuando llegué, ya se habían ido.",
+    "english": "By the time I arrived, they had already left.",
+    "explanation": "Past perfect - action completed before another past action"
+  }
+]
+```
+
+**IMPORTANT:** Choose sentences that are:
+1. **Actually in the transcript** (not fabricated)
+2. **Different grammar types** (mix tenses/moods)
+3. **Useful for learning** (common structures)
+4. **With short explanations** (1 sentence max)
+
+---
+
 ## Step 5: File Creation
 
-### Create Both Files
+### Create Three Files
 
-For each transcript, create **both** files:
+For each transcript, create **three** files:
 
 1. **Translation file** in `transcripts/` folder
-2. **Vocab file** in `vocab/` folder
+2. **Vocab file** in `vocab/` folder  
+3. **Grammar file** in `grammar/` folder
 
 ### Naming Convention
 
@@ -237,6 +297,7 @@ For each transcript, create **both** files:
 transcripts/087XVp3JIpk.md          ← Original (you read this)
 transcripts/087XVp3JIpk_translation.md  ← Translation (you create this)
 vocab/087XVp3JIpk_vocab.json       ← Vocabulary (you create this)
+grammar/087XVp3JIpk_grammar.json   ← Grammar sentences (you create this)
 ```
 
 ---
@@ -283,6 +344,27 @@ source: "https://www.youtube.com/watch?v=087XVp3JIpk"
     "pos": "noun"
   }
 }
+```
+
+### Output: `grammar/087XVp3JIpk_grammar.json`
+```json
+[
+  {
+    "spanish": "Si hubiera sabido eso, no habría venido.",
+    "english": "If I had known that, I wouldn't have come.",
+    "explanation": "Past perfect subjunctive (hubiera sabido) + conditional perfect (habría venido) - used for hypothetical situations in the past"
+  },
+  {
+    "spanish": "Es importante que estudies todos los días.",
+    "english": "It's important that you study every day.",
+    "explanation": "Present subjunctive (estudies) after impersonal expression 'es importante que'"
+  },
+  {
+    "spanish": "Para cuando llegué, ya se habían ido.",
+    "english": "By the time I arrived, they had already left.",
+    "explanation": "Past perfect (se habían ido) - action completed before another past action"
+  }
+]
 ```
 
 ---
@@ -360,11 +442,12 @@ After creating the files:
 **Your job:**
 1. Read `transcripts/[ID].md`
 2. Create `transcripts/[ID]_translation.md` (full English translation)
-3. Create `vocab/[ID]_vocab.json` (B1+ vocabulary with context)
-4. Skip files that already have translations
-5. Exclude basic words (see `data/a1-a2.json`), proper nouns (see `data/proper-nouns.json`), and manual exclusions (see `data/manual-exclude.json`)
+3. Create `vocab/[ID]_vocab.json` (B1+ vocabulary with multi-word phrases)
+4. Create `grammar/[ID]_grammar.json` (3 sentences with B1+ grammar + explanations)
+5. Skip files that already have translations
+6. Exclude basic words (see `data/a1-a2.json`), proper nouns (see `data/proper-nouns.json`), and manual exclusions (see `data/manual-exclude.json`)
 
-**Goal:** Help language learners understand Spanish YouTube videos with accurate, contextual translations.
+**Goal:** Help language learners understand Spanish YouTube videos with accurate translations, contextual vocabulary, and grammar-focused learning sentences.
 
 ---
 
@@ -438,8 +521,11 @@ The AI will:
 ---
 
 **Ready to work! Just say:**
-- `"translate new"` - Translate all new transcripts (extracts multi-word phrases by default)
+- `"translate new"` - Translate all new transcripts (extracts multi-word phrases + 3 grammar sentences)
 - `"check files"` - Run validation and cleanup
 - `"delete VIDEO_ID"` - Remove a transcript
 
-**Remember:** Every translation automatically extracts multi-word phrases (2-4 words) as the primary vocabulary. This is now the standard behavior for all translations.
+**Remember:** Every translation automatically:
+1. Extracts multi-word phrases (2-4 words) as primary vocabulary
+2. Creates 3 grammar sentences with B1+ structures (subjunctive, compound tenses, etc.)
+3. Provides English translations and brief grammar explanations

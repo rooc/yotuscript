@@ -10,7 +10,7 @@ const fs = require('fs');
 const path = require('path');
 const { PORT, ROOT_DIR, TRANSCRIPTS_DIR, VOCAB_DIR } = require('./config');
 const { parseTranscriptFile, getVideoIdFromFile, convertToXML } = require('./store');
-const { getTranscriptForVideo, readVocab } = require('./store');
+const { getTranscriptForVideo, readVocab, readGrammar } = require('./store');
 
 const PUBLIC_DIR = path.join(ROOT_DIR, 'public');
 const LEARNED_PATH = path.join(ROOT_DIR, 'data', 'learned.json');
@@ -126,6 +126,32 @@ function handleVocab(url, res) {
     } else {
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({}));
+    }
+}
+
+/**
+ * GET /api/grammar?v=VIDEO_ID
+ *
+ * Returns the grammar sentences array for a video as JSON.  Empty array if none.
+ *
+ * @param {URL} url
+ * @param {import('http').ServerResponse} res
+ */
+function handleGrammar(url, res) {
+    const videoId = url.searchParams.get('v');
+    if (!videoId) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Video ID required' }));
+        return;
+    }
+
+    const grammar = readGrammar(videoId);
+    if (grammar) {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify(grammar));
+    } else {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify([]));
     }
 }
 
@@ -342,6 +368,11 @@ function setupRoutes(req, res) {
 
     if (url.pathname === '/api/vocab') {
         handleVocab(url, res);
+        return;
+    }
+
+    if (url.pathname === '/api/grammar') {
+        handleGrammar(url, res);
         return;
     }
 

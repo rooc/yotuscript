@@ -12,7 +12,7 @@
  */
 const path = require('path');
 const fs = require('fs');
-const { TRANSCRIPTS_DIR, VOCAB_DIR } = require('./config');
+const { TRANSCRIPTS_DIR, VOCAB_DIR, GRAMMAR_DIR } = require('./config');
 
 /**
  * Parse a markdown transcript file into timed lines.
@@ -141,10 +141,23 @@ function readVocab(videoId) {
     return JSON.parse(fs.readFileSync(vocabPath, 'utf-8'));
 }
 
+/**
+ * Read the grammar sentences JSON for a video.
+ *
+ * @param {string} videoId
+ * @returns {Array.<{spanish: string, english: string, explanation: string}> | null}
+ */
+function readGrammar(videoId) {
+    const grammarPath = path.join(GRAMMAR_DIR, `${videoId}_grammar.json`);
+    if (!fs.existsSync(grammarPath)) return null;
+    return JSON.parse(fs.readFileSync(grammarPath, 'utf-8'));
+}
+
 module.exports = {
     parseTranscriptFile,
     getVideoIdFromFile,
     convertToXML,
     getTranscriptForVideo,
     readVocab,
+    readGrammar,
 };

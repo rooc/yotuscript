@@ -619,6 +619,57 @@ async function fetchVocab(videoId) {
 	}
 }
 
+async function fetchGrammar(videoId) {
+	try {
+		const response = await fetch(`/api/grammar?v=${videoId}`);
+		if (!response.ok) { 
+			document.getElementById("grammarSentences").innerHTML = 'No grammar sentences available';
+			return; 
+		}
+		const grammar = await response.json();
+		renderGrammarSentences(grammar);
+	} catch (e) {
+		document.getElementById("grammarSentences").innerHTML = 'No grammar sentences available';
+	}
+}
+
+function renderGrammarSentences(grammar) {
+	const container = document.getElementById("grammarSentences");
+	
+	if (!grammar || grammar.length === 0) {
+		container.innerHTML = 'No grammar sentences available for this video';
+		return;
+	}
+	
+	let html = '';
+	grammar.forEach((item, index) => {
+		html += `
+			<div class="grammar-item">
+				<div class="grammar-number">${index + 1}</div>
+				<div class="grammar-content">
+					<div class="grammar-spanish">${item.spanish}</div>
+					<div class="grammar-english">${item.english}</div>
+					<div class="grammar-explanation">${item.explanation}</div>
+				</div>
+			</div>
+		`;
+	});
+	
+	container.innerHTML = html;
+}
+
+let isGrammarPanelCollapsed = true;
+
+function toggleGrammarPanel() {
+	isGrammarPanelCollapsed = !isGrammarPanelCollapsed;
+	
+	const content = document.getElementById("grammarContent");
+	const icon = document.getElementById("grammarToggleIcon");
+	
+	content.classList.toggle("collapsed", isGrammarPanelCollapsed);
+	icon.textContent = isGrammarPanelCollapsed ? "expand_more" : "expand_less";
+}
+
 // --- Video Loading ---
 
 function loadByVideoId(videoId) {
@@ -659,6 +710,7 @@ function loadVideo(videoId) {
 		fetchTranscript(videoId),
 		fetchTranslation(videoId),
 		fetchVocab(videoId),
+		fetchGrammar(videoId),
 	]).then(() => {
 		const savedProgress = getSavedProgress(videoId);
 		const loadingOverlay = document.getElementById("videoLoadingOverlay");
