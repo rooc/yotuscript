@@ -2,12 +2,13 @@
 	/* Colors - Palenight Mild Contrast (from Zed) */
 	--bg-primary: oklch(30.09% 0.0314 274.11);
 	--bg-surface: oklch(33.7% 0.036 273.47);
-	--bg-elevated: oklch(32.18% 0.0343 275.1);
+	--bg-elevated: oklch(32.18% 0.034 275.1);
+	--bg-transcript: oklch(34% 0.039 275);
 	--bg-trans: oklch(26% 0.0343 275);
 	--bg-hover: oklch(36.87% 0.0385 274.44);
 	--bg-hover-alt: oklch(45.87% 0.0594 275.35);
-	--text-muted: oklch(56.48% 0.061 276.39);
-	--text-subtle: oklch(55.5% 0.0628 276.48);
+	--text-muted: oklch(60.48% 0.061 276.39);
+	--text-subtle: oklch(67.5% 0.0628 276.48);
 	--text-primary: oklch(82.78% 0.0215 261.76);
 	--brand: oklch(54.95% 0.1615 297.66);
 	--brand-hover: oklch(49.04% 0.1369 296.18);
@@ -362,13 +363,13 @@ button.danger:hover {
 .transcript-container {
 	border-radius: var(--radius-sm);
 	padding: 0;
-	min-height: 7rem;
+	min-height: 5rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	text-align: center;
 	font-family: var(--font-mono);
-	background-color: var(--bg-elevated);
+	background-color: var(--bg-transcript);
 	overflow: visible;
 	position: relative;
 }

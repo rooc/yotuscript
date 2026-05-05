@@ -4,6 +4,8 @@
 
 ## Improvements
 - [ ] Add dark/light theme toggle
+- [ ] Make layout resizible, as - to move column divider
+- [ ] Make left sidebar detachable, as floating panel with ability to hide
 
 ## Completed
 - [x] Add drag and drop functionality between Available transcripts and Learned Transcripts
