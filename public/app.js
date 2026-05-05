@@ -205,12 +205,9 @@ function endWatchSession() {
 
 function getSavedProgress(videoId) {
 	const progress = videoProgress[videoId];
-	console.log("Checking progress for", videoId, ":", progress);
 	if (progress && progress.time > 1) {
-		console.log("Found saved progress:", progress.time);
 		return progress;
 	}
-	console.log("No saved progress found");
 	return null;
 }
 
@@ -919,32 +916,27 @@ function loadVideo(videoId) {
 			player.addEventListener("onStateChange", onPlayerStateChange);
 			
 			if (savedProgress) {
-				console.log("Restoring progress:", savedProgress);
 				// Load video and seek to saved position
 				player.loadVideoById(videoId);
 				
 				// Wait for video to be ready then seek
 				const seekWhenReady = () => {
 					const playerState = player.getPlayerState();
-					console.log("Player state:", playerState, "seeking to:", savedProgress.time);
 					
 					if (playerState === YT.PlayerState.PLAYING || 
 					    playerState === YT.PlayerState.PAUSED ||
 					    playerState === YT.PlayerState.CUED) {
 						// Video is ready, seek to saved time
 						player.seekTo(savedProgress.time, true);
-						console.log("Seeked to:", savedProgress.time);
 						setStatus(`Resumed at ${formatTime(savedProgress.time)}`);
 						setTimeout(() => {
 							if (loadingOverlay) loadingOverlay.classList.add("hidden");
 						}, 300);
 					} else if (playerState === -1 || playerState === YT.PlayerState.BUFFERING) {
 						// Still loading, wait more
-						console.log("Still loading, retrying...");
 						setTimeout(seekWhenReady, 200);
 					} else {
 						// Some other state, just try seeking
-						console.log("Trying to seek in state:", playerState);
 						player.seekTo(savedProgress.time, true);
 						setStatus(`Resumed at ${formatTime(savedProgress.time)}`);
 						setTimeout(() => {
@@ -956,7 +948,6 @@ function loadVideo(videoId) {
 				setTimeout(seekWhenReady, 300);
 			} else {
 				// No saved progress - just play from start
-				console.log("No saved progress, playing from start");
 				player.loadVideoById(videoId);
 				setTimeout(() => {
 					if (loadingOverlay) loadingOverlay.classList.add("hidden");
