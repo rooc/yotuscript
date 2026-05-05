@@ -52,10 +52,10 @@ body {
 }
 
 .container {
-	max-width: 82vw;
+	max-width: min(90rem, 82vw);
 	margin: 0 auto;
 	display: grid;
-	grid-template-columns: 26vw 1fr;
+	grid-template-columns: max(21rem, 26vw) 1fr;
 	gap: 2rem;
 }
 
