@@ -114,14 +114,34 @@ English: **1:30** · I'm fed up with this. (Mexican slang)
 }
 ```
 
-### Word Extraction Rules
+### Vocabulary Extraction Rules
 
-**Extract words that are:**
-- ✅ B1 level or higher (intermediate to advanced)
-- ✅ Specific to the topic/context
-- ✅ Idiomatic expressions
-- ✅ Regional slang or colloquialisms
-- ✅ Technical or specialized vocabulary
+**Extract BOTH single words AND multi-word phrases:**
+
+#### Single Words (B1+)
+- Individual words at B1 level or higher
+- Technical/specialized terms
+
+#### Multi-Word Phrases (2-4 words) - HIGH PRIORITY
+These are often MORE useful than single words:
+
+**Verb + Preposition combinations:**
+- "hacer caso" (to pay attention)
+- "tener en cuenta" (to take into account)
+- "dar la lata" (to annoy/bother)
+- "ponerse a" (to start doing)
+- "acabar de" (to have just done)
+
+**Common collocations:**
+- "muela del juicio" (wisdom tooth)
+- "cuenta bancaria" (bank account)
+- "tiempo libre" (free time)
+- "lugar común" (common place/cliché)
+
+**Idiomatic expressions:**
+- "hasta la madre" (fed up)
+- "en el quinto pino" (in the middle of nowhere)
+- "costar un ojo de la cara" (to cost an arm and a leg)
 
 **DO NOT extract (skip these):**
 
@@ -151,40 +171,47 @@ Skip words that are the same or similar in English:
 - okay, cool, boom, surprise, obviously, useful, make sense
 
 #### 5. Very Short Words
-- Skip words with 3 or fewer letters (unless important)
+- Skip single words with 3 or fewer letters (unless important)
 - Skip verb conjugations of basic verbs (tengo, tienes, tiene → all from "tener")
 
 ### Translation Quality
 
-**For each vocabulary word:**
+**For each vocabulary entry:**
 
 1. **translation** — Use 1-5 words, lowercase
    - Good: "masticar" → "to chew"
+   - Good: "hacer caso" → "to pay attention"
    - Bad: "masticar" → "chew, masticate, grind food with teeth"
 
-2. **pos** — Part of speech (optional but helpful)
-   - noun, verb, adjective, adverb, expression, slang
+2. **pos** — Part of speech (optional)
+   - "expression" for phrases
+   - "verb phrase", "noun phrase" for collocations
 
-3. **context** — The original Spanish phrase where the word appears (optional)
-   - Helps remember the usage later
+3. **context** — The original Spanish sentence (optional)
+   - Helps remember the usage
 
-**Example vocab entry:**
+**Example vocab entries:**
 ```json
 {
   "masticar": {
     "translation": "to chew",
-    "pos": "verb",
-    "context": "para masticar alimentos duros"
-  },
-  "hasta la madre": {
-    "translation": "fed up / completely full",
-    "pos": "expression",
-    "context": "Mexican slang - estar hasta la madre de algo"
+    "pos": "verb"
   },
   "muela del juicio": {
     "translation": "wisdom tooth",
-    "pos": "noun",
-    "context": "los dientes que salen cuando tenemos más sabiduría"
+    "pos": "noun phrase"
+  },
+  "hacer caso": {
+    "translation": "to pay attention",
+    "pos": "verb phrase"
+  },
+  "hasta la madre": {
+    "translation": "fed up / completely full",
+    "pos": "expression"
+  },
+  "en el quinto pino": {
+    "translation": "in the middle of nowhere",
+    "pos": "expression"
   }
 }
 ```
