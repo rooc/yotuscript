@@ -24,7 +24,8 @@ Open http://localhost:7070
 - **Watch YouTube videos** with synchronized transcripts
 - **Dual-language view** (original + English translation)
 - **Interactive vocabulary** - Hover words to see translations in tooltips
-- **Grammar sentences** - 3 clickable grammar examples per video with explanations
+- **Grammar sentences** - 3-5 clickable grammar examples per video with explanations
+- **Video summaries** - 4-6 sentence summaries in Spanish with original vocabulary
 - **Statistics tracking** - Auto-tracks learned videos and total watch time
 - **Drag and drop** transcripts between Available and Learned panels
 - **Keyboard shortcuts** for quick playback control
@@ -60,12 +61,22 @@ Stats are displayed below the control buttons and persist across sessions.
 
 ## Grammar Sentences
 
-Each video includes 3 grammar sentences that demonstrate B1+ Spanish structures:
+Each video includes 3-5 grammar sentences that demonstrate B1+ Spanish structures:
 
 - **Clickable tags** in the "Grammar sentences" panel
 - **Full sentence** with English translation in popup
 - **Brief explanation** of the grammar structure used
 - Examples: subjunctive mood, compound tenses, relative clauses
+
+## Video Summaries
+
+Each video includes a **4-6 sentence summary** in Spanish:
+
+- 📋 **Summary icon** next to video title
+- **Click to open** popup with full summary
+- Uses **original vocabulary** from the transcript
+- Captures main ideas and key points
+- Perfect for quick review before watching
 
 ## Adding Transcripts
 
@@ -119,7 +130,8 @@ The workflow uses AI directly via `OPENCODE.md`:
 - ✅ Preserves speaker's tone and style
 - ✅ Explains cultural references
 - ✅ Extracts **multi-word phrases** (2-4 words) as primary vocabulary
-- ✅ Creates **3 grammar sentences** with B1+ structures (you choose: 3, 4, 5, or custom)
+- ✅ Creates **3-5 grammar sentences** with B1+ structures (you choose: 3, 4, 5, or custom)
+- ✅ Writes **4-6 sentence summary** in Spanish using original vocabulary
 - ✅ Provides contextual translations
 - ✅ Excludes basic words, proper nouns, and English loanwords
 
@@ -178,6 +190,7 @@ transcripts/VIDEO_ID.md
 node server.js
 # - Hover words for vocabulary
 # - Click grammar tags for explanations
+# - Click summary icon for video overview
 # - Press L to mark as learned
 # - Track your stats automatically
 ```
@@ -194,6 +207,8 @@ node server.js
 │   └── VIDEO_ID_vocab.json
 ├── grammar/             # Grammar sentences (.json)
 │   └── VIDEO_ID_grammar.json
+├── summary/             # Video summaries (.json)
+│   └── VIDEO_ID_summary.json
 ├── data/                # App data and exclusion lists
 │   ├── a1-a2.json      # Basic words to exclude
 │   ├── proper-nouns.json # Names/countries to exclude
@@ -227,6 +242,11 @@ node server.js
 **Grammar sentences not showing?**
 - Check `grammar/VIDEO_ID_grammar.json` exists
 - Click the "Grammar sentences" panel to expand it
+
+**Summary not showing?**
+- Check `summary/VIDEO_ID_summary.json` exists
+- Summary icon appears only when summary file is available
+- Click the 📋 icon next to video title
 
 **Stats not updating?**
 - Stats save automatically when you mark videos as learned or pause playback
