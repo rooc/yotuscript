@@ -10,12 +10,15 @@ You are translating Spanish YouTube transcripts to English. Follow these instruc
 
 **Important:** When extracting vocabulary, prioritize **multi-word phrases (2-4 words)** over single words. Phrases like "hacer caso", "en pocas palabras", "sistema inmunitario" are more useful than individual words. See vocabulary extraction rules below for details.
 
+**Before translating, ask:** "How many grammar sentences do you want to extract? (3, 4, 5, or custom number)"
+
 Or manually:
 1. **Find** transcript files in `transcripts/` folder (e.g., `087XVp3JIpk.md`)
 2. **Skip** if `[ID]_translation.md` already exists
-3. **Create** two files for each new transcript:
+3. **Create** three files for each new transcript:
    - `transcripts/[ID]_translation.md` — Full English translation
    - `vocab/[ID]_vocab.json` — Vocabulary with contextual translations
+   - `grammar/[ID]_grammar.json` — Grammar sentences with explanations
 
 ---
 
@@ -504,6 +507,7 @@ Removes a transcript and all associated files:
 - `transcripts/VIDEO_ID.md`
 - `transcripts/VIDEO_ID_translation.md`
 - `vocab/VIDEO_ID_vocab.json`
+- `grammar/VIDEO_ID_grammar.json`
 - Progress data
 - Learned status
 
@@ -521,11 +525,11 @@ The AI will:
 ---
 
 **Ready to work! Just say:**
-- `"translate new"` - Translate all new transcripts (extracts multi-word phrases + 3 grammar sentences)
+- `"translate new"` - Translate all new transcripts (asks for grammar sentence count: 3, 4, 5, or custom)
 - `"check files"` - Run validation and cleanup
 - `"delete VIDEO_ID"` - Remove a transcript
 
 **Remember:** Every translation automatically:
 1. Extracts multi-word phrases (2-4 words) as primary vocabulary
-2. Creates 3 grammar sentences with B1+ structures (subjunctive, compound tenses, etc.)
+2. Creates grammar sentences with B1+ structures (subjunctive, compound tenses, etc.) - **you choose the count (3-5 or custom)**
 3. Provides English translations and brief grammar explanations
