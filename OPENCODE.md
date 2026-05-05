@@ -8,6 +8,8 @@ You are translating Spanish YouTube transcripts to English. Follow these instruc
 
 **Simple command:** Just say "**translate new**" to translate all untranslated transcripts.
 
+**Important:** When extracting vocabulary, prioritize **multi-word phrases (2-4 words)** over single words. Phrases like "hacer caso", "en pocas palabras", "sistema inmunitario" are more useful than individual words. See vocabulary extraction rules below for details.
+
 Or manually:
 1. **Find** transcript files in `transcripts/` folder (e.g., `087XVp3JIpk.md`)
 2. **Skip** if `[ID]_translation.md` already exists
@@ -114,7 +116,9 @@ English: **1:30** · I'm fed up with this. (Mexican slang)
 }
 ```
 
-### Vocabulary Extraction Rules
+### Vocabulary Extraction Rules (DEFAULT FOR ALL TRANSLATIONS)
+
+**⚠️ CRITICAL:** You MUST extract multi-word phrases (2-4 words) as the PRIMARY vocabulary. Single words are secondary.
 
 **Extract BOTH single words AND multi-word phrases:**
 
@@ -434,6 +438,8 @@ The AI will:
 ---
 
 **Ready to work! Just say:**
-- `"translate new"` - Translate all new transcripts
+- `"translate new"` - Translate all new transcripts (extracts multi-word phrases by default)
 - `"check files"` - Run validation and cleanup
 - `"delete VIDEO_ID"` - Remove a transcript
+
+**Remember:** Every translation automatically extracts multi-word phrases (2-4 words) as the primary vocabulary. This is now the standard behavior for all translations.

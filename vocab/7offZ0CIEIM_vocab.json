@@ -4,40 +4,55 @@
     "pos": "verb",
     "context": "vais a adivinar lo que estoy describiendo"
   },
-  "describir": {
-    "translation": "to describe",
-    "pos": "verb",
-    "context": "voy a describirlos en español"
-  },
-  "caja": {
-    "translation": "box",
-    "pos": "noun",
-    "context": "objetos en esta caja"
-  },
-  "cobre": {
-    "translation": "copper",
-    "pos": "noun",
+  "hecho de": {
+    "translation": "made of",
+    "pos": "expression",
     "context": "está hecho de cobre"
   },
-  "conductor": {
-    "translation": "conductor",
-    "pos": "noun",
-    "context": "conductor de electricidad"
+  "por dentro": {
+    "translation": "on the inside",
+    "pos": "expression",
+    "context": "por dentro está hecho de cobre"
   },
-  "recubrimiento": {
-    "translation": "coating/covering",
-    "pos": "noun",
-    "context": "recubrimiento protector"
+  "por fuera": {
+    "translation": "on the outside",
+    "pos": "expression",
+    "context": "está hecho de plástico por fuera"
+  },
+  "recubrimiento protector": {
+    "translation": "protective coating",
+    "pos": "noun phrase",
+    "context": "es como un recubrimiento protector"
+  },
+  "conductor de": {
+    "translation": "conductor of",
+    "pos": "noun phrase",
+    "context": "conductor de la electricidad"
   },
   "terminación": {
     "translation": "end/termination",
     "pos": "noun",
     "context": "tiene dos terminaciones"
   },
+  "vamos allá": {
+    "translation": "let's go",
+    "pos": "expression",
+    "context": "vamos allá"
+  },
+  "dosis de": {
+    "translation": "dose of",
+    "pos": "noun phrase",
+    "context": "pequeña dosis de practica"
+  },
   "delgado": {
     "translation": "thin",
     "pos": "adjective",
     "context": "más delgado, más fino"
+  },
+  "compuesto de": {
+    "translation": "composed of",
+    "pos": "expression",
+    "context": "está compuesto de varias capas"
   },
   "capas": {
     "translation": "layers",
@@ -49,70 +64,85 @@
     "pos": "adjective",
     "context": "tiene forma cilíndrica"
   },
-  "desenrolla": {
+  "se desenrolla": {
     "translation": "unrolls",
-    "pos": "verb",
-    "context": "cilindro que se desenrolla"
+    "pos": "verb phrase",
+    "context": "se desenrolla para usarlo"
+  },
+  "se encuentra": {
+    "translation": "is found/located",
+    "pos": "verb phrase",
+    "context": "se encuentra en el baño"
   },
   "pandemia": {
     "translation": "pandemic",
     "pos": "noun",
-    "context": "en la pandemia fue el más popular"
+    "context": "en la pandemia"
+  },
+  "todo el mundo": {
+    "translation": "everyone",
+    "pos": "expression",
+    "context": "todo el mundo lo quería comprar"
   },
   "agotado": {
     "translation": "sold out",
     "pos": "adjective",
     "context": "estaba agotado en todas las tiendas"
   },
-  "papel": {
-    "translation": "paper",
-    "pos": "noun",
+  "rollo de papel": {
+    "translation": "roll of paper",
+    "pos": "noun phrase",
     "context": "rollo de papel"
   },
   "lata": {
     "translation": "can/tin",
     "pos": "noun",
-    "context": "respuesta es una lata"
+    "context": "una lata de lentejas"
   },
   "legumbre": {
     "translation": "legume",
     "pos": "noun",
-    "context": "legumbre de color marrón"
+    "context": "una legumbre de color marrón"
   },
   "abridor": {
     "translation": "opener",
     "pos": "noun",
     "context": "trae un abridor en la propia tapa"
   },
+  "fecha de caducidad": {
+    "translation": "expiration date",
+    "pos": "noun phrase",
+    "context": "tiene la fecha de caducidad"
+  },
+  "en este caso": {
+    "translation": "in this case",
+    "pos": "expression",
+    "context": "en este caso el mío"
+  },
+  "lata de": {
+    "translation": "can of",
+    "pos": "noun phrase",
+    "context": "lata de lentejas"
+  },
+  "conservar": {
+    "translation": "to preserve",
+    "pos": "verb",
+    "context": "gran manera de conservar comida"
+  },
   "despensa": {
     "translation": "pantry",
     "pos": "noun",
     "context": "pondrías en la despensa"
   },
-  "caducidad": {
-    "translation": "expiration",
-    "pos": "noun",
-    "context": "fecha de caducidad"
-  },
   "embudo": {
     "translation": "funnel",
     "pos": "noun",
-    "context": "respuesta es un embudo"
+    "context": "un embudo de metal"
   },
-  "cónico": {
-    "translation": "conical",
-    "pos": "adjective",
-    "context": "es redondo y cónico"
-  },
-  "inverso": {
-    "translation": "reverse/inverse",
-    "pos": "adjective",
-    "context": "así en inverso"
-  },
-  "recipiente": {
-    "translation": "container",
-    "pos": "noun",
-    "context": "transferir líquidos de un recipiente a otro"
+  "se utiliza": {
+    "translation": "is used",
+    "pos": "verb phrase",
+    "context": "se utiliza para transferir líquidos"
   },
   "transferir": {
     "translation": "to transfer",
@@ -120,73 +150,68 @@
     "context": "transferir líquidos"
   },
   "facilita": {
-    "translation": "facilitates",
+    "translation": "makes easier",
     "pos": "verb",
     "context": "facilita la transferencia"
+  },
+  "dar golpes": {
+    "translation": "to hit/strike",
+    "pos": "verb phrase",
+    "context": "sirve para dar golpes"
+  },
+  "mango": {
+    "translation": "handle",
+    "pos": "noun",
+    "context": "tiene un mango muy alargado"
+  },
+  "herramienta": {
+    "translation": "tool",
+    "pos": "noun",
+    "context": "es una herramienta"
+  },
+  "parte de arriba": {
+    "translation": "top part",
+    "pos": "noun phrase",
+    "context": "la parte de arriba que es de metal"
+  },
+  "clavos": {
+    "translation": "nails",
+    "pos": "noun",
+    "context": "dar golpes a clavos"
   },
   "martillo": {
     "translation": "hammer",
     "pos": "noun",
     "context": "objeto número cinco es un martillo"
   },
-  "mango": {
-    "translation": "handle",
-    "pos": "noun",
-    "context": "parte alargada es un mango"
-  },
-  "herramienta": {
-    "translation": "tool",
-    "pos": "noun",
-    "context": "este objeto es una herramienta"
-  },
-  "agarrando": {
-    "translation": "grabbing/holding",
-    "pos": "verb",
-    "context": "estoy agarrando ahora mismo"
-  },
-  "clavos": {
-    "translation": "nails",
-    "pos": "noun",
-    "context": "le he dado golpes a principalmente a clavos"
-  },
-  "golpear": {
-    "translation": "to hit",
-    "pos": "verb",
-    "context": "nunca he golpeado a una persona"
-  },
-  "revelar": {
-    "translation": "to reveal",
-    "pos": "verb",
-    "context": "voy a revelar la respuesta"
-  },
-  "bote": {
-    "translation": "bottle/container",
-    "pos": "noun",
-    "context": "es un bote pequeño"
-  },
-  "higiene": {
-    "translation": "hygiene",
-    "pos": "noun",
+  "producto de higiene": {
+    "translation": "hygiene product",
+    "pos": "noun phrase",
     "context": "producto de higiene personal"
   },
   "desodorante": {
     "translation": "deodorant",
     "pos": "noun",
-    "context": "este objeto era un desodorante"
+    "context": "un desodorante"
   },
-  "previene": {
-    "translation": "prevents",
+  "prevenir": {
+    "translation": "to prevent",
     "pos": "verb",
-    "context": "previene el olor en las axilas"
+    "context": "sirve para prevenir los malos olores"
+  },
+  "malos olores": {
+    "translation": "bad smells",
+    "pos": "noun phrase",
+    "context": "prevenir los malos olores"
   },
   "axilas": {
-    "translation": "underarms",
+    "translation": "armpits",
     "pos": "noun",
     "context": "olor en las axilas"
   },
-  "aluminio": {
-    "translation": "aluminum",
-    "pos": "noun",
+  "papel de aluminio": {
+    "translation": "aluminum foil",
+    "pos": "noun phrase",
     "context": "rollo de papel de aluminio"
   },
   "maleable": {
@@ -194,34 +219,34 @@
     "pos": "adjective",
     "context": "es muy maleable"
   },
-  "envolver": {
-    "translation": "to wrap",
-    "pos": "verb",
-    "context": "para envolver mis bocadillos"
+  "hacer mucho ruido": {
+    "translation": "to make a lot of noise",
+    "pos": "expression",
+    "context": "hace mucho ruido"
   },
-  "bocadillos": {
-    "translation": "sandwiches",
-    "pos": "noun",
-    "context": "envolver mis bocadillos"
+  "ir al colegio": {
+    "translation": "to go to school",
+    "pos": "expression",
+    "context": "para ir al colegio"
   },
   "termómetro": {
     "translation": "thermometer",
     "pos": "noun",
     "context": "esto es un termómetro"
   },
+  "temperatura": {
+    "translation": "temperature",
+    "pos": "noun",
+    "context": "medir la temperatura"
+  },
   "analógico": {
     "translation": "analog",
     "pos": "adjective",
-    "context": "si fuera analógico"
+    "context": "termómetros analógicos"
   },
-  "ambiente": {
-    "translation": "environment/ambient",
-    "pos": "noun",
-    "context": "temperatura del ambiente"
-  },
-  "dosis": {
-    "translation": "dose",
-    "pos": "noun",
-    "context": "vuestra dosis de español"
+  "tubo de cristal": {
+    "translation": "glass tube",
+    "pos": "noun phrase",
+    "context": "como un tubo de cristal"
   }
 }
