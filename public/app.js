@@ -865,8 +865,12 @@ function loadVideo(videoId) {
 			// Then seek and play after a short delay
 			setTimeout(() => {
 				if (savedProgress) {
-					player.seekTo(savedProgress.time, true);
-					setStatus(`Resumed at ${formatTime(savedProgress.time)}`);
+					// Seek to transcript line timestamp if available, otherwise use raw time
+					const seekTime = (savedProgress.line >= 0 && transcriptData[savedProgress.line]) 
+						? transcriptData[savedProgress.line].start 
+						: savedProgress.time;
+					player.seekTo(seekTime, true);
+					setStatus(`Resumed at ${formatTime(seekTime)}`);
 				}
 				player.playVideo();
 				// Hide overlay after playing
@@ -884,8 +888,12 @@ function loadVideo(videoId) {
 						if (savedProgress) {
 							// Pause first to prevent sound from beginning
 							player.pauseVideo();
-							player.seekTo(savedProgress.time, true);
-							setStatus(`Resumed at ${formatTime(savedProgress.time)}`);
+							// Seek to transcript line timestamp if available, otherwise use raw time
+							const seekTime = (savedProgress.line >= 0 && transcriptData[savedProgress.line]) 
+								? transcriptData[savedProgress.line].start 
+								: savedProgress.time;
+							player.seekTo(seekTime, true);
+							setStatus(`Resumed at ${formatTime(seekTime)}`);
 							// Small delay then play
 							setTimeout(() => {
 								player.playVideo();
