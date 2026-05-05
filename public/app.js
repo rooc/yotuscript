@@ -205,9 +205,12 @@ function endWatchSession() {
 
 function getSavedProgress(videoId) {
 	const progress = videoProgress[videoId];
-	if (progress && progress.time > 5) {
+	console.log("Checking progress for", videoId, ":", progress);
+	if (progress && progress.time > 1) {
+		console.log("Found saved progress:", progress.time);
 		return progress;
 	}
+	console.log("No saved progress found");
 	return null;
 }
 
