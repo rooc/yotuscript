@@ -55,7 +55,7 @@ body {
 	max-width: min(90rem, 82vw);
 	margin: 0 auto;
 	display: grid;
-	grid-template-columns: max(21rem, 26vw) 1fr;
+	grid-template-columns: max(21rem, 25vw) 1fr;
 	gap: 2rem;
 }
 
@@ -576,7 +576,8 @@ button.danger:hover {
 /* Grammar Tags */
 .grammar-tags {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+	flex-wrap: wrap;
 	align-items: flex-start;
 	gap: 0.5rem;
 }
