@@ -703,7 +703,7 @@ The AI will:
 **Ready to work! Just say:**
 - `"translate new"` - Translate all new transcripts (asks for grammar sentence count: 3, 4, 5, or custom)
 - `"check files"` - Run validation and cleanup
-- `"delete VIDEO_ID"` - Remove a transcript
+- `"delete VIDEO_ID"` or `"remove VIDEO_ID"` - Remove a transcript
 
 **Remember:** Every translation automatically:
 1. Extracts multi-word phrases (2-4 words) as primary vocabulary
