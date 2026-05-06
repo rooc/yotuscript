@@ -103,13 +103,20 @@
 					>
 						<span class="material-icons">view_comfy</span>
 					</button>
-					<button
-						onclick="toggleFullscreen()"
-						title="Toggle fullscreen (F)"
-					>
-						<span class="material-icons">fullscreen</span>
-					</button>
-				</div>
+				<button
+					onclick="toggleFullscreen()"
+					title="Toggle fullscreen (F)"
+				>
+					<span class="material-icons">fullscreen</span>
+				</button>
+				<button
+					id="segmentRepeatBtn"
+					onclick="toggleSegmentRepeat()"
+					title="Segment repeat mode (R)"
+				>
+					<span class="material-icons">repeat_one</span>
+				</button>
+			</div>
 
 				<div id="statsLine" class="stats-line">
 					<span class="material-icons">school</span>
@@ -168,6 +175,13 @@
 			</button>
 			<button onclick="toggleFullscreen()" title="Exit fullscreen (F)">
 				<span class="material-icons">fullscreen_exit</span>
+			</button>
+			<button
+				id="fsSegmentRepeatBtn"
+				onclick="toggleSegmentRepeat()"
+				title="Segment repeat mode (R)"
+			>
+				<span class="material-icons">repeat_one</span>
 			</button>
 		</div>
 

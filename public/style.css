@@ -468,6 +468,19 @@ button.danger:hover {
 	font-size: 1.25rem;
 }
 
+#segmentRepeatBtn.active,
+#fsSegmentRepeatBtn.active {
+	background: var(--brand);
+}
+
+#fsSegmentRepeatBtn {
+	background: var(--bg-hover);
+}
+
+#fsSegmentRepeatBtn:hover {
+	background: var(--bg-hover-alt);
+}
+
 #status {
 	text-align: center;
 	font-size: 0.85rem;
@@ -817,4 +830,31 @@ button.active {
 	color: var(--text-primary);
 	line-height: 1.6;
 	white-space: pre-wrap;
+}
+
+/* Segment Repeat Mode - Pause Icon in Transcript */
+.segment-pause-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: 0.5rem;
+	padding: 0.15rem 0.4rem;
+	background-color: var(--brand);
+	border-radius: var(--radius-xs);
+	animation: pulse 1.5s ease-in-out infinite;
+}
+
+.segment-pause-icon .material-icons {
+	font-size: 0.875rem !important;
+	color: var(--text-primary);
+}
+
+@keyframes pulse {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.6;
+	}
 }

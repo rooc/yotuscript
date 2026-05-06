@@ -27,6 +27,8 @@ let isLearnedPanelCollapsed = true;
 let videoProgress = {};
 let statsData = { totalLearned: 0, totalWatchTimeHours: 0 };
 let videoWatchSessions = {};
+let isSegmentRepeatMode = false;
+let segmentRepeatEndTime = null;
 
 // --- DOM References ---
 const statusEl = document.getElementById("status");
@@ -35,6 +37,8 @@ const dualBtn = document.getElementById("dualBtn");
 const fsPauseBtn = document.getElementById("fsPauseBtn");
 const fsDualBtn = document.getElementById("fsDualBtn");
 const transcriptContainer = document.getElementById("transcript");
+const segmentRepeatBtn = document.getElementById("segmentRepeatBtn");
+const fsSegmentRepeatBtn = document.getElementById("fsSegmentRepeatBtn");
 
 // --- Learned Videos (server + localStorage) ---
 
@@ -305,14 +309,18 @@ function renderTranscriptLine() {
 		? translationData[activeIndex].text
 		: null;
 
+	const pauseIconHtml = isSegmentRepeatMode
+		? '<span class="segment-pause-icon"><span class="material-icons">pause</span></span>'
+		: '';
+
 	if (isDualMode && translated) {
 		transcriptContainer.innerHTML = `
 			<div class="transcript-dual">
-				<div class="transcript-line original"><span>${original}</span></div>
+				<div class="transcript-line original"><span>${original}</span>${pauseIconHtml}</div>
 				<div class="transcript-line translated"><span>${translated}</span></div>
 			</div>`;
 	} else {
-		transcriptContainer.innerHTML = `<div class="transcript-line"><span>${original}</span></div>`;
+		transcriptContainer.innerHTML = `<div class="transcript-line"><span>${original}</span>${pauseIconHtml}</div>`;
 	}
 }
 
@@ -328,9 +336,46 @@ function updateDisplay() {
 		}
 	}
 
-	if (newIndex !== activeIndex && newIndex >= 0) {
-		activeIndex = newIndex;
+	// Auto-pause at end of segment when in segment repeat mode
+	// If the video has advanced to the next segment, pause immediately
+	if (isSegmentRepeatMode && activeIndex >= 0 && newIndex > activeIndex && !isPaused) {
+		if (player) {
+			player.pauseVideo();
+		}
+		isPaused = true;
+
+		// Keep display on the segment we just watched
+		activeIndex = activeIndex;
 		renderTranscriptLine();
+
+		// Update button icons
+		const icon = pauseBtn.querySelector(".material-icons");
+		const fsIcon = fsPauseBtn.querySelector(".material-icons");
+		if (icon) icon.textContent = "play_arrow";
+		if (fsIcon) fsIcon.textContent = "play_arrow";
+		pauseBtn.classList.add("active");
+		fsPauseBtn.classList.add("active");
+
+		const segmentModeIndicator = " [REPEAT]";
+		const segmentCompleteMsg = ` - Segment ${activeIndex + 1} complete (Enter to replay)`;
+		setStatus(
+			`${formatTime(currentTime)} / ${formatTime(totalDuration)} | Line ${activeIndex + 1}/${transcriptData.length}${segmentModeIndicator} (PAUSED)${segmentCompleteMsg}`,
+		);
+		return;
+	}
+
+	if (newIndex !== activeIndex && newIndex >= 0) {
+		// In repeat mode, don't advance to next segment while paused
+		if (isSegmentRepeatMode && isPaused && newIndex > activeIndex) {
+			// Stay on current segment - don't update activeIndex
+		} else {
+			activeIndex = newIndex;
+			// Update segment end time when index changes
+			if (isSegmentRepeatMode) {
+				updateSegmentEndTime();
+			}
+			renderTranscriptLine();
+		}
 	}
 
 	if (totalDuration > 0) {
@@ -338,8 +383,9 @@ function updateDisplay() {
 			`${(currentTime / totalDuration) * 100}%`;
 	}
 
+	const segmentModeIndicator = isSegmentRepeatMode ? " [REPEAT]" : "";
 	setStatus(
-		`${formatTime(currentTime)} / ${formatTime(totalDuration)} | Line ${activeIndex + 1}/${transcriptData.length} ${isPaused ? "(PAUSED)" : ""}`,
+		`${formatTime(currentTime)} / ${formatTime(totalDuration)} | Line ${activeIndex + 1}/${transcriptData.length}${segmentModeIndicator} ${isPaused ? "(PAUSED)" : ""}`,
 	);
 }
 
@@ -470,6 +516,73 @@ function toggleFullscreen() {
 	}
 	fsPauseBtn.classList.toggle("active", isPaused);
 	fsDualBtn.classList.toggle("active", isDualMode);
+	fsSegmentRepeatBtn.classList.toggle("active", isSegmentRepeatMode);
+}
+
+// --- Segment Repeat Mode ---
+
+function toggleSegmentRepeat() {
+	isSegmentRepeatMode = !isSegmentRepeatMode;
+	segmentRepeatBtn.classList.toggle("active", isSegmentRepeatMode);
+	if (fsSegmentRepeatBtn) fsSegmentRepeatBtn.classList.toggle("active", isSegmentRepeatMode);
+
+	console.log(`SegmentRepeat: Mode ${isSegmentRepeatMode ? 'ON' : 'OFF'}`);
+
+	if (isSegmentRepeatMode) {
+		updateSegmentEndTime();
+		setStatus("Segment repeat mode ON - Press Enter to replay");
+	} else {
+		segmentRepeatEndTime = null;
+		setStatus("Segment repeat mode OFF");
+	}
+
+	// Re-render to show/hide pause icon
+	if (activeIndex >= 0) renderTranscriptLine();
+}
+
+function updateSegmentEndTime() {
+	if (activeIndex < 0 || activeIndex >= transcriptData.length) {
+		segmentRepeatEndTime = null;
+		console.log("SegmentRepeat: Invalid index, endTime cleared");
+		return;
+	}
+	
+	const currentSegment = transcriptData[activeIndex];
+	const nextSegment = transcriptData[activeIndex + 1];
+	
+	if (nextSegment) {
+		segmentRepeatEndTime = nextSegment.time;
+		console.log(`SegmentRepeat: End time set to ${segmentRepeatEndTime}s (next segment start)`);
+	} else {
+		// Last segment - use current segment time + duration
+		segmentRepeatEndTime = currentSegment.time + (currentSegment.dur || 3);
+		console.log(`SegmentRepeat: End time set to ${segmentRepeatEndTime}s (last segment + duration)`);
+	}
+}
+
+function replayCurrentSegment() {
+	if (activeIndex < 0 || activeIndex >= transcriptData.length) return;
+
+	const segmentTime = transcriptData[activeIndex].time;
+	console.log(`SegmentRepeat: Replaying segment ${activeIndex + 1} from ${segmentTime}s`);
+	currentTime = segmentTime;
+
+	if (player) {
+		player.seekTo(segmentTime, true);
+		player.playVideo();
+	}
+
+	isPaused = false;
+	updateSegmentEndTime();
+	updateDisplay();
+
+	// Update button icons
+	const icon = pauseBtn.querySelector(".material-icons");
+	const fsIcon = fsPauseBtn.querySelector(".material-icons");
+	if (icon) icon.textContent = "pause";
+	if (fsIcon) fsIcon.textContent = "pause";
+	pauseBtn.classList.remove("active");
+	fsPauseBtn.classList.remove("active");
 }
 
 // --- Learned Tracking ---
@@ -866,6 +979,12 @@ function toggleGrammarPanel() {
 function loadByVideoId(videoId) {
 	if (currentVideoId && currentVideoId !== videoId) {
 		saveVideoProgress();
+		// Reset segment repeat mode when switching videos
+		if (isSegmentRepeatMode) {
+			isSegmentRepeatMode = false;
+			segmentRepeatBtn.classList.remove("active");
+			if (fsSegmentRepeatBtn) fsSegmentRepeatBtn.classList.remove("active");
+		}
 	}
 	currentVideoId = videoId;
 	document.querySelectorAll(".transcript-tag").forEach((tag) => {
@@ -1060,5 +1179,13 @@ document.addEventListener("keydown", function (e) {
 	if (e.code === "KeyL" && !e.ctrlKey && !e.metaKey) {
 		e.preventDefault();
 		toggleLearned(currentVideoId);
+	}
+	if (e.code === "KeyR" && !e.ctrlKey && !e.metaKey) {
+		e.preventDefault();
+		toggleSegmentRepeat();
+	}
+	if (e.code === "Enter" && isSegmentRepeatMode) {
+		e.preventDefault();
+		replayCurrentSegment();
 	}
 });
