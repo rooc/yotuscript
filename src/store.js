@@ -5,7 +5,7 @@
  * between the internal markdown format and the XML payload the frontend expects.
  *
  * Transcript line format (markdown):
- *   **M:SS** · Some text here
+ *   **M:SS** Some text here
  *
  * Internal representation:
  *   { start: number, dur: number, text: string }
@@ -18,7 +18,7 @@ const { TRANSCRIPTS_DIR, VOCAB_DIR, GRAMMAR_DIR, SUMMARY_DIR } = require('./conf
  * Parse a markdown transcript file into timed lines.
  *
  * Supports two timestamp formats:
- *   **H:MM:SS** · Text  (or **MM:SS** · Text)
+ *   **H:MM:SS** Text  (or **MM:SS** Text)
  *   [MM:SS] Text          (fallback)
  *
  * @param {string} content  — raw file content
@@ -30,8 +30,8 @@ function parseTranscriptFile(content, filename) {
     const lines = [];
 
     if (ext === '.md' || ext === '.txt') {
-        // Primary format: **H:MM:SS** · Text or **MM:SS** · Text
-        const regex = /\*\*(\d{1,2}):(\d{2})(?::(\d{2}))?\*\*\s*[·•]\s*(.+)/g;
+        // Primary format: **H:MM:SS** Text or **MM:SS** Text (· separator optional)
+        const regex = /\*\*(\d{1,2}):(\d{2})(?::(\d{2}))?\*\*\s*(?:[·•]\s*)?(.+)/g;
         let match;
         while ((match = regex.exec(content)) !== null) {
             const first = parseInt(match[1]);

@@ -108,9 +108,9 @@ title: "Video Title in Spanish"
 source: "https://www.youtube.com/watch?v=VIDEO_ID"
 ---
 
-**0:00** · Primera línea en español
-**0:05** · Segunda línea en español
-**1:23** · Tercera línea en español
+**0:00** Primera línea en español
+**0:05** Segunda línea en español
+**1:23** Tercera línea en español
 ```
 
 **Timestamp formats:**
@@ -132,9 +132,9 @@ title: "Video Title in Spanish"
 source: "https://www.youtube.com/watch?v=VIDEO_ID"
 ---
 
-**0:00** · Primera línea en español
-**0:05** · Segunda línea en español
-**1:23** · Tercera línea en español
+**0:00** Primera línea en español
+**0:05** Segunda línea en español
+**1:23** Tercera línea en español
 ```
 
 **"copy-paste" format:**
@@ -160,12 +160,12 @@ Text line 3
 1. **Remove** the `type: "copy-paste"` line from frontmatter
 2. **Convert** alternating timestamp/text lines to inline format:
    - Input: `0:00` followed by newline, then `Text line`
-   - Output: `**0:00** · Text line`
+   - Output: `**0:00** Text line`
 3. **Remove artifacts:**
    - Section headers (lines without timestamps that precede timestamps) - DELETE these
    - Audio markers like `[música]`, `[risas]`, `[aplausos]` - DELETE these
    - Empty lines between timestamped entries - DELETE these
-4. **Final format should be:** Only frontmatter + timestamped lines (`**M:SS** · text`)
+ 4. **Final format should be:** Only frontmatter + timestamped lines (`**M:SS** text`)
 
 **Example conversion:**
 ```
@@ -191,9 +191,9 @@ title: "Video Title"
 source: "https://www.youtube.com/watch?v=ID"
 ---
 
-**0:00** · 99% de las especies que han habitado la
-**0:03** · Tierra ya se extinguieron
-**0:06** · Nueva sección aquí
+**0:00** 99% de las especies que han habitado la
+**0:03** Tierra ya se extinguieron
+**0:06** Nueva sección aquí
 ```
 
 **Note:** Section headers ("Intro", "Las Extinciones") and audio markers (`[música]`) are removed.
@@ -212,9 +212,9 @@ title: "Video Title in Spanish (English Translation)"
 source: "https://www.youtube.com/watch?v=VIDEO_ID"
 ---
 
-**0:00** · First line in English
-**0:05** · Second line in English
-**1:23** · Third line in English
+**0:00** First line in English
+**0:05** Second line in English
+**1:23** Third line in English
 ```
 
 ### Translation Guidelines
@@ -234,11 +234,11 @@ source: "https://www.youtube.com/watch?v=VIDEO_ID"
 
 **Example:**
 ```
-Spanish: **0:15** · ¡Qué padre! Vamos al cine.
-English: **0:15** · How cool! Let's go to the movies.
+Spanish: **0:15** ¡Qué padre! Vamos al cine.
+English: **0:15** How cool! Let's go to the movies.
 
-Spanish: **1:30** · Estoy hasta la madre de esto.
-English: **1:30** · I'm fed up with this. (Mexican slang)
+Spanish: **1:30** Estoy hasta la madre de esto.
+English: **1:30** I'm fed up with this. (Mexican slang)
 ```
 
 ---
@@ -483,9 +483,9 @@ title: "Un diente menos"
 source: "https://www.youtube.com/watch?v=087XVp3JIpk"
 ---
 
-**0:00** · Hola a todos y bienvenidos a un nuevo episodio
-**0:05** · de nuestro podcast para aprender español
-**0:10** · aquí hablamos español de una manera no muy rápida
+**0:00** Hola a todos y bienvenidos a un nuevo episodio
+**0:05** de nuestro podcast para aprender español
+**0:10** aquí hablamos español de una manera no muy rápida
 ```
 
 ### Output: `transcripts/087XVp3JIpk_translation.md`
@@ -495,9 +495,9 @@ title: "Un diente menos (English Translation)"
 source: "https://www.youtube.com/watch?v=087XVp3JIpk"
 ---
 
-**0:00** · Hello everyone and welcome to a new episode
-**0:05** · of our podcast to learn Spanish
-**0:10** · here we speak Spanish in a not very fast way
+**0:00** Hello everyone and welcome to a new episode
+**0:05** of our podcast to learn Spanish
+**0:10** here we speak Spanish in a not very fast way
 ```
 
 ### Output: `vocab/087XVp3JIpk_vocab.json`
