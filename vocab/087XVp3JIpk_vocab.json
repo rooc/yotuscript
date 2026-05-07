@@ -1,0 +1,607 @@
+{
+  "bienvenidos": {
+    "translation": "welcome",
+    "pos": "adjective",
+    "context": "Hola a todos y bienvenidos a un nuevo episodio"
+  },
+  "episodio": {
+    "translation": "episode",
+    "pos": "noun",
+    "context": "un nuevo episodio de nuestro podcast"
+  },
+  "manera": {
+    "translation": "way / manner",
+    "pos": "noun",
+    "context": "de una manera no muy rápida"
+  },
+  "menciono": {
+    "translation": "I mention",
+    "pos": "verb",
+    "context": "cuando menciono una palabra difícil"
+  },
+  "palabra": {
+    "translation": "word",
+    "pos": "noun",
+    "context": "una palabra difícil"
+  },
+  "difícil": {
+    "translation": "difficult",
+    "pos": "adjective",
+    "context": "una palabra difícil"
+  },
+  "perlas": {
+    "translation": "pearls",
+    "pos": "noun",
+    "context": "estas Perlas que tenemos en la boca"
+  },
+  "masticar": {
+    "translation": "to chew",
+    "pos": "verb",
+    "context": "para masticar hacer romper la comida"
+  },
+  "romper": {
+    "translation": "to break",
+    "pos": "verb",
+    "context": "hacer romper la comida"
+  },
+  "comida": {
+    "translation": "food",
+    "pos": "noun",
+    "context": "romper la comida en la boca"
+  },
+  "dentista": {
+    "translation": "dentist",
+    "pos": "noun",
+    "context": "ayer fui al dentista"
+  },
+  "menos": {
+    "translation": "less / minus",
+    "pos": "adjective",
+    "context": "salí con un diente menos"
+  },
+  "tragic": {
+    "translation": "tragic",
+    "pos": "adjective",
+    "context": "un diente menos tragic"
+  },
+  "contar": {
+    "translation": "to tell",
+    "pos": "verb",
+    "context": "no os voy a contar mis problemas"
+  },
+  "problemas": {
+    "translation": "problems",
+    "pos": "noun",
+    "context": "mis problemas"
+  },
+  "experiencia": {
+    "translation": "experience",
+    "pos": "noun",
+    "context": "fue una experiencia interesante"
+  },
+  "interesante": {
+    "translation": "interesting",
+    "pos": "adjective",
+    "context": "una experiencia interesante"
+  },
+  "sacado": {
+    "translation": "extracted / taken out",
+    "pos": "verb",
+    "context": "nunca me habían sacado un diente"
+  },
+  "sentí": {
+    "translation": "I felt",
+    "pos": "verb",
+    "context": "me sentí especial"
+  },
+  "especial": {
+    "translation": "special",
+    "pos": "adjective",
+    "context": "me sentí especial"
+  },
+  "normalmente": {
+    "translation": "normally",
+    "pos": "adverb",
+    "context": "normalmente este diente"
+  },
+  "contexto": {
+    "translation": "context",
+    "pos": "noun",
+    "context": "contexto me sacaron una muela"
+  },
+  "muela del juicio": {
+    "translation": "wisdom tooth",
+    "pos": "noun phrase",
+    "context": "me sacaron una muela del juicio"
+  },
+  "acordamos": {
+    "translation": "we remember",
+    "pos": "verb",
+    "context": "que no nos acordamos de ellos"
+  },
+  "duelen": {
+    "translation": "they hurt",
+    "pos": "verb",
+    "context": "cuando nos salen duelen muchísimo"
+  },
+  "muchísimo": {
+    "translation": "very much / a lot",
+    "pos": "adverb",
+    "context": "duelen muchísimo"
+  },
+  "operación": {
+    "translation": "operation",
+    "pos": "noun",
+    "context": "Es una operación muy rápida"
+  },
+  "rápida": {
+    "translation": "quick / fast",
+    "pos": "adjective",
+    "context": "una operación muy rápida"
+  },
+  "tranquila": {
+    "translation": "calm / easy",
+    "pos": "adjective",
+    "context": "una operación muy rápida tranquila"
+  },
+  "raíz": {
+    "translation": "root",
+    "pos": "noun",
+    "context": "estos dientes tienen una raíz"
+  },
+  "calmó": {
+    "translation": "calmed",
+    "pos": "verb",
+    "context": "no me calmó eso"
+  },
+  "sacándome": {
+    "translation": "taking out / extracting",
+    "pos": "verb",
+    "context": "el dentista sacándome el diente"
+  },
+  "observé": {
+    "translation": "I observed",
+    "pos": "verb",
+    "context": "observé lo que había sacado"
+  },
+  "sangre": {
+    "translation": "blood",
+    "pos": "noun",
+    "context": "los dientes sus raíces sangre"
+  },
+  "obviously": {
+    "translation": "obviously",
+    "pos": "adverb",
+    "context": "raíces sangre obviously"
+  },
+  "superior": {
+    "translation": "superior",
+    "pos": "adjective",
+    "context": "me creo superior al resto"
+  },
+  "resto": {
+    "translation": "rest / remainder",
+    "pos": "noun",
+    "context": "al resto de los humanos"
+  },
+  "humanos": {
+    "translation": "humans",
+    "pos": "noun",
+    "context": "el resto de los humanos"
+  },
+  "rareza": {
+    "translation": "rarity / oddity",
+    "pos": "noun",
+    "context": "mi rareza mi don"
+  },
+  "don": {
+    "translation": "gift / talent",
+    "pos": "noun",
+    "context": "mi don es tener tres raíces"
+  },
+  "algodones": {
+    "translation": "cotton balls",
+    "pos": "noun",
+    "context": "me puso mis algodones"
+  },
+  "algodón": {
+    "translation": "cotton",
+    "pos": "noun",
+    "context": "la bola de algodón"
+  },
+  "bola": {
+    "translation": "ball",
+    "pos": "noun",
+    "context": "la bola de algodón"
+  },
+  "material": {
+    "translation": "material",
+    "pos": "noun",
+    "context": "este material del que están hechas"
+  },
+  "hechas": {
+    "translation": "made",
+    "pos": "verb",
+    "context": "del que están hechas las camisas"
+  },
+  "hámster": {
+    "translation": "hamster",
+    "pos": "noun",
+    "context": "yo ya Parecía un hámster"
+  },
+  "ardilla": {
+    "translation": "squirrel",
+    "pos": "noun",
+    "context": "parecía una ardilla"
+  },
+  "anestesia": {
+    "translation": "anesthesia",
+    "pos": "noun",
+    "context": "con la anestesia"
+  },
+  "explotar": {
+    "translation": "to exploit / take advantage",
+    "pos": "verb",
+    "context": "vamos a explotar esta situación"
+  },
+  "situación": {
+    "translation": "situation",
+    "pos": "noun",
+    "context": "explotar esta situación"
+  },
+  "tumbaden": {
+    "translation": "lying down",
+    "pos": "adjective",
+    "context": "estaba tumbaden"
+  },
+  "avanzada": {
+    "translation": "advanced",
+    "pos": "adjective",
+    "context": "una edad más avanzada"
+  },
+  "sabiduría": {
+    "translation": "wisdom",
+    "pos": "noun",
+    "context": "cuando tenemos más sabiduría"
+  },
+  "dramatic": {
+    "translation": "dramatic",
+    "pos": "adjective",
+    "context": "we make it more dramatic"
+  },
+  "serious": {
+    "translation": "serious",
+    "pos": "adjective",
+    "context": "more dramatic more serious"
+  },
+  "vestigio": {
+    "translation": "vestige / trace",
+    "pos": "noun",
+    "context": "son un vestigio de nuestros antepasados"
+  },
+  "antepasados": {
+    "translation": "ancestors",
+    "pos": "noun",
+    "context": "de nuestros antepasados humanos"
+  },
+  "mandíbulas": {
+    "translation": "jaws",
+    "pos": "noun",
+    "context": "tenían mandíbulas más grandes"
+  },
+  "adicionales": {
+    "translation": "additional",
+    "pos": "adjective",
+    "context": "necesitaban muelas adicionales"
+  },
+  "fibrosos": {
+    "translation": "fibrous",
+    "pos": "adjective",
+    "context": "alimentos duros y fibrosos"
+  },
+  "procesar": {
+    "translation": "to process",
+    "pos": "verb",
+    "context": "carnes sin procesar"
+  },
+  "respirar": {
+    "translation": "to breathe",
+    "pos": "verb",
+    "context": "déjame respirar"
+  },
+  "evolutivo": {
+    "translation": "evolutionary",
+    "pos": "adjective",
+    "context": "un vestigio evolutivo"
+  },
+  "restos": {
+    "translation": "remains",
+    "pos": "noun",
+    "context": "como restos de la evolución"
+  },
+  "evolución": {
+    "translation": "evolution",
+    "pos": "noun",
+    "context": "de la evolución de nuestros antepasados"
+  },
+  "mandíbula": {
+    "translation": "jaw",
+    "pos": "noun",
+    "context": "la mandíbula es esto"
+  },
+  "moler": {
+    "translation": "to grind",
+    "pos": "verb",
+    "context": "para moler y triturar"
+  },
+  "triturar": {
+    "translation": "to crush",
+    "pos": "verb",
+    "context": "moler y triturar alimentos"
+  },
+  "digerir": {
+    "translation": "to digest",
+    "pos": "verb",
+    "context": "difíciles de digerir"
+  },
+  "dieta": {
+    "translation": "diet",
+    "pos": "noun",
+    "context": "cambios en la dieta"
+  },
+  "morfología": {
+    "translation": "morphology",
+    "pos": "noun",
+    "context": "la morfología facial"
+  },
+  "facial": {
+    "translation": "facial",
+    "pos": "adjective",
+    "context": "morfología facial"
+  },
+  "blandos": {
+    "translation": "soft",
+    "pos": "adjective",
+    "context": "alimentos más blandos"
+  },
+  "mamuts": {
+    "translation": "mammoths",
+    "pos": "noun",
+    "context": "matando mamuts"
+  },
+  "mordiscos": {
+    "translation": "bites",
+    "pos": "noun",
+    "context": "pegando mordiscos a los animales"
+  },
+  "vivos": {
+    "translation": "alive",
+    "pos": "adjective",
+    "context": "animales así vivos"
+  },
+  "arrancando": {
+    "translation": "tearing out",
+    "pos": "verb",
+    "context": "arrancando esa carne"
+  },
+  "carne": {
+    "translation": "meat",
+    "pos": "noun",
+    "context": "arrancando esa carne"
+  },
+  "hueso": {
+    "translation": "bone",
+    "pos": "noun",
+    "context": "hueso para aquí hueso para allá"
+  },
+  "esfuerzo": {
+    "translation": "effort",
+    "pos": "noun",
+    "context": "Supongo que era más esfuerzo"
+  },
+  "morderte": {
+    "translation": "biting",
+    "pos": "verb",
+    "context": "el de morderte las uñas"
+  },
+  "uñas": {
+    "translation": "nails",
+    "pos": "noun",
+    "context": "morderte las uñas"
+  },
+  "plástico": {
+    "translation": "plastic",
+    "pos": "noun",
+    "context": "morder el plástico"
+  },
+  "inútil": {
+    "translation": "useless",
+    "pos": "adjective",
+    "context": "completamente inútil"
+  },
+  "heredado": {
+    "translation": "inherited",
+    "pos": "verb",
+    "context": "hemos heredado algo"
+  },
+  "padecer": {
+    "translation": "to suffer / endure",
+    "pos": "verb",
+    "context": "nos hace sufrir y padecer"
+  },
+  "merecemos": {
+    "translation": "we deserve",
+    "pos": "verb",
+    "context": "tal vez nos lo merecemos"
+  },
+  "excusa": {
+    "translation": "excuse",
+    "pos": "noun",
+    "context": "tengo la excusa de comer"
+  },
+  "helado": {
+    "translation": "ice cream",
+    "pos": "noun",
+    "context": "comer mucho helado"
+  },
+  "ciega": {
+    "translation": "blind / crazy",
+    "pos": "adjective",
+    "context": "ponerme ciega a helado"
+  },
+  "frío": {
+    "translation": "cold",
+    "pos": "noun",
+    "context": "el frío del helado"
+  },
+  "sanar": {
+    "translation": "to heal",
+    "pos": "verb",
+    "context": "me ayuda a sanar"
+  },
+  "hadas": {
+    "translation": "fairies",
+    "pos": "noun",
+    "context": "no creemos en las hadas"
+  },
+  "ratones": {
+    "translation": "mice / rats",
+    "pos": "noun",
+    "context": "no creemos en los ratones"
+  },
+  "ratoncito": {
+    "translation": "little mouse",
+    "pos": "noun",
+    "context": "el ratoncito Pérez"
+  },
+  "cualquier": {
+    "translation": "any",
+    "pos": "adjective",
+    "context": "no cualquier ratón"
+  },
+  "estación": {
+    "translation": "station",
+    "pos": "noun",
+    "context": "una estación de tren"
+  },
+  "sucio": {
+    "translation": "dirty",
+    "pos": "adjective",
+    "context": "el primer ratón sucio"
+  },
+  "encontramos": {
+    "translation": "we find",
+    "pos": "verb",
+    "context": "que encontramos"
+  },
+  "bendecir": {
+    "translation": "to bless",
+    "pos": "verb",
+    "context": "vas a bendecir los dientes"
+  },
+  "único": {
+    "translation": "unique",
+    "pos": "adjective",
+    "context": "un ratón único especial"
+  },
+  "esquina": {
+    "translation": "corner",
+    "pos": "noun",
+    "context": "esquina sucia del parque"
+  },
+  "parque": {
+    "translation": "park",
+    "pos": "noun",
+    "context": "del parque"
+  },
+  "cuidado": {
+    "translation": "careful",
+    "pos": "expression",
+    "context": "cuidado Entonces el ratoncito"
+  },
+  "noches": {
+    "translation": "nights",
+    "pos": "noun",
+    "context": "viene por las noches"
+  },
+  "mete": {
+    "translation": "gets in / puts",
+    "pos": "verb",
+    "context": "se mete debajo de la almohada"
+  },
+  "almohada": {
+    "translation": "pillow",
+    "pos": "noun",
+    "context": "debajo de la almohada"
+  },
+  "coge": {
+    "translation": "grabs / takes",
+    "pos": "verb",
+    "context": "coge el el diente"
+  },
+  "necesita": {
+    "translation": "needs",
+    "pos": "verb",
+    "context": "necesita dientes para qué"
+  },
+  "regalito": {
+    "translation": "little gift",
+    "pos": "noun",
+    "context": "deja un regalito"
+  },
+  "moneda": {
+    "translation": "coin",
+    "pos": "noun",
+    "context": "una moneda de 1"
+  },
+  "situación": {
+    "translation": "situation",
+    "pos": "noun",
+    "context": "la situación económica actual"
+  },
+  "económica": {
+    "translation": "economic",
+    "pos": "adjective",
+    "context": "situación económica actual"
+  },
+  "actual": {
+    "translation": "current",
+    "pos": "adjective",
+    "context": "situación económica actual"
+  },
+  "interesa": {
+    "translation": "interests",
+    "pos": "verb",
+    "context": "Me interesa"
+  },
+  "comentarios": {
+    "translation": "comments",
+    "pos": "noun",
+    "context": "en los comentarios"
+  },
+  "tonta": {
+    "translation": "silly / dumb",
+    "pos": "adjective",
+    "context": "estoy un poco tonta"
+  },
+  "culpes": {
+    "translation": "blame",
+    "pos": "verb",
+    "context": "no me culpes"
+  },
+  "próximo": {
+    "translation": "next",
+    "pos": "adjective",
+    "context": "en el próximo episodio"
+  },
+  "chute al ego": {
+    "translation": "ego boost",
+    "pos": "expression",
+    "context": "me has dado un chute al ego"
+  },
+  "ponerse ciega": {
+    "translation": "to go crazy / indulge",
+    "pos": "expression",
+    "context": "ponerme ciega a helado"
+  }
+}
