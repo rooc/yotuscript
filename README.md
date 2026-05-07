@@ -15,7 +15,7 @@ mv "Video Title.md" transcripts/VIDEO_ID.md
 node server.js
 ```
 
-Open http://localhost:7070
+Open http://localhost:9090
 
 ---
 
@@ -37,7 +37,7 @@ Open http://localhost:7070
 node server.js
 ```
 
-Open http://localhost:7070
+Open http://localhost:9090
 
 ## Keyboard Shortcuts
 
@@ -49,6 +49,9 @@ Open http://localhost:7070
 | `D` | Toggle dual translation |
 | `F` | Toggle fullscreen mode |
 | `L` | Toggle learned status (resets progress) |
+| `R` | Toggle segment repeat mode |
+| `Enter` | Replay current segment (in repeat mode) |
+| `Esc` | Close popup/modal |
 
 ## Statistics
 
@@ -267,7 +270,7 @@ node server.js
 - Stats are stored in both localStorage and `data/stats.json`
 
 **Server won't start?**
-- Check port 7070 is available
+- Check port 9090 is available
 - Verify Node.js is installed
 
 ## License

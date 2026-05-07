@@ -1,7 +1,7 @@
 /**
  * Application entry point.
  *
- * Bootstraps the HTTP server on PORT (default 7070).
+ * Bootstraps the HTTP server on PORT (default 9090).
  *
  * Usage:
  *   node server.js          → start the web server
