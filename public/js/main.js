@@ -12,6 +12,7 @@ import {
 	availableTranscripts,
 	setActiveIndex,
 	setAvailableTranscripts,
+	learnedVideos,
 } from './modules/state.js';
 import { 
 	loadLearnedVideos, 
@@ -134,9 +135,13 @@ async function init() {
 	// Setup keyboard handlers
 	setupKeyboardHandlers();
 	
-	// Load last watched video
+	// Load last watched video only if it's in available (unlearned) transcripts
 	const lastVideoId = getLastWatchedVideo(videoProgress);
-	if (lastVideoId) {
+	const unlearnedVideoIds = transcripts
+		.filter(t => !learnedVideos.includes(t.videoId))
+		.map(t => t.videoId);
+	
+	if (lastVideoId && unlearnedVideoIds.includes(lastVideoId)) {
 		loadByVideoId(lastVideoId);
 	}
 }

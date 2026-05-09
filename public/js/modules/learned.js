@@ -13,6 +13,10 @@ import {
 	setDraggedVideoId,
 	draggedVideoId,
 	setActiveIndex,
+	transcriptContainer,
+	player,
+	setCurrentVideoId,
+	setCurrentTime,
 } from './state.js';
 import { setStatus } from './utils.js';
 import { 
@@ -21,7 +25,6 @@ import {
 	loadAvailableTranscripts as reloadTranscripts 
 } from './api.js';
 import { updateStatsDisplay, incrementLearnedCount, decrementLearnedCount } from './stats.js';
-import { setPlayer } from './state.js';
 
 /**
  * Toggle learned status for a video.
@@ -45,9 +48,52 @@ export function toggleLearned(videoId) {
 	resetVideoProgress(videoId);
 	setStatus(`Progress reset for video`);
 
+	// If marking current video as learned, clear the screen
+	if (!wasLearned && videoId === currentVideoId) {
+		clearCurrentVideo();
+	}
+
 	saveLearnedAPI();
 	updateStatsDisplay();
 	renderTranscriptLists();
+}
+
+/**
+ * Clear the current video from the screen.
+ */
+function clearCurrentVideo() {
+	// Pause the player
+	if (player) {
+		player.pauseVideo();
+	}
+	
+	// Clear the transcript display
+	if (transcriptContainer) {
+		transcriptContainer.innerHTML = '<div class="loading">Select a transcript to start</div>';
+	}
+	
+	// Reset video title
+	const titleEl = document.getElementById("videoTitle");
+	if (titleEl) {
+		titleEl.textContent = "YouTube Video with Transcript";
+		titleEl.href = "#";
+	}
+	
+	// Reset state
+	setCurrentVideoId(null);
+	setActiveIndex(-1);
+	setCurrentTime(0);
+	
+	// Update progress bar
+	const progressFill = document.getElementById("progressFill");
+	if (progressFill) {
+		progressFill.style.width = "0%";
+	}
+	
+	// Remove active class from all tags
+	document.querySelectorAll(".transcript-tag").forEach((tag) => {
+		tag.classList.remove("active");
+	});
 }
 
 /**
