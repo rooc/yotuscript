@@ -38,8 +38,9 @@ import { renderTranscriptLine } from './modules/transcript.js';
  * @param {string} videoId - YouTube video ID
  */
 export async function loadByVideoId(videoId) {
-	// Save progress for previous video
+	// Save progress for previous video and end watch session
 	if (currentVideoId && currentVideoId !== videoId) {
+		endWatchSession();
 		await saveVideoProgress(currentVideoId, player, -1);
 		// Reset segment repeat mode when switching videos
 		setIsSegmentRepeatMode(false);

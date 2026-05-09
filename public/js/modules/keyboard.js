@@ -9,7 +9,7 @@ import {
 	isSegmentRepeatMode,
 } from './state.js';
 import { togglePause, rewindBack, rewindForward, restartVideo, toggleFullscreen, toggleSegmentRepeat, replayCurrentSegment } from './player.js';
-import { toggleDual } from './transcript.js';
+import { toggleDual, renderTranscriptLine } from './transcript.js';
 import { toggleLearned } from './learned.js';
 
 /**
@@ -48,7 +48,7 @@ function handleKeyDown(e) {
 	// D - Toggle dual translation
 	if (e.code === "KeyD" && !e.ctrlKey && !e.metaKey) {
 		e.preventDefault();
-		toggleDual();
+		toggleDual(renderTranscriptLine);
 		return;
 	}
 
