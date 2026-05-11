@@ -1,0 +1,326 @@
+{
+  "asistente": {
+    "translation": "assistant",
+    "pos": "noun",
+    "level": "B1",
+    "context": "asistente estilo chat GPT o Gemini"
+  },
+  "escalar": {
+    "translation": "to scale up",
+    "pos": "verb",
+    "level": "B1",
+    "context": "las grandes tecnológicas siempre quieren escalar"
+  },
+  "marca un antes y un después": {
+    "translation": "marks a before and after / is a game changer",
+    "pos": "expression",
+    "level": "B2",
+    "context": "lo que han hecho esta vez marca un antes y un después"
+  },
+  "fallos": {
+    "translation": "bugs / flaws / errors",
+    "pos": "noun",
+    "level": "B1",
+    "context": "encontrar estos fallos"
+  },
+  "hackers": {
+    "translation": "hackers",
+    "pos": "noun",
+    "level": "B1",
+    "context": "el trabajo de los mejores hackers del mundo"
+  },
+  "potencial": {
+    "translation": "potential",
+    "pos": "adjective",
+    "level": "B1",
+    "context": "todos los ojos están puestos en su potencial peligro"
+  },
+  "hermano mayor": {
+    "translation": "big brother / older sibling",
+    "pos": "noun phrase",
+    "level": "B1",
+    "context": "Maizos es el hermano mayor de Claude"
+  },
+  "roza lo sobrehumano": {
+    "translation": "borders on the superhuman",
+    "pos": "verb phrase",
+    "level": "B2",
+    "context": "diseñado para un razonamiento que roza lo sobrehumano"
+  },
+  "razonamiento de alta fidelidad": {
+    "translation": "high-fidelity reasoning",
+    "pos": "noun phrase",
+    "level": "B2",
+    "context": "Antropic lo llama razonamiento de alta fidelidad"
+  },
+  "adivina": {
+    "translation": "guesses",
+    "pos": "verb",
+    "level": "B1",
+    "context": "no adivina palabras"
+  },
+  "tasa de éxito": {
+    "translation": "success rate",
+    "pos": "noun phrase",
+    "level": "B1",
+    "context": "Su tasa de éxito es increíble"
+  },
+  "increíble": {
+    "translation": "incredible",
+    "pos": "adjective",
+    "level": "B1",
+    "context": "Su tasa de éxito es increíble"
+  },
+  "escanea": {
+    "translation": "scans",
+    "pos": "verb",
+    "level": "B1",
+    "context": "escanea sistemas operativos y navegadores"
+  },
+  "aprovecharlos": {
+    "translation": "to exploit them / take advantage of them",
+    "pos": "verb",
+    "level": "B1",
+    "context": "puede diseñar cómo aprovecharlos"
+  },
+  "comprometido": {
+    "translation": "compromised",
+    "pos": "adjective",
+    "level": "B2",
+    "context": "ha comprometido sistemas que se consideraban blindados"
+  },
+  "consideraban": {
+    "translation": "were considered",
+    "pos": "verb",
+    "level": "B1",
+    "context": "sistemas que se consideraban hasta ahora blindados"
+  },
+  "blindados": {
+    "translation": "shielded / armored / secure",
+    "pos": "adjective",
+    "level": "B2",
+    "context": "sistemas que se consideraban hasta ahora blindados"
+  },
+  "en pocas palabras": {
+    "translation": "in short / in a few words",
+    "pos": "expression",
+    "level": "B1",
+    "context": "En pocas palabras, se ha demostrado"
+  },
+  "demostrado": {
+    "translation": "shown / demonstrated / proven",
+    "pos": "verb",
+    "level": "B1",
+    "context": "se ha demostrado que maizos es capaz de encontrar vulnerabilidades"
+  },
+  "vulnerabilidades": {
+    "translation": "vulnerabilities",
+    "pos": "noun",
+    "level": "B2",
+    "context": "encontrar vulnerabilidades de día cero"
+  },
+  "de día cero": {
+    "translation": "zero-day",
+    "pos": "expression",
+    "level": "B2",
+    "context": "vulnerabilidades de día cero"
+  },
+  "de forma masiva": {
+    "translation": "on a massive scale",
+    "pos": "expression",
+    "level": "B1",
+    "context": "de forma masiva"
+  },
+  "parches": {
+    "translation": "patches",
+    "pos": "noun",
+    "level": "B2",
+    "context": "para los que todavía no existen parches"
+  },
+  "lanzamiento": {
+    "translation": "release / launch",
+    "pos": "noun",
+    "level": "B1",
+    "context": "antes de su lanzamiento oficial"
+  },
+  "cazó": {
+    "translation": "caught / hunted",
+    "pos": "verb",
+    "level": "B1",
+    "context": "la IA los cazó en un escaneo automático"
+  },
+  "tiene en una jaula": {
+    "translation": "has it in a cage / keeps it locked up",
+    "pos": "expression",
+    "level": "B1",
+    "context": "la tiene en una jaula"
+  },
+  "convoca": {
+    "translation": "summons / calls together",
+    "pos": "verb",
+    "level": "B1",
+    "context": "mientras convoca gigantes como Apple, Microsoft"
+  },
+  "malas intenciones": {
+    "translation": "bad intentions / malicious intent",
+    "pos": "noun phrase",
+    "level": "B1",
+    "context": "alguien con malas intenciones"
+  },
+  "routers": {
+    "translation": "routers",
+    "pos": "noun",
+    "level": "B1",
+    "context": "en los routers más seguros de internet"
+  },
+  "teniendo esto en cuenta": {
+    "translation": "taking this into account / considering this",
+    "pos": "expression",
+    "level": "B1",
+    "context": "Teniendo esto en cuenta, parece que es el héroe"
+  },
+  "prever": {
+    "translation": "to foresee / predict",
+    "pos": "verb",
+    "level": "B2",
+    "context": "ya puedes prever qué pasaría si cae en malas manos"
+  },
+  "cae en malas manos": {
+    "translation": "falls into the wrong hands",
+    "pos": "expression",
+    "level": "B1",
+    "context": "si cae en malas manos"
+  },
+  "aliado": {
+    "translation": "ally",
+    "pos": "noun",
+    "level": "B1",
+    "context": "Myzos es el aliado perfecto"
+  },
+  "vacuna universal": {
+    "translation": "universal vaccine",
+    "pos": "noun phrase",
+    "level": "B1",
+    "context": "una vacuna universal contra los hackers"
+  },
+  "consigue": {
+    "translation": "manages to / succeeds in",
+    "pos": "verb",
+    "level": "B1",
+    "context": "si alguien consigue liberarlo"
+  },
+  "liberarlo": {
+    "translation": "to free it / release it",
+    "pos": "verb",
+    "level": "B1",
+    "context": "si alguien consigue liberarlo"
+  },
+  "engañarlo": {
+    "translation": "to trick it / deceive it",
+    "pos": "verb",
+    "level": "B1",
+    "context": "o engañarlo"
+  },
+  "tirar abajo": {
+    "translation": "to bring down / tear down",
+    "pos": "verb phrase",
+    "level": "B1",
+    "context": "podría tirar abajo todo internet"
+  },
+  "objetivo": {
+    "translation": "target / objective",
+    "pos": "noun",
+    "level": "B1",
+    "context": "ya es el objetivo número uno de los hackers"
+  },
+  "experimentar": {
+    "translation": "to experiment / try out",
+    "pos": "verb",
+    "level": "B1",
+    "context": "ya intentan experimentar conversiones filtradas"
+  },
+  "filtradas": {
+    "translation": "leaked / filtered",
+    "pos": "adjective",
+    "level": "B1",
+    "context": "experimentar conversiones filtradas"
+  },
+  "la pregunta del millón": {
+    "translation": "the million-dollar question",
+    "pos": "expression",
+    "level": "B1",
+    "context": "Es la pregunta del millón"
+  },
+  "colabora": {
+    "translation": "collaborates",
+    "pos": "verb",
+    "level": "B1",
+    "context": "colabora de forma privada con las grandes empresas"
+  },
+  "parchear": {
+    "translation": "to patch",
+    "pos": "verb",
+    "level": "B2",
+    "context": "para parchear sus propios sistemas"
+  },
+  "se rumorea": {
+    "translation": "it's rumored",
+    "pos": "expression",
+    "level": "B1",
+    "context": "Se rumorea que podría llegar una versión capada"
+  },
+  "capada": {
+    "translation": "limited / capped / restricted",
+    "pos": "adjective",
+    "level": "B2",
+    "context": "una versión capada para usuarios pro"
+  },
+  "límites muy marcados": {
+    "translation": "very marked limits / strict limitations",
+    "pos": "noun phrase",
+    "level": "B1",
+    "context": "con límites muy marcados"
+  },
+  "sea como sea": {
+    "translation": "be that as it may / whatever happens",
+    "pos": "expression",
+    "level": "B2",
+    "context": "Sea como sea, Cloud Myzos podría marcar un antes y un después"
+  },
+  "game changer": {
+    "translation": "game changer",
+    "pos": "noun",
+    "level": "B1",
+    "context": "esta es un game changer absoluto"
+  },
+  "suficientemente": {
+    "translation": "sufficiently",
+    "pos": "adverb",
+    "level": "B1",
+    "context": "sea suficientemente potente"
+  },
+  "encargadas": {
+    "translation": "in charge of / responsible for",
+    "pos": "adjective",
+    "level": "B1",
+    "context": "las personas encargadas de estos temas"
+  },
+  "a fondo": {
+    "translation": "thoroughly / in depth",
+    "pos": "expression",
+    "level": "B1",
+    "context": "revisarlo todo a fondo"
+  },
+  "demasiado tarde": {
+    "translation": "too late",
+    "pos": "expression",
+    "level": "B1",
+    "context": "antes de que sea demasiado tarde"
+  },
+  "sugerencia": {
+    "translation": "suggestion",
+    "pos": "noun",
+    "level": "B1",
+    "context": "cualquier duda o sugerencia"
+  }
+}

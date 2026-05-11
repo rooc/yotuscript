@@ -1,0 +1,500 @@
+{
+  "memé": {
+    "translation": "meme",
+    "pos": "noun",
+    "level": "B1",
+    "context": "siendo un memé desde hace una década"
+  },
+  "cuidado": {
+    "translation": "be careful / watch out",
+    "pos": "expression",
+    "level": "B1",
+    "context": "Pues cuidado porque este 2026"
+  },
+  "pingüino": {
+    "translation": "penguin (Linux mascot)",
+    "pos": "noun",
+    "level": "B1",
+    "context": "el pingüino se ha cansado"
+  },
+  "se ha cansado": {
+    "translation": "has gotten tired",
+    "pos": "verb phrase",
+    "level": "B1",
+    "context": "el pingüino se ha cansado de que se rían de él"
+  },
+  "se rían de él": {
+    "translation": "being laughed at / make fun of him",
+    "pos": "expression",
+    "level": "B1",
+    "context": "de que se rían de él"
+  },
+  "ya basta": {
+    "translation": "enough / that's enough",
+    "pos": "expression",
+    "level": "B1",
+    "context": "ha dicho que ya basta de números pequeños"
+  },
+  "dar un golpe en la mesa": {
+    "translation": "make a bold statement / slam on the table",
+    "pos": "expression",
+    "level": "B2",
+    "context": "es hora de dar un golpe en la mesa"
+  },
+  "ha nacido": {
+    "translation": "has been born",
+    "pos": "verb phrase",
+    "level": "B1",
+    "context": "Ha nacido Linux 7.0"
+  },
+  "cambio de motor": {
+    "translation": "engine change",
+    "pos": "noun phrase",
+    "level": "B1",
+    "context": "es el cambio de motor que el código abierto necesitaba"
+  },
+  "código abierto": {
+    "translation": "open source",
+    "pos": "noun phrase",
+    "level": "B1",
+    "context": "cambio de motor que el código abierto necesitaba"
+  },
+  "eterno secundario": {
+    "translation": "eternal underdog / eternal supporting actor",
+    "pos": "noun phrase",
+    "level": "B2",
+    "context": "dejar de ser el eterno secundario siempre por detrás de Windows"
+  },
+  "por detrás": {
+    "translation": "behind",
+    "pos": "preposition",
+    "level": "B1",
+    "context": "siempre por detrás de Windows"
+  },
+  "para que nos entendamos": {
+    "translation": "so we understand each other / to put it simply",
+    "pos": "expression",
+    "level": "B1",
+    "context": "Para que nos entendamos, Linux 7.0 no es un programa"
+  },
+  "núcleo": {
+    "translation": "core / kernel",
+    "pos": "noun",
+    "level": "B1",
+    "context": "es el kernel, el núcleo"
+  },
+  "han metido mano aquí": {
+    "translation": "have had a hand here / have gotten involved",
+    "pos": "expression",
+    "level": "B1",
+    "context": "hasta Microsoft han metido mano aquí"
+  },
+  "enemigos": {
+    "translation": "enemies",
+    "pos": "noun",
+    "level": "B1",
+    "context": "ya no se ven como enemigos, sino como aliados"
+  },
+  "aliados": {
+    "translation": "allies",
+    "pos": "noun",
+    "level": "B1",
+    "context": "sino como aliados para que tu hardware funcione"
+  },
+  "hardware": {
+    "translation": "hardware",
+    "pos": "noun",
+    "level": "B1",
+    "context": "para que tu hardware funcione como nunca"
+  },
+  "novedades": {
+    "translation": "new features / news",
+    "pos": "noun",
+    "level": "B1",
+    "context": "vayamos a las novedades"
+  },
+  "joyas de la corona": {
+    "translation": "crown jewels",
+    "pos": "noun phrase",
+    "level": "B2",
+    "context": "esas grandes joyas de la corona que integrará"
+  },
+  "integrará": {
+    "translation": "will integrate",
+    "pos": "verb",
+    "level": "B1",
+    "context": "joyas de la corona que integrará"
+  },
+  "cambiarlo todo": {
+    "translation": "change everything",
+    "pos": "verb phrase",
+    "level": "B1",
+    "context": "que prometen cambiarlo todo"
+  },
+  "dependía": {
+    "translation": "depended",
+    "pos": "verb",
+    "level": "B1",
+    "context": "la inteligencia artificial dependía de la tarjeta gráfica"
+  },
+  "tarjeta gráfica": {
+    "translation": "graphics card",
+    "pos": "noun phrase",
+    "level": "B1",
+    "context": "dependía de la tarjeta gráfica que gasta batería"
+  },
+  "gasta": {
+    "translation": "drains / consumes / spends",
+    "pos": "verb",
+    "level": "B1",
+    "context": "tarjeta gráfica que gasta batería"
+  },
+  "como si no hubiera": {
+    "translation": "as if there were no / as if there wasn't",
+    "pos": "expression",
+    "level": "B1",
+    "context": "gasta batería como si no hubiera un mañana"
+  },
+  "habla directamente": {
+    "translation": "talks directly",
+    "pos": "verb phrase",
+    "level": "B1",
+    "context": "Linux 7.0 habla directamente con las NPU"
+  },
+  "consumo": {
+    "translation": "consumption",
+    "pos": "noun",
+    "level": "B1",
+    "context": "menos de consumo de batería"
+  },
+  "no le tiembla el pulso": {
+    "translation": "doesn't hesitate / doesn't flinch",
+    "pos": "expression",
+    "level": "B2",
+    "context": "a Linux Storbals no le tiembla el pulso"
+  },
+  "anticuado": {
+    "translation": "outdated / old-fashioned",
+    "pos": "adjective",
+    "level": "B1",
+    "context": "para dejar lo anticuado atrás"
+  },
+  "soporte": {
+    "translation": "support",
+    "pos": "noun",
+    "level": "B1",
+    "context": "ha eliminado el soporte para procesadores"
+  },
+  "procesadores": {
+    "translation": "processors",
+    "pos": "noun",
+    "level": "B1",
+    "context": "soporte para procesadores de los años 90"
+  },
+  "más ligero": {
+    "translation": "lighter",
+    "pos": "adjective",
+    "level": "B1",
+    "context": "un sistema más ligero y mucho más seguro"
+  },
+  "más tela que cortar": {
+    "translation": "much more to discuss / lots more material",
+    "pos": "expression",
+    "level": "B2",
+    "context": "hay mucha más tela que cortar"
+  },
+  "portátil": {
+    "translation": "laptop / portable",
+    "pos": "noun",
+    "level": "B1",
+    "context": "instalado Linux en un portátil"
+  },
+  "habrás notado": {
+    "translation": "you will have noticed",
+    "pos": "verb phrase",
+    "level": "B1",
+    "context": "habrás notado que a veces la batería vuela"
+  },
+  "la batería vuela": {
+    "translation": "the battery drains fast / flies",
+    "pos": "expression",
+    "level": "B1",
+    "context": "la batería vuela comparado con Windows"
+  },
+  "programación de tareas": {
+    "translation": "task scheduling",
+    "pos": "noun phrase",
+    "level": "B2",
+    "context": "sistema de programación de tareas o scheduler"
+  },
+  "scheduler": {
+    "translation": "scheduler",
+    "pos": "noun",
+    "level": "B2",
+    "context": "sistema de programación de tareas o scheduler"
+  },
+  "optimizado": {
+    "translation": "optimized",
+    "pos": "adjective",
+    "level": "B1",
+    "context": "scheduler optimizado para arquitecturas híbridas"
+  },
+  "arquitecturas híbridas": {
+    "translation": "hybrid architectures",
+    "pos": "noun phrase",
+    "level": "B2",
+    "context": "optimizado para arquitecturas híbridas"
+  },
+  "núcleos": {
+    "translation": "cores",
+    "pos": "noun",
+    "level": "B1",
+    "context": "tienen núcleos potentes y núcleos eficientes"
+  },
+  "eficientes": {
+    "translation": "efficient",
+    "pos": "adjective",
+    "level": "B1",
+    "context": "núcleos potentes y núcleos eficientes"
+  },
+  "estados de reposo": {
+    "translation": "idle states / rest states",
+    "pos": "noun phrase",
+    "level": "B2",
+    "context": "han mejorado los estados de reposo del procesador"
+  },
+  "duerme": {
+    "translation": "puts to sleep / sleeps",
+    "pos": "verb",
+    "level": "B1",
+    "context": "el kernel duerme partes del chip"
+  },
+  "microsegundos": {
+    "translation": "microseconds",
+    "pos": "noun",
+    "level": "B2",
+    "context": "en microsegundos, ahorrando energía"
+  },
+  "ahorrando": {
+    "translation": "saving",
+    "pos": "verb",
+    "level": "B1",
+    "context": "ahorrando energía en los pequeños espacios"
+  },
+  "pulsaciones": {
+    "translation": "keystrokes / pulses",
+    "pos": "noun",
+    "level": "B1",
+    "context": "entre tus pulsaciones de teclas"
+  },
+  "provocado": {
+    "translation": "caused / provoked",
+    "pos": "verb",
+    "level": "B1",
+    "context": "ha provocado un auténtico tsunami"
+  },
+  "auténtico": {
+    "translation": "authentic / real",
+    "pos": "adjective",
+    "level": "B1",
+    "context": "un auténtico tsunami en todo tipo de foros"
+  },
+  "tsunami": {
+    "translation": "tsunami",
+    "pos": "noun",
+    "level": "B1",
+    "context": "provocado un auténtico tsunami"
+  },
+  "foros": {
+    "translation": "forums",
+    "pos": "noun",
+    "level": "B1",
+    "context": "en todo tipo de foros"
+  },
+  "lenguaje de programación": {
+    "translation": "programming language",
+    "pos": "noun phrase",
+    "level": "B1",
+    "context": "el lenguaje de programación Rust"
+  },
+  "fallos graves": {
+    "translation": "serious bugs / serious flaws",
+    "pos": "noun phrase",
+    "level": "B1",
+    "context": "El 70% de los fallos graves de seguridad"
+  },
+  "errores de memoria": {
+    "translation": "memory errors",
+    "pos": "noun phrase",
+    "level": "B2",
+    "context": "vienen de errores de memoria en el lenguaje antiguo"
+  },
+  "elimina de raíz": {
+    "translation": "eliminates from the root / eliminates completely",
+    "pos": "expression",
+    "level": "B2",
+    "context": "Rust los elimina de raíz"
+  },
+  "ingeniero": {
+    "translation": "engineer",
+    "pos": "noun",
+    "level": "B1",
+    "context": "Miguel Ojeda, el ingeniero español al mando"
+  },
+  "al mando": {
+    "translation": "in charge / in command",
+    "pos": "expression",
+    "level": "B1",
+    "context": "el ingeniero español al mando"
+  },
+  "firmado": {
+    "translation": "signed",
+    "pos": "verb",
+    "level": "B1",
+    "context": "ha firmado el parche definitivo"
+  },
+  "parche": {
+    "translation": "patch",
+    "pos": "noun",
+    "level": "B2",
+    "context": "ha firmado el parche definitivo"
+  },
+  "definitivo": {
+    "translation": "definitive / final",
+    "pos": "adjective",
+    "level": "B1",
+    "context": "el parche definitivo"
+  },
+  "a partir de ahora": {
+    "translation": "from now on",
+    "pos": "expression",
+    "level": "B1",
+    "context": "A partir de ahora, el futuro de Linux se escribe"
+  },
+  "se plantean": {
+    "translation": "ask themselves / are asking",
+    "pos": "verb phrase",
+    "level": "B1",
+    "context": "muchos los que se plantean la pregunta del millón"
+  },
+  "rendimiento": {
+    "translation": "performance",
+    "pos": "noun",
+    "level": "B1",
+    "context": "matar a Windows 11 en rendimiento y gaming"
+  },
+  "gaming": {
+    "translation": "gaming",
+    "pos": "noun",
+    "level": "B1",
+    "context": "en rendimiento y gaming ya le está ganando"
+  },
+  "sistemas de archivos": {
+    "translation": "file systems",
+    "pos": "noun phrase",
+    "level": "B2",
+    "context": "Gracias a mejoras en sistemas de archivos"
+  },
+  "auténtica delicia": {
+    "translation": "real delight / absolute delight",
+    "pos": "expression",
+    "level": "B1",
+    "context": "jugar en Linux hoy es una auténtica delicia"
+  },
+  "morir de éxito": {
+    "translation": "dying of success",
+    "pos": "expression",
+    "level": "B2",
+    "context": "Linux tiene un riesgo, morir de éxito"
+  },
+  "reto": {
+    "translation": "challenge",
+    "pos": "noun",
+    "level": "B1",
+    "context": "El reto es ser lo suficientemente fácil"
+  },
+  "lo suficientemente": {
+    "translation": "sufficiently / enough",
+    "pos": "expression",
+    "level": "B1",
+    "context": "ser lo suficientemente fácil para un usuario normal"
+  },
+  "usuario normal": {
+    "translation": "normal user / average user",
+    "pos": "noun phrase",
+    "level": "B1",
+    "context": "para un usuario normal sin perder esa libertad"
+  },
+  "libertad": {
+    "translation": "freedom",
+    "pos": "noun",
+    "level": "B1",
+    "context": "sin perder esa libertad y esa magia"
+  },
+  "enamoró": {
+    "translation": "captivated / fell in love",
+    "pos": "verb",
+    "level": "B1",
+    "context": "esa magia que enamoró a los mastequis"
+  },
+  "impaciente": {
+    "translation": "eager / impatient",
+    "pos": "adjective",
+    "level": "B1",
+    "context": "si estás impaciente por probarlo"
+  },
+  "hoja de ruta": {
+    "translation": "roadmap",
+    "pos": "noun phrase",
+    "level": "B1",
+    "context": "la hoja de ruta es clara"
+  },
+  "ventana de mezcla": {
+    "translation": "merge window",
+    "pos": "noun phrase",
+    "level": "B2",
+    "context": "se abre la ventana de mezcla donde se integrarán"
+  },
+  "se integrarán": {
+    "translation": "will be integrated",
+    "pos": "verb",
+    "level": "B1",
+    "context": "donde se integrarán todas las novedades"
+  },
+  "voluntarios": {
+    "translation": "volunteers",
+    "pos": "noun",
+    "level": "B1",
+    "context": "miles de voluntarios en todo el mundo"
+  },
+  "mediados de abril": {
+    "translation": "mid-April",
+    "pos": "expression",
+    "level": "B1",
+    "context": "la versión final llegará a mediados de abril"
+  },
+  "actualización continua": {
+    "translation": "continuous update",
+    "pos": "noun phrase",
+    "level": "B1",
+    "context": "distribuciones de actualización continua"
+  },
+  "rolling release": {
+    "translation": "rolling release",
+    "pos": "noun phrase",
+    "level": "B2",
+    "context": "las llamadas rolling release"
+  },
+  "puerto de entrada": {
+    "translation": "entry point / gateway",
+    "pos": "noun phrase",
+    "level": "B1",
+    "context": "será tu puerto de entrada para disfrutar"
+  },
+  "disfrutar": {
+    "translation": "to enjoy",
+    "pos": "verb",
+    "level": "B1",
+    "context": "para disfrutar de esta nueva era"
+  }
+}

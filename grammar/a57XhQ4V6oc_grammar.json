@@ -1,0 +1,17 @@
+[
+  {
+    "spanish": "Pues cuidado porque este 2026 el pingüino se ha cansado de que se rían de él.",
+    "english": "Well, be careful because in 2026 the penguin has gotten tired of being laughed at.",
+    "explanation": "Present perfect (se ha cansado) to describe a recent state, with subjunctive in 'de que se rían' expressing emotion"
+  },
+  {
+    "spanish": "Ha nacido Linux 7.0 y no es una actualización más, es el cambio de motor que el código abierto necesitaba.",
+    "english": "Linux 7.0 has been born and it's not just another update, it's the engine change that open source needed.",
+    "explanation": "Present perfect (ha nacido) for recent events, with relative clause using 'que' and past tense 'necesitaba'"
+  },
+  {
+    "spanish": "Si alguna vez has instalado Linux en un portátil, habrás notado que a veces la batería vuela comparado con Windows.",
+    "english": "If you've ever installed Linux on a laptop, you'll have noticed that sometimes the battery drains fast compared to Windows.",
+    "explanation": "Conditional perfect (habrás notado) used for deductions about the past, combined with present perfect in the 'if' clause"
+  }
+]

@@ -1,0 +1,3 @@
+{
+  "summary": "Este vídeo presenta Linux 7.0, la nueva versión del kernel anunciada por Linus Torvalds para 2026. El vídeo explica tres grandes novedades: la integración con NPU para inteligencia artificial local con menor consumo de batería, la eliminación de soporte para procesadores antiguos de los años 90 para hacer el sistema más ligero, y un nuevo scheduler optimizado para arquitecturas híbridas que mejora la duración de la batería. Además, destaca la incorporación del lenguaje Rust al kernel, que elimina errores de memoria. El vídeo concluye mencionando que la versión final llegará en abril y que Ubuntu 26.04 será la puerta de entrada para muchos usuarios."
+}
