@@ -22,8 +22,9 @@ source: https://www.youtube.com/watch?v=zbIthxsUu1A
 **1:34** A parable. How is it? No,
 **1:36** eh, I've never in my life heard anyone say that. I don't know if it's a Catalan like my posh Catalan that nobody speaks or from certain regions that
 **1:44** I don't live in, but in principle everyone says esmorzar. That's why many Catalans instead of saying almorzar for lunchtime,
-**1:51** say almorzar for breakfast time. That's confusing. It sounds like breakfast to us. Okay, okay. With the whole topic of breakfasts and meals, now you're going to see that it's crazy in languages. Maybe what for us is breakfast, for other places is dinner.
-**2:00** Well, well, the thing is that the form desdejuni is indeed registered, which would be, it would have the same etymology,
+**1:51** say almorzar for breakfast time. That's confusing. It sounds like breakfast to us. Okay, okay. With the whole topic of breakfasts and meals, now you're going to see that it's crazy in languages.
+**2:00** Maybe what for us is breakfast, for other places is dinner.
+**2:05** Well, well, the thing is that the form desdejuni is indeed registered, which would be, it would have the same etymology,
 **2:11** it would come from this same place, to exit the fast. How cool. In French, do you know how it is? No,
 **2:17** yes, well it's like it's the same to exit the fast, but tiny,
 **2:20** that's why it's petit. And in Romanian it's the same. Mic is small. Mic dejun also. Oh,
