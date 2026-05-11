@@ -38,7 +38,7 @@ export function toggleLearned(videoId) {
 	
 	if (wasLearned) {
 		learnedVideos.splice(index, 1);
-		decrementLearnedCount();
+		// Note: Not decrementing stats - cumulative tracking only increases
 	} else {
 		learnedVideos.push(videoId);
 		incrementLearnedCount();

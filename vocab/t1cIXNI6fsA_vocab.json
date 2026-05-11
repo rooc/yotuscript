@@ -1,0 +1,242 @@
+{
+  "conversaciones": {
+    "translation": "conversations",
+    "pos": "noun",
+    "level": "B1",
+    "context": "Las conversaciones entre Irán y Estados Unidos están en problemas"
+  },
+  "enfrentamiento": {
+    "translation": "confrontation / clash",
+    "pos": "noun",
+    "level": "B1",
+    "context": "después del enfrentamiento naval cerca del estrecho de Ormuz"
+  },
+  "estrecho": {
+    "translation": "strait",
+    "pos": "noun",
+    "level": "B2",
+    "context": "el estrecho de Ormuz"
+  },
+  "estancadas": {
+    "translation": "stuck / stalled",
+    "pos": "adjective",
+    "level": "B1",
+    "context": "ambas partes están estancadas en mensajes públicos duros"
+  },
+  "exdiplomático": {
+    "translation": "former diplomat",
+    "pos": "noun",
+    "level": "B2",
+    "context": "Un exdiplomático dijo que ambas partes están estancadas"
+  },
+  "sospechoso": {
+    "translation": "suspect",
+    "pos": "noun",
+    "level": "B1",
+    "context": "sospechoso clave en el caso de la masacre"
+  },
+  "masacre": {
+    "translation": "massacre",
+    "pos": "noun",
+    "level": "B2",
+    "context": "el caso de la masacre de Tadamón"
+  },
+  "vendados": {
+    "translation": "blindfolded",
+    "pos": "adjective",
+    "level": "B1",
+    "context": "con los ojos vendados"
+  },
+  "reñida": {
+    "translation": "tight / close (competition)",
+    "pos": "adjective",
+    "level": "B2",
+    "context": "La carrera por el título está muy reñida"
+  },
+  "aficionados": {
+    "translation": "fans / supporters",
+    "pos": "noun",
+    "level": "B1",
+    "context": "Reporteros y aficionados siguen de cerca"
+  },
+  "canasta": {
+    "translation": "basket",
+    "pos": "noun",
+    "level": "B1",
+    "context": "después de una canasta en el último minuto"
+  },
+  "ventaja": {
+    "translation": "advantage",
+    "pos": "noun",
+    "level": "B1",
+    "context": "La victoria le dio a Atlanta una ventaja de 2 a 1"
+  },
+  "entretenimiento": {
+    "translation": "entertainment",
+    "pos": "noun",
+    "level": "B1",
+    "context": "las últimas noticias del mundo del entretenimiento"
+  },
+  "interpretar": {
+    "translation": "to play / to perform (a role)",
+    "pos": "verb",
+    "level": "B1",
+    "context": "espera interpretar muchos papeles diferentes"
+  },
+  "papeles": {
+    "translation": "roles",
+    "pos": "noun",
+    "level": "B1",
+    "context": "interpretar muchos papeles diferentes"
+  },
+  "promoción": {
+    "translation": "promotion",
+    "pos": "noun",
+    "level": "B1",
+    "context": "Madonna lanzó una nueva promoción"
+  },
+  "edición limitada": {
+    "translation": "limited edition",
+    "pos": "noun phrase",
+    "level": "B1",
+    "context": "conseguir un disco de vinilo de edición limitada"
+  },
+  "lograr ponerse de acuerdo": {
+    "translation": "to manage to reach an agreement",
+    "pos": "verb phrase",
+    "level": "B1",
+    "context": "los políticos no logran ponerse de acuerdo"
+  },
+  "presupuesto": {
+    "translation": "budget",
+    "pos": "noun",
+    "level": "B1",
+    "context": "ponerse de acuerdo sobre el presupuesto"
+  },
+  "medidas": {
+    "translation": "measures / steps",
+    "pos": "noun",
+    "level": "B1",
+    "context": "El Senado está tomando nuevas medidas"
+  },
+  "vinculadas": {
+    "translation": "linked / connected",
+    "pos": "adjective",
+    "level": "B1",
+    "context": "personas vinculadas a un grupo del crimen organizado"
+  },
+  "operación": {
+    "translation": "operation",
+    "pos": "noun",
+    "level": "B1",
+    "context": "esta gran operación para detener la peligrosa violencia"
+  },
+  "tiroteo": {
+    "translation": "shooting",
+    "pos": "noun",
+    "level": "B2",
+    "context": "un tiroteo mortal en un famoso sitio arqueológico"
+  },
+  "arqueológico": {
+    "translation": "archaeological",
+    "pos": "adjective",
+    "level": "B2",
+    "context": "sitio arqueológico de pirámides"
+  },
+  "conmocionó": {
+    "translation": "shocked / stunned",
+    "pos": "verb",
+    "level": "B1",
+    "context": "El ataque conmocionó al país"
+  },
+  "interina": {
+    "translation": "interim / acting",
+    "pos": "adjective",
+    "level": "B2",
+    "context": "la presidenta interina Delsy Rodríguez"
+  },
+  "restricciones": {
+    "translation": "restrictions",
+    "pos": "noun",
+    "level": "B1",
+    "context": "Los rusos enfrentan más restricciones a internet"
+  },
+  "endurece": {
+    "translation": "tightens / hardens",
+    "pos": "verb",
+    "level": "B2",
+    "context": "el Kremlin endurece el control"
+  },
+  "chocaron": {
+    "translation": "collided / crashed",
+    "pos": "verb",
+    "level": "B1",
+    "context": "Dos trenes chocaron de frente"
+  },
+  "de frente": {
+    "translation": "head-on",
+    "pos": "expression",
+    "level": "B1",
+    "context": "Dos trenes chocaron de frente"
+  },
+  "gravemente heridas": {
+    "translation": "seriously injured",
+    "pos": "expression",
+    "level": "B1",
+    "context": "cinco personas resultaron gravemente heridas"
+  },
+  "madrugada": {
+    "translation": "early morning / dawn",
+    "pos": "noun",
+    "level": "B1",
+    "context": "el accidente ocurrido en la madrugada"
+  },
+  "glaciar": {
+    "translation": "glacier",
+    "pos": "noun",
+    "level": "B2",
+    "context": "Un enorme bloque de hielo glaciar"
+  },
+  "retrasa": {
+    "translation": "delays",
+    "pos": "verb",
+    "level": "B1",
+    "context": "lo que retrasa la temporada alta de montaña"
+  },
+  "afirman": {
+    "translation": "state / claim / assert",
+    "pos": "verb",
+    "level": "B1",
+    "context": "Los expertos afirman que crecerá más del 7%"
+  },
+  "incluso con": {
+    "translation": "even with",
+    "pos": "expression",
+    "level": "B1",
+    "context": "Esto ocurre incluso con los nuevos impuestos"
+  },
+  "impuestos": {
+    "translation": "taxes",
+    "pos": "noun",
+    "level": "B1",
+    "context": "incluso con los nuevos impuestos de Estados Unidos"
+  },
+  "concluimos": {
+    "translation": "we conclude",
+    "pos": "verb",
+    "level": "B1",
+    "context": "Con esto concluimos las noticias principales"
+  },
+  "acompáñarnos": {
+    "translation": "to join us / accompany us",
+    "pos": "verb",
+    "level": "B1",
+    "context": "Gracias por acompañarnos"
+  },
+  "novedades": {
+    "translation": "updates / news",
+    "pos": "noun",
+    "level": "B1",
+    "context": "más novedades sobre las últimas noticias"
+  }
+}
