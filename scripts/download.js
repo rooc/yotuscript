@@ -14,10 +14,8 @@
 const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
-const os = require('os');
 
-const DATA_ROOT = process.env.YOTUSCRIPT_DATA || path.join(os.homedir(), 'Sync', 'Data', 'yotuscript');
-const TRANSCRIPTS_DIR = path.join(DATA_ROOT, 'transcripts');
+const { TRANSCRIPTS_DIR } = require('../src/config');
 const TMP_DIR = '/tmp';
 
 function checkSpanishSubtitles(videoId) {

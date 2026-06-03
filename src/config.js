@@ -9,8 +9,10 @@ const os = require("os");
 
 const ROOT_DIR = path.join(__dirname, "..");
 
-// User data location — configurable via env var or defaults to ~/Sync/Data/yotuscript
-const DATA_ROOT = process.env.YOTUSCRIPT_DATA || path.join(os.homedir(), "Sync", "Data", "yotuscript");
+// User data location — configurable via env var or defaults to ~/Work/yotuscript/.data/
+const DATA_ROOT =
+	process.env.YOTUSCRIPT_DATA ||
+	path.join(os.homedir(), "Work", "yotuscript", ".data");
 
 /**
  * @typedef {Object} AppConfig
