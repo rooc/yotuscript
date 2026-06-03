@@ -21,6 +21,7 @@ npm-debug.log*
 # Editor
 .vscode/
 .idea/
+.data/
 *.swp
 *.swo
 *~
