@@ -1156,6 +1156,25 @@ button.active {
 	user-select: none;
 }
 
+.vocab-word-hidden {
+	color: var(--text-muted);
+	font-style: italic;
+	filter: blur(6px);
+	user-select: none;
+	cursor: pointer;
+	transition: filter 0.3s ease;
+}
+
+.vocab-word-hidden:hover {
+	filter: blur(3px);
+}
+
+.vocab-translation-prompt {
+	font-weight: 600;
+	color: var(--text-accent);
+	font-size: var(--text-lg);
+}
+
 .vocab-review-prompt {
 	display: flex;
 	flex-direction: row;
