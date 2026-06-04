@@ -22,6 +22,7 @@ npm-debug.log*
 .vscode/
 .idea/
 .data/
+data/
 *.swp
 *.swo
 *~
