@@ -11,14 +11,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const os = require('os');
-
-const DATA_ROOT = process.env.YOTUSCRIPT_DATA || path.join(os.homedir(), 'Sync', 'Data', 'yotuscript');
-const TRANSCRIPTS_DIR = path.join(DATA_ROOT, 'transcripts');
-const VOCAB_DIR = path.join(DATA_ROOT, 'vocab');
-const GRAMMAR_DIR = path.join(DATA_ROOT, 'grammar');
-const SUMMARY_DIR = path.join(DATA_ROOT, 'summary');
-const DATA_DIR = path.join(DATA_ROOT, 'data');
+const { TRANSCRIPTS_DIR, VOCAB_DIR, GRAMMAR_DIR, SUMMARY_DIR, DATA_DIR } = require('../src/config');
 
 function ensureDir(dir) {
     if (!fs.existsSync(dir)) {
@@ -290,7 +283,7 @@ const vocabularData = {
 
 function main() {
     console.log('Setting up demo data for Yotuscript...\n');
-    console.log(`Data root: ${DATA_ROOT}\n`);
+    console.log(`Data root: ${path.dirname(TRANSCRIPTS_DIR)}\n`);
 
     // Create directories
     ensureDir(TRANSCRIPTS_DIR);
