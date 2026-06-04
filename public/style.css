@@ -1033,7 +1033,14 @@ button.active {
 
 .vocabular-tag:hover {
 	background: var(--bg-hover);
-	border-color: var(--brand);
+}
+
+.vocabular-tag.reviewed-today {
+	opacity: 0.45;
+}
+
+.vocabular-tag.reviewed-today:hover {
+	opacity: 0.7;
 }
 
 .vocabular-tag-text {
@@ -1235,7 +1242,26 @@ button.active {
 }
 
 .vocab-review-btn .material-icons {
-	font-size: var(--text-base);
+	font-size: 1rem;
+}
+
+.vocab-all-reviewed {
+	text-align: center;
+	padding: var(--space-4) var(--space-2);
+}
+
+.vocab-all-reviewed .vocabular-modal-icon .material-icons {
+	font-size: 3rem;
+	color: var(--brand);
+}
+
+.vocab-all-reviewed .vocabular-modal-word {
+	font-size: var(--text-xl);
+	margin-bottom: var(--space-2);
+}
+
+.vocab-all-reviewed .vocabular-modal-context {
+	color: var(--text-subtle);
 }
 
 /* Make vocab words in transcript clickable */

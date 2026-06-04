@@ -16,6 +16,38 @@ import { saveVocabular } from "./api.js";
 let currentVocabularModalIndex = -1;
 let showingAnswer = false;
 
+// --- Daily Review Helpers ---
+
+function getTodayString() {
+	const d = new Date();
+	return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
+function isReviewedToday(item) {
+	return item.lastReviewed === getTodayString();
+}
+
+function setLastReviewed(index) {
+	const item = vocabularWords[index];
+	if (!item) return;
+	item.lastReviewed = getTodayString();
+}
+
+/**
+ * Find the next vocab word index that hasn't been reviewed today.
+ * Returns -1 if all words have been reviewed today.
+ * @param {number} startIndex - Index to start searching from
+ * @returns {number}
+ */
+function findNextUnreviewedIndex(startIndex = 0) {
+	if (vocabularWords.length === 0) return -1;
+	for (let i = 0; i < vocabularWords.length; i++) {
+		const idx = (startIndex + i) % vocabularWords.length;
+		if (!isReviewedToday(vocabularWords[idx])) return idx;
+	}
+	return -1;
+}
+
 /**
  * Get review count for a vocab word, initializing if needed.
  * @param {Object} item - Vocab word item
@@ -60,9 +92,11 @@ export function renderVocabularWords() {
 
 	let html = '<div class="vocabular-tags">';
 	vocabularWords.forEach((item, index) => {
+		const reviewedClass = isReviewedToday(item) ? " reviewed-today" : "";
+		const reviewedIcon = isReviewedToday(item) ? '<span class="material-icons" style="font-size:10px;opacity:0.6;">check_circle</span>' : "";
 		html += `
-			<div class="vocabular-tag" data-index="${index}" title="Click to see details">
-				<span class="vocabular-tag-text">${item.word}</span>
+			<div class="vocabular-tag${reviewedClass}" data-index="${index}" title="Click to see details">
+				<span class="vocabular-tag-text">${item.word}${reviewedIcon}</span>
 				<span class="vocabular-tag-remove" data-index="${index}" title="Remove">
 					<span class="material-icons">close</span>
 				</span>
@@ -105,7 +139,7 @@ export function addVocabularWord(word, translation, pos, context) {
 	const exists = vocabularWords.some((item) => item.word === word);
 	if (exists) return;
 
-	const newItem = { word, translation, pos, context, reviewCount: 0 };
+	const newItem = { word, translation, pos, context, reviewCount: 0, lastReviewed: null };
 	const newList = [...vocabularWords, newItem];
 	setVocabularWords(newList);
 	renderVocabularWords();
@@ -130,17 +164,40 @@ export function removeVocabularWord(index) {
 
 /**
  * Show vocabular modal for a specific word.
- * @param {number} index - Index of the vocabular word
+ * Skips words already reviewed today.
+ * @param {number} index - Preferred index of the vocabular word
  */
 export function showVocabularModal(index) {
-	const item = vocabularWords[index];
-	if (!item) return;
-
-	currentVocabularModalIndex = index;
-	showingAnswer = false;
+	// Find the next word that hasn't been reviewed today
+	const availableIndex = findNextUnreviewedIndex(index);
 
 	const modal = document.getElementById("vocabularModal");
 	const content = document.getElementById("vocabularModalContent");
+
+	if (availableIndex === -1) {
+		// All words reviewed today
+		currentVocabularModalIndex = -1;
+		showingAnswer = false;
+		content.innerHTML = `
+			<div class="vocabular-modal-item vocab-all-reviewed">
+				<div class="vocabular-modal-icon">
+					<span class="material-icons">check_circle</span>
+				</div>
+				<div class="vocabular-modal-text">
+					<div class="vocabular-modal-word">All caught up!</div>
+					<div class="vocabular-modal-context">You have reviewed all your vocabulary words for today. Come back tomorrow for more practice.</div>
+				</div>
+			</div>
+		`;
+		modal.classList.add("active");
+		return;
+	}
+
+	const item = vocabularWords[availableIndex];
+	if (!item) return;
+
+	currentVocabularModalIndex = availableIndex;
+	showingAnswer = false;
 
 	renderVocabModalContent(content, item);
 
@@ -302,47 +359,45 @@ document.addEventListener("keydown", function (event) {
 	const item = vocabularWords[currentVocabularModalIndex];
 	if (!item) return;
 
-	// Y - Yes, I remember (increment counter)
+	// Y - Yes, I remember (increment counter + mark reviewed today)
 	if (event.code === "KeyY") {
 		event.preventDefault();
 		if (!showingAnswer) {
 			const newCount = getReviewCount(item) + 1;
 			setReviewCount(currentVocabularModalIndex, newCount);
+			setLastReviewed(currentVocabularModalIndex);
 			showingAnswer = true;
 			const content = document.getElementById("vocabularModalContent");
 			renderVocabModalContent(content, item, true);
+			renderVocabularWords(); // update sidebar checkmarks
 		} else {
-			// If already showing answer, close modal or go to next
-			let nextIndex = currentVocabularModalIndex + 1;
-			if (nextIndex >= vocabularWords.length) nextIndex = 0;
-			showVocabularModal(nextIndex);
+			// If already showing answer, go to next unreviewed word
+			showVocabularModal(currentVocabularModalIndex + 1);
 		}
 		return;
 	}
 
-	// N - No, I don't remember (reset counter)
+	// N - No, I don't remember (reset counter + mark reviewed today)
 	if (event.code === "KeyN") {
 		event.preventDefault();
 		if (!showingAnswer) {
 			setReviewCount(currentVocabularModalIndex, 0);
+			setLastReviewed(currentVocabularModalIndex);
 			showingAnswer = true;
 			const content = document.getElementById("vocabularModalContent");
 			renderVocabModalContent(content, item, true);
+			renderVocabularWords(); // update sidebar checkmarks
 		} else {
-			// If already showing answer, close modal or go to next
-			let nextIndex = currentVocabularModalIndex + 1;
-			if (nextIndex >= vocabularWords.length) nextIndex = 0;
-			showVocabularModal(nextIndex);
+			// If already showing answer, go to next unreviewed word
+			showVocabularModal(currentVocabularModalIndex + 1);
 		}
 		return;
 	}
 
-	// Enter / Space - advance to next word (when showing answer)
+	// Enter / Space - advance to next unreviewed word (when showing answer)
 	if (showingAnswer && (event.code === "Enter" || event.code === "Space")) {
 		event.preventDefault();
-		let nextIndex = currentVocabularModalIndex + 1;
-		if (nextIndex >= vocabularWords.length) nextIndex = 0;
-		showVocabularModal(nextIndex);
+		showVocabularModal(currentVocabularModalIndex + 1);
 		return;
 	}
 
@@ -353,16 +408,18 @@ document.addEventListener("keydown", function (event) {
 		return;
 	}
 
-	// Arrow keys for navigation
+	// Arrow keys for navigation (skip words reviewed today)
 	if (event.key === "ArrowLeft") {
 		event.preventDefault();
 		let prevIndex = currentVocabularModalIndex - 1;
 		if (prevIndex < 0) prevIndex = vocabularWords.length - 1;
-		showVocabularModal(prevIndex);
+		const available = findNextUnreviewedIndex(prevIndex);
+		if (available !== -1) showVocabularModal(available);
 	} else if (event.key === "ArrowRight") {
 		event.preventDefault();
 		let nextIndex = currentVocabularModalIndex + 1;
 		if (nextIndex >= vocabularWords.length) nextIndex = 0;
-		showVocabularModal(nextIndex);
+		const available = findNextUnreviewedIndex(nextIndex);
+		if (available !== -1) showVocabularModal(available);
 	}
 });
