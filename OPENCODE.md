@@ -36,10 +36,12 @@ Or manually:
 
 **CRITICAL:** Before starting any translation, the input file MUST pass ALL validation checks below. If any check fails, stop and report the issue.
 
+**IMPORTANT:** Always read `src/config.js` first to get the correct paths. The transcript directory may be in `~/Sync/Data/yotuscript/transcripts/` or another location set via `YOTUSCRIPT_DATA` env var.
+
 ### ✅ Validation Checklist (MUST PASS ALL):
 
 1. **File Location & Extension**
-   - [ ] File is in `transcripts/` folder
+   - [ ] File is in the transcripts folder (read path from `src/config.js`)
    - [ ] File ends with `.md` extension
    - [ ] File does NOT contain `_translation` in filename
    - [ ] File does NOT have a matching `[ID]_translation.md` already
@@ -80,7 +82,7 @@ If validation fails, report exactly what's wrong:
 ## Step 1: Identify Files to Process
 
 ### ✅ Process these files:
-- Files in `transcripts/` folder
+- Files in transcripts folder (path from `src/config.js`)
 - End with `.md`
 - Do NOT contain `_translation` in filename
 - Do NOT have a matching `[ID]_translation.md`
@@ -641,10 +643,12 @@ Include **all forms** of A1-A2 words if they appear in **B1+ structures**:
 
 For each transcript, create **four** files:
 
-1. **Translation file** in `transcripts/` folder
-2. **Vocab file** in `vocab/` folder  
-3. **Grammar file** in `grammar/` folder
-4. **Summary file** in `summary/` folder
+1. **Translation file** in transcripts folder (path from `src/config.js`)
+2. **Vocab file** in vocab folder (path from `src/config.js`)
+3. **Grammar file** in grammar folder (path from `src/config.js`)
+4. **Summary file** in summary folder (path from `src/config.js`)
+
+**IMPORTANT:** Always read `src/config.js` to get actual paths. The user may have set `YOTUSCRIPT_DATA` env var to a custom location like `~/Sync/Data/yotuscript/`.
 
 ### Naming Convention
 
@@ -655,6 +659,8 @@ vocab/087XVp3JIpk_vocab.json       ← Vocabulary (you create this)
 grammar/087XVp3JIpk_grammar.json   ← Grammar sentences (you create this)
 summary/087XVp3JIpk_summary.json   ← Video summary (you create this)
 ```
+
+**Note:** The paths above are relative to the data root directory specified in `src/config.js` (defaults to `~/Sync/Data/yotuscript/` or value of `YOTUSCRIPT_DATA` env var).
 
 ---
 
@@ -804,13 +810,14 @@ After creating the files:
 ## Summary
 
 **Your job:**
-1. **Validate** `transcripts/[ID].md` has required frontmatter (title + source URL) and proper format
-2. Read `transcripts/[ID].md`
-3. Create `transcripts/[ID]_translation.md` (full English translation)
-4. Create `vocab/[ID]_vocab.json` (B1+ vocabulary with multi-word phrases)
-5. Create `grammar/[ID]_grammar.json` (user-selected number of sentences with B1+ grammar + explanations)
-6. Skip files that already have translations
-7. Exclude basic words (see `data/a1-a2.json`), proper nouns (see `data/proper-nouns.json`), and manual exclusions (see `data/manual-exclude.json`)
+1. **Read** `src/config.js` to get the correct data paths (especially if `YOTUSCRIPT_DATA` env var is set)
+2. **Validate** `transcripts/[ID].md` has required frontmatter (title + source URL) and proper format
+3. Read `transcripts/[ID].md` (using path from config)
+4. Create `transcripts/[ID]_translation.md` (full English translation, using path from config)
+5. Create `vocab/[ID]_vocab.json` (B1+ vocabulary with multi-word phrases, using path from config)
+6. Create `grammar/[ID]_grammar.json` (user-selected number of sentences with B1+ grammar + explanations, using path from config)
+7. Skip files that already have translations
+8. Exclude basic words (see `data/a1-a2.json`), proper nouns (see `data/proper-nouns.json`), and manual exclusions (see `data/manual-exclude.json`)
 
 **Goal:** Help language learners understand Spanish YouTube videos with accurate translations, contextual vocabulary, and grammar-focused learning sentences.
 
@@ -836,7 +843,8 @@ Performs validation and cleanup:
 Just say: `"check files"` or `"lint"`
 
 The AI will:
-- Scan all files in `transcripts/` and `vocab/`
+- Read `src/config.js` to get the correct paths
+- Scan all files in transcripts/ and vocab/ (using paths from config)
 - Report any issues found
 - Optionally fix them (with your approval)
 
@@ -905,12 +913,12 @@ After (merged lines):
 ### Delete Transcript
 **Command:** `"delete VIDEO_ID"` or `"remove VIDEO_ID"`
 
-Removes a transcript and all associated files:
-- `transcripts/VIDEO_ID.md`
-- `transcripts/VIDEO_ID_translation.md`
-- `vocab/VIDEO_ID_vocab.json`
-- `grammar/VIDEO_ID_grammar.json`
-- `summary/VIDEO_ID_summary.json`
+Removes a transcript and all associated files (reads paths from `src/config.js`):
+- transcripts/VIDEO_ID.md
+- transcripts/VIDEO_ID_translation.md
+- vocab/VIDEO_ID_vocab.json
+- grammar/VIDEO_ID_grammar.json
+- summary/VIDEO_ID_summary.json
 - Progress data
 - Learned status
 
@@ -918,7 +926,8 @@ Removes a transcript and all associated files:
 Just say: `"delete 087XVp3JIpk"` or `"remove Psb9g9UxqZs"`
 
 The AI will:
-- Confirm which files will be deleted
+- Read `src/config.js` to get the correct paths
+- Confirm which files will be deleted (using the actual paths)
 - Ask for your confirmation
 - Delete all associated files
 - Report what was removed
@@ -933,15 +942,15 @@ The AI will:
 Downloads Spanish auto-generated subtitles from YouTube and creates a properly formatted transcript file.
 
 **How it works (AI executes directly):**
-1. Run yt-dlp to fetch Spanish auto-subtitles:
-   ```
-   yt-dlp --cookies-from-browser firefox --skip-download --write-auto-sub --sub-lang es --sub-format srt -o /tmp/[VIDEO_ID] "https://www.youtube.com/watch?v=[VIDEO_ID]"
-   ```
-2. Get video title from YouTube:
-   ```
-   yt-dlp --cookies-from-browser firefox --print title "https://www.youtube.com/watch?v=[VIDEO_ID]"
-   ```
-3. Parse the SRT file and convert timestamps to the project's format
+1. Run `./download VIDEO_ID` script which will:
+   - Check if Spanish subtitles are available
+   - Download using yt-dlp
+   - Convert to project format with millisecond timestamps
+   - Save to the transcripts directory (from `src/config.js`)
+2. Alternatively, manual steps:
+   - Run yt-dlp to fetch Spanish auto-subtitles
+   - Get video title from YouTube
+   - Parse the SRT file and convert timestamps to the project's format
    **Preserve milliseconds!** Use `**M:SS.mmm**` or `**H:MM:SS.mmm**` when the SRT contains them:
    ```
    SRT: 00:00:05,320 --> 00:00:08,150
