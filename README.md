@@ -36,14 +36,19 @@ Open http://localhost:9090
 
 ### Data Location
 
-By default, all user data is stored in `~/Sync/Data/yotuscript/`:
+By default, all user data is stored in `~/Work/yotuscript/.data/`:
 - `transcripts/` — Original transcript files
 - `vocab/` — Vocabulary JSON files
 - `grammar/` — Grammar sentence JSON files
 - `summary/` — Video summary JSON files
 - `data/` — App data (progress, stats, learned videos, etc.)
 
-**Override with environment variable:**
+**To change the location, edit `src/config.js`:**
+```javascript
+const DATA_ROOT = path.join(os.homedir(), "Work", "yotuscript", ".data");
+```
+
+**Or override with environment variable:**
 ```bash
 YOTUSCRIPT_DATA=/path/to/data node server.js
 ```
@@ -58,6 +63,7 @@ This keeps your transcript data separate from the application code and makes it 
 - **Dual-language view** (original + English translation)
 - **Interactive vocabulary** - Hover words to see translations in tooltips, click to save them
 - **Vocabular panel** - Collect and review saved words across all videos with translations and context
+- **Active recall review** - Test yourself with hidden translations (asterisks show character count)
 - **Grammar sentences** - 3-5 clickable grammar examples per video with explanations
 - **Video summaries** - 2-4 sentence summaries in Spanish with original vocabulary
 - **Statistics tracking** - Auto-tracks learned videos and total watch time
@@ -78,7 +84,7 @@ This keeps your transcript data separate from the application code and makes it 
 | `L` | Toggle learned status (resets progress) |
 | `R` | Toggle segment repeat mode |
 | `G` | Open first grammar sentence popup |
-| `V` | Open first vocabular word popup |
+| `V` | Start vocabulary review mode |
 | `?` | Show keyboard shortcuts reference |
 | `Enter` | Replay current segment (in repeat mode) |
 | `Esc` | Close popup / Exit fullscreen |
@@ -111,6 +117,18 @@ Save words while watching to build your personal vocabulary collection:
 - **Arrow keys** navigate between words when popup is open
 - Words persist across sessions and are shared across all videos
 - The panel auto-expands when you add your first word
+
+### Vocabulary Review Mode (Press `V`)
+
+Test yourself with active recall:
+
+- Press **`V`** to start reviewing saved words
+- Shows the **Spanish word** clearly
+- English translation is **hidden** — try to recall it before revealing
+- Press **`Y`** if you remembered, **`N`** if not
+- Press **`Enter`** to reveal the answer and continue to the next word
+- Words you mark as remembered (`Y`) advance through a 5-level mastery system
+- **One review per day** — each word can only be reviewed once per day (resets at midnight)
 
 ## Video Summaries
 

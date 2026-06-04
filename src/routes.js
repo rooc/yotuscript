@@ -8,7 +8,7 @@
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
-const { PORT, ROOT_DIR, TRANSCRIPTS_DIR, VOCAB_DIR, DATA_DIR, STATS_PATH } = require('./config');
+const { PORT, ROOT_DIR, TRANSCRIPTS_DIR, VOCAB_DIR, DATA_DIR, STATS_PATH, VOCAB_MASTERY_COUNT } = require('./config');
 const { parseTranscriptFile, getVideoIdFromFile, convertToXML } = require('./store');
 const { getTranscriptForVideo, readVocab, readGrammar, readSummary } = require('./store');
 
@@ -458,6 +458,14 @@ function handleStatic(url, res) {
                 '.json': 'application/json',
                 '.svg': 'image/svg+xml',
             };
+
+            // Inject runtime config into index.html
+            if (url.pathname === '/' || url.pathname === '/index.html') {
+                const html = content.toString();
+                const configScript = `<script>window.YOTUSCRIPT_CONFIG = { vocabMasteryCount: ${VOCAB_MASTERY_COUNT} };</script>`;
+                content = html.replace('</body>', `${configScript}</body>`);
+            }
+
             res.writeHead(200, { 'Content-Type': contentTypes[ext] || 'text/plain' });
             res.end(content);
         }

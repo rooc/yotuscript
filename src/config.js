@@ -34,4 +34,5 @@ module.exports = {
 	SUMMARY_DIR: path.join(DATA_ROOT, "summary"),
 	DATA_DIR: path.join(DATA_ROOT, "data"),
 	STATS_PATH: path.join(DATA_ROOT, "data", "stats.json"),
+	VOCAB_MASTERY_COUNT: 5,
 };

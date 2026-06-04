@@ -16,6 +16,9 @@ import { saveVocabular } from "./api.js";
 let currentVocabularModalIndex = -1;
 let showingAnswer = false;
 
+// Mastery threshold from server config (injected into index.html)
+const MASTERY_COUNT = (typeof window !== 'undefined' && window.YOTUSCRIPT_CONFIG?.vocabMasteryCount) || 5;
+
 // --- Daily Review Helpers ---
 
 function getTodayString() {
@@ -225,7 +228,7 @@ function renderVocabModalContent(content, item, showAnswer = false) {
 
 	// Counter badge
 	const counterBadge =
-		count > 0 ? `<span class="vocab-counter-badge">${count}/4</span>` : "";
+		count > 0 ? `<span class="vocab-counter-badge">${count}/${MASTERY_COUNT}</span>` : "";
 
 	// Translation display
 	let translationHtml;
@@ -234,7 +237,7 @@ function renderVocabModalContent(content, item, showAnswer = false) {
 	if (showAnswer) {
 		translationHtml = `<div class="vocabular-modal-translation">${item.translation}</div>`;
 
-		if (count >= 4) {
+		if (count >= MASTERY_COUNT) {
 			promptHtml = `
 				<div class="vocab-review-prompt vocab-review-suggest">
 					<span class="material-icons">emoji_events</span>
