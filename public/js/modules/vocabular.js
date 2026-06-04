@@ -94,8 +94,12 @@ export function renderVocabularWords() {
 	vocabularWords.forEach((item, index) => {
 		const reviewedClass = isReviewedToday(item) ? " reviewed-today" : "";
 		const reviewedIcon = isReviewedToday(item) ? '<span class="material-icons" style="font-size:10px;opacity:0.6;">check_circle</span>' : "";
+		const count = getReviewCount(item);
+		const titleText = count > 0
+			? `${item.word} — ${count}/4 correct ✓ (click to review)`
+			: `${item.word} — Not reviewed yet (click to review)`;
 		html += `
-			<div class="vocabular-tag${reviewedClass}" data-index="${index}" title="Click to see details">
+			<div class="vocabular-tag${reviewedClass}" data-index="${index}" title="${titleText}">
 				<span class="vocabular-tag-text">${item.word}${reviewedIcon}</span>
 				<span class="vocabular-tag-remove" data-index="${index}" title="Remove">
 					<span class="material-icons">close</span>
@@ -181,7 +185,7 @@ export function showVocabularModal(index) {
 		content.innerHTML = `
 			<div class="vocabular-modal-item vocab-all-reviewed">
 				<div class="vocabular-modal-icon">
-					<span class="material-icons">check_circle</span>
+					<span class="material-icons">done_all</span>
 				</div>
 				<div class="vocabular-modal-text">
 					<div class="vocabular-modal-word">All caught up!</div>

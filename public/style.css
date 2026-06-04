@@ -1252,7 +1252,7 @@ button.active {
 
 .vocab-all-reviewed .vocabular-modal-icon .material-icons {
 	font-size: 3rem;
-	color: var(--brand);
+	color: var(--text-warning);
 }
 
 .vocab-all-reviewed .vocabular-modal-word {
