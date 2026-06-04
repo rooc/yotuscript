@@ -166,14 +166,11 @@ function renderVocabModalContent(content, item, showAnswer = false) {
 	const counterBadge =
 		count > 0 ? `<span class="vocab-counter-badge">${count}/4</span>` : "";
 
-	// Word display - in review mode we show English and hide Spanish
-	let wordHtml;
+	// Translation display
 	let translationHtml;
 	let promptHtml = "";
 
 	if (showAnswer) {
-		// Show Spanish word prominently, English below
-		wordHtml = `<div class="vocabular-modal-word">${item.word}${counterBadge}</div>`;
 		translationHtml = `<div class="vocabular-modal-translation">${item.translation}</div>`;
 
 		if (count >= 4) {
@@ -195,12 +192,12 @@ function renderVocabModalContent(content, item, showAnswer = false) {
 			`;
 		}
 	} else {
-		// Show English prominently, hide Spanish word with blur
-		wordHtml = `<div class="vocabular-modal-word vocab-word-hidden">${item.word}</div>`;
-		translationHtml = `<div class="vocabular-modal-translation vocab-translation-prompt">${item.translation}</div>`;
+		// Replace every non-space character with an asterisk, preserving spaces
+		const hiddenText = item.translation.replace(/[^\s]/g, '*');
+		translationHtml = `<div class="vocabular-modal-translation vocab-translation-hidden">${hiddenText}</div>`;
 		promptHtml = `
 			<div class="vocab-review-prompt">
-				<span>Remember the Spanish word?</span>
+				<span>Remember?</span>
 				<div class="vocab-review-buttons">
 					<span class="vocab-review-hint"><kbd>Y</kbd> Yes</span>
 					<span class="vocab-review-hint"><kbd>N</kbd> No</span>
@@ -215,7 +212,7 @@ function renderVocabModalContent(content, item, showAnswer = false) {
 				<span class="material-icons">translate</span>
 			</div>
 			<div class="vocabular-modal-text">
-				${wordHtml}
+				<div class="vocabular-modal-word">${item.word}${counterBadge}</div>
 				${posHtml}
 				${translationHtml}
 				${promptHtml}
