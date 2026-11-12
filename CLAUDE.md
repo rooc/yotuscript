@@ -65,10 +65,15 @@ Or manually:
 2. **Frontmatter Required Fields**
    - [ ] Has `title:` field with non-empty value
    - [ ] Has `source:` field with valid YouTube URL (format: `https://www.youtube.com/watch?v=VIDEO_ID`)
+   - [ ] Matching is case-insensitive, and a plain header without `---` fences is
+         accepted — `Title: …` / `URL: …`, as pasted from browser extensions
 
 3. **Content Format**
-   - [ ] Has at least one timestamped line (format: `**M:SS**`, `**M:SS.mmm**`, `**H:MM:SS**`, or `**H:MM:SS.mmm**`)
+   - [ ] Has at least one timestamped line, in any supported format:
+         `**M:SS**`, `**M:SS.mmm**`, `**H:MM:SS**`, `**H:MM:SS.mmm**` (preferred),
+         `[M:SS]`, `(M:SS)` (browser-extension paste), or SRT
    - [ ] Contains Spanish text content (not empty)
+   - [ ] Timestamp lines with no text after them are ignored, not an error
 
 ### ❌ Skip These Files (Do Not Process):
 - `*_translation.md` files (already translated)
@@ -136,6 +141,24 @@ source: "https://www.youtube.com/watch?v=VIDEO_ID"
 - `**M:SS.mmm**` — minutes:seconds.milliseconds
 - `**H:MM:SS**` — hours:minutes:seconds
 - `**H:MM:SS.mmm**` — hours:minutes:seconds.milliseconds
+
+**Also accepted as input** (`src/store.js` parses all of these):
+- `[M:SS] Texto` — bracket timestamps
+- `(M:SS) Texto` — parenthesised, as pasted from browser extensions
+- SRT blocks (`HH:MM:SS,mmm --> HH:MM:SS,mmm`)
+
+```markdown
+Title: Video Title in Spanish
+URL: https://www.youtube.com/watch?v=VIDEO_ID
+
+(0:00) Primera línea en español
+(0:08) Segunda línea en español
+```
+
+Leave the input file in whatever supported format it arrived in — do **not** rewrite it.
+**Always write the translation file in the preferred `**M:SS**` format with YAML frontmatter**,
+regardless of the input format. Alignment between the two files is by timestamp value,
+so the formats do not need to match.
 
 ---
 

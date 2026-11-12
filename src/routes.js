@@ -393,8 +393,10 @@ function handleListTranscripts(res) {
         const videoId = getVideoIdFromFile(content) || f;
         const isTranslation = f.includes('translation') || f.includes('translate');
 
-        const titleMatch = content.match(/^title:\s*(.+)$/m);
-        const sourceMatch = content.match(/^source:\s*(.+)$/m);
+        // Case-insensitive, and `url:` is accepted as an alias for `source:`,
+        // so plain `Title:` / `URL:` headers from browser extensions also work.
+        const titleMatch = content.match(/^title:\s*(.+)$/im);
+        const sourceMatch = content.match(/^(?:source|url):\s*(.+)$/im);
         let fullTitle = titleMatch ? titleMatch[1].trim() : null;
         let sourceUrl = sourceMatch ? sourceMatch[1].trim() : null;
         if (fullTitle && /^["']/.test(fullTitle) && /["']$/.test(fullTitle)) {

@@ -20,6 +20,7 @@ const { TRANSCRIPTS_DIR, VOCAB_DIR, GRAMMAR_DIR, SUMMARY_DIR } = require('./conf
  * Supports multiple timestamp formats:
  *   **H:MM:SS** Text  (or **MM:SS** Text) - markdown bold
  *   [MM:SS] Text                           - bracket timestamps
+ *   (MM:SS) Text                           - parenthesised timestamps (browser extensions)
  *   SRT format: HH:MM:SS,mmm --> HH:MM:SS,mmm with sequential numbers
  *
  * @param {string} content  — raw file content
@@ -86,6 +87,30 @@ function parseTranscriptFile(content, filename) {
         if (lines.length === 0) {
             const regex2 = /\[(\d{1,2}):(\d{2})(?::(\d{2}))?(?:\.(\d{3}))?\]\s*(.+)/g;
             while ((match = regex2.exec(content)) !== null) {
+                const first = parseInt(match[1]);
+                const second = parseInt(match[2]);
+                const third = match[3] ? parseInt(match[3]) : null;
+                const millis = match[4] ? parseInt(match[4]) : 0;
+
+                let time;
+                if (third !== null) {
+                    time = first * 3600 + second * 60 + third;
+                } else {
+                    time = first * 60 + second;
+                }
+                if (millis > 0) {
+                    time += millis / 1000;
+                }
+
+                lines.push({ start: time, dur: 3, text: match[5].trim() });
+            }
+        }
+
+        // Fallback format: (MM:SS.mmm) Text — as pasted from browser extensions.
+        // Anchored to line start so parentheses inside the text are not matched.
+        if (lines.length === 0) {
+            const regex3 = /^\((\d{1,2}):(\d{2})(?::(\d{2}))?(?:\.(\d{3}))?\)[ \t]*(\S.*)$/gm;
+            while ((match = regex3.exec(contentWithoutFrontmatter)) !== null) {
                 const first = parseInt(match[1]);
                 const second = parseInt(match[2]);
                 const third = match[3] ? parseInt(match[3]) : null;
