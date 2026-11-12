@@ -296,6 +296,15 @@ Drag and drop transcript tags between panels:
 
 Or use the `L` keyboard shortcut to toggle the current video.
 
+### Clean Caption Tags
+**Command:** `"clean"` or `"clean VIDEO_ID"`
+
+Removes YouTube caption tags (`[música]`, `[risas]`, `[Applause]`) from a transcript.
+Run it before translating a newly added transcript, so the tags don't end up in the
+translation or the vocabulary.
+
+Bracketed timestamps (`[0:05]`) are a supported transcript format and are never removed.
+
 ### Merge Transcript Lines
 **Command:** `"merge VIDEO_ID"` or `"merge lines VIDEO_ID"`
 

@@ -1,6 +1,6 @@
 ---
 name: translation-startup
-description: Establish yotuscript translation context before working with transcripts, vocab, grammar or summary files. Use at the start of any yotuscript session, or when the user says "translate new", "download VIDEO_ID", "check files", "lint", "merge VIDEO_ID" or "delete VIDEO_ID", or otherwise asks to work on Spanish transcripts.
+description: Establish yotuscript translation context before working with transcripts, vocab, grammar or summary files. Use at the start of any yotuscript session, or when the user says "translate new", "download VIDEO_ID", "clean", "check files", "lint", "merge VIDEO_ID" or "delete VIDEO_ID", or otherwise asks to work on Spanish transcripts.
 ---
 
 # Yotuscript Startup
@@ -32,6 +32,7 @@ Ask user: "What would you like to do? (translate new, check files, merge lines, 
 ## Available Commands
 
 - `download VIDEO_ID` — Download YouTube transcript using `./download VIDEO_ID`
+- `clean [VIDEO_ID]` — Remove YouTube caption tags ([música], [risas])
 - `translate new` — Translate all untranslated transcripts
 - `check files` / `lint` — Validation and cleanup
 - `merge VIDEO_ID` — Merge short transcript lines

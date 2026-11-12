@@ -909,6 +909,64 @@ The AI will:
 
 ---
 
+### Clean Caption Tags
+**Command:** `"clean"` or `"clean VIDEO_ID"`
+
+Removes YouTube caption tags from a transcript. Auto-generated subtitles carry
+sound annotations like `[música]`, `[risas]`, `[Music]`, `[Applause]` — these are
+not speech, so they pollute the translation and get picked up as vocabulary.
+
+Run this **before** translating a newly added transcript.
+
+**How to use:**
+Just say: `"clean"` (all transcripts) or `"clean 3B6h8MaJJTY"` (one video).
+
+The AI will:
+- Read `src/config.js` to get the correct paths
+- Edit the transcript file in place
+- Report which tags were removed from which files
+
+**Rules — follow these exactly:**
+
+1. **Remove any bracketed tag**: `[música]`, `[risas]`, `[aplausos]`, `[Music]`,
+   `[Applause]`, `[Laughter]`, `[__]`, and anything else in square brackets.
+2. **NEVER remove bracketed timestamps.** `[0:05]`, `[12:34.567]` and `[1:23:45]`
+   are a supported transcript format (see Step 2) — stripping them destroys the
+   file. Only brackets whose contents are **not** a timestamp are tags.
+3. **Leave parentheses alone.** `(0:00)` is also a timestamp format, so
+   parenthesised text is never treated as a tag.
+4. **Join the surrounding text cleanly.** Remove the whitespace that preceded the
+   tag and collapse any double space left behind:
+   - `en China [música] y todavía` → `en China y todavía`
+   - `(4:27) [música] Todo es así` → `(4:27) Todo es así`
+5. **Drop the whole line if only a tag remains.** A line like `(11:05) [risas]`
+   becomes a bare timestamp with no speech — remove the line entirely rather than
+   leave the marker behind.
+6. **Never touch the frontmatter** or the `title:` / `source:` / `Title:` / `URL:`
+   header lines, even if they contain brackets.
+7. **If the video is already translated**, clean the `_translation.md` file in the
+   same pass so the two stay aligned — the translation has the English form of the
+   same tag (`[laughs]` for `[risas]`), and if one line is dropped the other must
+   be too.
+
+**Example:**
+```
+Before:
+(0:00) dejé España para empezar una nueva vida en China [música] y todavía me cuesta creer
+(4:27) [música] Todo es así, o sea, no hay dinero en efectivo.
+(11:05) [risas]
+(11:07) el inglés.
+
+After:
+(0:00) dejé España para empezar una nueva vida en China y todavía me cuesta creer
+(4:27) Todo es así, o sea, no hay dinero en efectivo.
+(11:07) el inglés.
+```
+
+**Note:** This modifies the original transcript file.
+
+---
+
 ### Merge Transcript Lines
 **Command:** `"merge VIDEO_ID"` or `"merge lines VIDEO_ID"`
 
@@ -1021,6 +1079,7 @@ Downloads Spanish auto-generated subtitles from YouTube and creates a properly f
 **Ready to work! Just say:**
 - `"download VIDEO_ID"` - Download Spanish transcript from YouTube
 - `"translate new"` - Translate all new transcripts (asks for grammar sentence count: 3, 4, 5, or custom)
+- `"clean"` or `"clean VIDEO_ID"` - Remove YouTube caption tags ([música], [risas])
 - `"merge VIDEO_ID"` - Merge short transcript lines into longer segments (80-120 chars)
 - `"check files"` - Run validation and cleanup
 - `"delete VIDEO_ID"` or `"remove VIDEO_ID"` - Remove a transcript
