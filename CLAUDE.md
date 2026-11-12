@@ -4,6 +4,22 @@ You are translating Spanish YouTube transcripts to English. Follow these instruc
 
 ---
 
+## Session Start
+
+Before touching any transcript, vocab, grammar or summary file, run the
+`translation-startup` skill (`.claude/skills/translation-startup/SKILL.md`):
+
+1. Read `src/config.js` to resolve the real data paths — they come from the
+   `YOTUSCRIPT_DATA` env var and default to `~/Sync/Data/yotuscript`, **not** the
+   repo folder. Never hardcode `transcripts/`, `vocab/`, `grammar/`, `summary/`.
+2. Read `data/a1-a2.json` (first 50 lines) — the basic-word exclusion list.
+3. List the transcript directory to see what is available.
+
+This file (`CLAUDE.md`) is loaded automatically at the start of every session and
+is the single source of truth for the translation workflow.
+
+---
+
 ## Quick Workflow
 
 **Simple command:** Just say "**translate new**" to translate all untranslated transcripts.

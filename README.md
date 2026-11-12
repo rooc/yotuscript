@@ -204,7 +204,7 @@ For sentence-by-sentence translation, create `VIDEO_ID_translation.md` with Engl
 
 ## AI Translation
 
-The workflow uses AI directly via `OPENCODE.md`:
+The workflow uses AI directly via `CLAUDE.md`:
 
 ### Simple Steps:
 
@@ -244,19 +244,28 @@ Each entry includes:
 - `pos` — Part of speech (verb, noun, expression, verb phrase, noun phrase)
 - `context` — Original sentence from the transcript showing usage
 
-### OPENCODE.md
+### CLAUDE.md
 
-The `OPENCODE.md` file contains all instructions for the AI. It specifies:
+The `CLAUDE.md` file contains all instructions for the AI. It specifies:
 - File format and structure
 - Translation guidelines
 - Vocabulary extraction rules
 - Word exclusions (A1-A2, proper nouns, etc.)
 
-Just tell the AI to read it and translate!
+[Claude Code](https://claude.com/claude-code) loads it automatically when you run
+`claude` in the project root — just say "translate new" and it follows the rules.
+With any other AI tool, point it at `CLAUDE.md` first.
+
+### .claude/skills/
+
+Project skills Claude Code picks up automatically:
+- `translation-startup` — resolves data paths from `src/config.js` and loads the
+  exclusion list before any transcript work
+- `writing-plans` — implementation-plan format for multi-step changes
 
 ## AI Commands
 
-All operations are AI-driven through `OPENCODE.md`:
+All operations are AI-driven through `CLAUDE.md`:
 
 ### Download
 **Command:** `"download VIDEO_ID"` or `"dl VIDEO_ID"`

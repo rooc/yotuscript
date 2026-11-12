@@ -1,17 +1,16 @@
 ---
 name: translation-startup
-description: "Automatically loaded when the yotuscript project opens. Reads config.js and OPENCODE.md to establish translation context."
-version: 1.0.0
+description: Establish yotuscript translation context before working with transcripts, vocab, grammar or summary files. Use at the start of any yotuscript session, or when the user says "translate new", "download VIDEO_ID", "check files", "lint", "merge VIDEO_ID" or "delete VIDEO_ID", or otherwise asks to work on Spanish transcripts.
 ---
 
 # Yotuscript Startup
 
-Read configuration and translation instructions at the start of every session.
+Read configuration and establish translation context before touching any transcript data.
 
 ## On Session Start
 
 1. **Read `src/config.js`** — Get actual data paths (reads `YOTUSCRIPT_DATA` env var, defaults to `~/Sync/Data/yotuscript`)
-2. **Read `OPENCODE.md`** — Translation workflow and rules
+2. **`CLAUDE.md`** — Translation workflow and rules; Claude Code loads it automatically, so re-read it only if it is not already in context
 3. **Read `data/a1-a2.json`** — Basic words exclusion list (first 50 lines)
 4. **Check transcript directory** — List available transcript files
 
