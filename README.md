@@ -4,6 +4,13 @@ A YouTube video transcript viewer with bilingual support.
 
 **Language support:** Currently Spanish → English only.
 
+## Requirements
+
+[Node.js](https://nodejs.org/) (LTS). No other dependencies — the server uses
+only Node built-ins, so there is no `npm install` step.
+
+`yt-dlp` and Firefox are needed only for downloading transcripts from YouTube.
+
 ## Quick Start
 
 ### For New Users (with demo data)
@@ -156,10 +163,10 @@ Creates:
 
 **Note:** This creates real files in your data directory. To remove demo data later:
 ```bash
-rm -f ~/Sync/Data/yotuscript/transcripts/demo*.md \
-       ~/Sync/Data/yotuscript/vocab/demo*.json \
-       ~/Sync/Data/yotuscript/grammar/demo*.json \
-       ~/Sync/Data/yotuscript/summary/demo*.json
+rm -f ~/Work/yotuscript/.data/transcripts/demo*.md \
+       ~/Work/yotuscript/.data/vocab/demo*.json \
+       ~/Work/yotuscript/.data/grammar/demo*.json \
+       ~/Work/yotuscript/.data/summary/demo*.json
 ```
 
 Use `--force` to recreate:
@@ -183,7 +190,7 @@ Any extension that extracts YouTube transcripts will work. Copy the transcript a
 
 ### Method 4: Manual
 
-Create transcript files directly in your data `transcripts/` folder (default: `~/Sync/Data/yotuscript/transcripts/`):
+Create transcript files directly in your data `transcripts/` folder (default: `~/Work/yotuscript/.data/transcripts/`):
 
 ```markdown
 ---
@@ -197,8 +204,24 @@ source: "https://www.youtube.com/watch?v=VIDEO_ID"
 
 **Supported formats:**
 - **Markdown timestamps** (recommended): `**MM:SS** Text` or `**H:MM:SS** Text`
+- **Bracket timestamps**: `[MM:SS] Text`
+- **Parenthesised timestamps**: `(MM:SS) Text` — what most browser extensions paste
 - **SRT format**: Sequential numbers with `HH:MM:SS,mmm --> HH:MM:SS,mmm` timestamps
 - **With milliseconds**: `**MM:SS.mmm** Text` for precise sync
+
+The frontmatter may also be a plain header without `---` fences, which is how
+browser extensions export it:
+
+```
+Title: Video Title
+URL: https://www.youtube.com/watch?v=VIDEO_ID
+
+(0:00) First line of transcript
+```
+
+Whatever format a transcript arrives in, it is left as-is — translations are
+always written in the `**MM:SS**` form, and the two files are matched by
+timestamp value rather than by line.
 
 For sentence-by-sentence translation, create `VIDEO_ID_translation.md` with English text.
 
