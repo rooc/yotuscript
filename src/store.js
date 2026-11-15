@@ -161,8 +161,27 @@ function getVideoIdFromFile(content) {
 function convertToXML(transcriptData) {
     return `<?xml version="1.0" encoding="utf-8" ?><transcript>` +
         transcriptData.map(t =>
-            `<text start="${t.start}" dur="${t.dur || 3}">${t.text}</text>`
+            `<text start="${t.start}" dur="${t.dur || 3}">${escapeXML(t.text)}</text>`
         ).join('') + '</transcript>';
+}
+
+/**
+ * Escape characters that are not legal as XML character data.
+ *
+ * Transcript text is interpolated straight into the document, so a single
+ * bare '&' (as in "m&m") makes the whole feed unparseable for the browser —
+ * which fails the transcript fetch and leaves the page with no player at all.
+ * '&' must be replaced first, or the ampersands of the other entities get
+ * escaped a second time.
+ *
+ * @param {string} text
+ * @returns {string}
+ */
+function escapeXML(text) {
+    return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
 }
 
 /**
