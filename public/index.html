@@ -116,6 +116,14 @@
 						<div class="loading-spinner"></div>
 						<div class="loading-text">Restoring progress...</div>
 					</div>
+					<div id="videoErrorOverlay" class="video-error-overlay hidden">
+						<div class="video-error-icon material-icons">videocam_off</div>
+						<div class="video-error-text" id="videoErrorText">This video cannot be played here.</div>
+						<a class="video-error-link" id="videoErrorLink" href="#" target="_blank" rel="noopener">
+							Watch on YouTube
+							<span class="material-icons">open_in_new</span>
+						</a>
+					</div>
 					<!-- Floating controls when sidebar is collapsed -->
 					<div class="video-floating-controls" id="videoFloatingControls">
 						<button id="vfPauseBtn" onclick="togglePause()" title="Pause/Play (Space)">

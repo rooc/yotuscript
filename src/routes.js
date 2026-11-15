@@ -468,7 +468,13 @@ function handleStatic(url, res) {
                 content = html.replace('</body>', `${configScript}</body>`);
             }
 
-            res.writeHead(200, { 'Content-Type': contentTypes[ext] || 'text/plain' });
+            // No cache headers at all means the browser falls back to
+            // heuristic caching and keeps serving a stale app after an edit.
+            // This is a local dev server, so always hand back the current file.
+            res.writeHead(200, {
+                'Content-Type': contentTypes[ext] || 'text/plain',
+                'Cache-Control': 'no-store, must-revalidate',
+            });
             res.end(content);
         }
     });

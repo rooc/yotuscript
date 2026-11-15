@@ -510,6 +510,56 @@ button.danger:hover {
 	pointer-events: none;
 }
 
+.video-error-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: var(--bg-surface);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.75rem;
+	padding: 1rem;
+	text-align: center;
+	z-index: 11;
+	border-radius: var(--radius-sm);
+}
+
+.video-error-overlay.hidden {
+	display: none;
+}
+
+.video-error-icon {
+	font-size: 42px;
+	color: var(--text-muted);
+}
+
+.video-error-text {
+	color: var(--text-muted);
+	max-width: 32rem;
+	line-height: 1.5;
+}
+
+.video-error-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	color: var(--brand);
+	text-decoration: none;
+	font-weight: 500;
+}
+
+.video-error-link:hover {
+	text-decoration: underline;
+}
+
+.video-error-link .material-icons {
+	font-size: 18px;
+}
+
 .loading-spinner {
 	width: 40px;
 	height: 40px;

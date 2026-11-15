@@ -59,6 +59,62 @@ function fetchVideoAspectRatio(videoId) {
 }
 
 /**
+ * YouTube IFrame API error codes.
+ * @see https://developers.google.com/youtube/iframe_api_reference#onError
+ */
+const YT_ERRORS = {
+	2: "YouTube rejected this video ID as invalid.",
+	5: "This video cannot be played in the HTML5 player.",
+	100: "This video was not found \u2014 it may have been removed or made private.",
+	101: "The uploader does not allow this video to be embedded.",
+	150: "The uploader does not allow this video to be embedded.",
+};
+
+/**
+ * The video the player was last asked to load.
+ *
+ * The YT.Player instance is created once and reused through loadVideoById, so
+ * its onError closure would otherwise keep reporting whichever video happened
+ * to be first.
+ */
+let currentlyLoadingVideoId = null;
+
+/** Hide the "cannot play" overlay, e.g. when switching to another video. */
+function clearVideoError() {
+	const overlay = document.getElementById("videoErrorOverlay");
+	if (overlay) overlay.classList.add("hidden");
+}
+
+/**
+ * Show why a video will not play, with a link out to YouTube.
+ *
+ * Without this the player is simply a dead black box: YouTube refuses the
+ * video, nothing is rendered, and the user has no way to tell a blocked embed
+ * from a broken app. The transcript, translation and vocabulary stay usable.
+ *
+ * @param {number} code - error code from the IFrame API
+ * @param {string} videoId - YouTube video ID
+ */
+function showVideoError(code, videoId) {
+	const overlay = document.getElementById("videoErrorOverlay");
+	const text = document.getElementById("videoErrorText");
+	const link = document.getElementById("videoErrorLink");
+	const loadingOverlay = document.getElementById("videoLoadingOverlay");
+
+	if (loadingOverlay) loadingOverlay.classList.add("hidden");
+	if (!overlay) return;
+
+	if (text) {
+		text.textContent = (YT_ERRORS[code] || "This video cannot be played here.") +
+			" The transcript below still works.";
+	}
+	if (link) link.href = `https://www.youtube.com/watch?v=${videoId}`;
+	overlay.classList.remove("hidden");
+	setStatus("Video unavailable in the embedded player");
+	console.warn(`YouTube player error ${code} for ${videoId}`);
+}
+
+/**
  * Initialize or load a YouTube video.
  * @param {string} videoId - YouTube video ID
  * @param {Object} options - Options including saved progress
@@ -68,6 +124,10 @@ export function loadVideo(videoId, options = {}) {
 
 	const { savedProgress, onReady, autoPlay = true } = options;
 	const loadingOverlay = document.getElementById("videoLoadingOverlay");
+
+	// A previous video may have failed; this one deserves a clean slate.
+	currentlyLoadingVideoId = videoId;
+	clearVideoError();
 
 	// Fetch actual video dimensions to set correct aspect ratio
 	fetchVideoAspectRatio(videoId);
@@ -152,6 +212,7 @@ export function loadVideo(videoId, options = {}) {
 					if (onReady) onReady();
 				},
 				onStateChange: onPlayerStateChange,
+				onError: (event) => showVideoError(event.data, currentlyLoadingVideoId),
 			},
 		}));
 	}
